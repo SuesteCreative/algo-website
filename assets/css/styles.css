@@ -24,22 +24,21 @@
 @media (max-width: 1024px) {
     .nav-links {
         display: none !important;
-        /* Force hide */
     }
 
     .menu-toggle {
         display: flex;
         position: relative;
-        z-index: 2001;
-        /* Show above drawer */
+        z-index: 2100;
     }
 
     header {
-        padding: 1.5rem 0;
+        padding: 1rem 0;
     }
 
     .logo {
-        height: 60px;
+        height: 30px;
+        /* Further reduced for mobile safety */
     }
 
     .projects-grid {
@@ -49,22 +48,30 @@
 
 @media (max-width: 768px) {
     .container {
-        padding: 0 1.5rem;
+        padding: 0 1.25rem;
     }
 
     .hero-title {
-        font-size: 2.8rem;
+        font-size: 1.8rem;
+        /* Even smaller for very narrow mobile screens */
+        line-height: 1.25;
+        letter-spacing: -0.02em;
     }
 
     .hero p {
-        padding: 1.5rem;
+        padding: 0;
+        margin-top: 1.5rem;
         font-size: 0.9rem;
+        max-width: 100%;
     }
 
     .hero-bg video,
     .hero-bg img {
         object-position: center bottom;
-        /* Adjust sketch focus for mobile */
+    }
+
+    .projects-grid {
+        gap: 3rem;
     }
 }
 
@@ -138,6 +145,8 @@ nav {
     transition: var(--transition-fast);
     position: relative;
     z-index: 2001;
+    max-width: 180px;
+    /* Prevent over-scaling */
 }
 
 .logo img {
@@ -206,15 +215,15 @@ nav {
 
 .btn-budget {
     margin-left: 1rem;
-    background: var(--text-primary);
-    color: #ffffff !important;
+    background: transparent;
+    color: var(--text-primary) !important;
+    border: 1.5px solid var(--text-primary);
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    font-weight: 500;
-    padding: 0.8rem 1.8rem;
+    font-weight: 600;
+    padding: 0.7rem 1.6rem;
     border-radius: 4px;
-    opacity: 1 !important;
     text-decoration: none;
     transition: var(--transition-fast);
 }
@@ -222,7 +231,9 @@ nav {
 .btn-budget:hover {
     transform: translateY(-2px);
     background: var(--accent-color);
-    box-shadow: 0 10px 20px rgba(40, 32, 118, 0.2);
+    border-color: var(--accent-color);
+    color: #ffffff !important;
+    box-shadow: 0 10px 20px rgba(40, 32, 118, 0.15);
 }
 
 .lang-switch {
@@ -270,6 +281,8 @@ nav {
     transform: translateX(0);
     visibility: visible;
     box-shadow: -20px 0 60px rgba(0, 0, 0, 0.05);
+    display: flex;
+    /* Ensure display is reset if needed */
 }
 
 body.drawer-open {
@@ -290,12 +303,31 @@ body.drawer-open {
 .drawer a {
     text-decoration: none;
     color: #121212;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 300;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     padding: 1rem 0;
     border-bottom: 1px solid var(--border-color);
+    transition: var(--transition-fast);
+}
+
+/* Ensure drawer budget button follows the requested style */
+.drawer .btn-budget {
+    margin: 1rem 0 0 0;
+    border: 1.5px solid var(--text-primary);
+    background: transparent;
+    color: var(--text-primary) !important;
+    text-align: center;
+    border-radius: 4px;
+    padding: 1rem;
+    font-weight: 600;
+}
+
+.drawer .btn-budget:hover {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #fff !important;
 }
 
 .hero-bg {
@@ -453,12 +485,14 @@ body.drawer-open {
     display: inline-block;
     margin-top: var(--spacing-lg);
     padding: 1rem 3rem;
-    border: 1px solid var(--text-primary);
+    border: 1.5px solid var(--text-primary);
+    background: transparent;
     text-decoration: none;
     color: var(--text-primary);
     text-transform: uppercase;
     font-size: 0.8rem;
     letter-spacing: 0.2em;
+    font-weight: 600;
     transition: all 0.3s ease;
 }
 
@@ -466,7 +500,8 @@ body.drawer-open {
     background: var(--accent-color);
     border-color: var(--accent-color);
     color: #fff;
-    box-shadow: 0 10px 20px rgba(40, 32, 118, 0.1);
+    box-shadow: 0 10px 20px rgba(40, 32, 118, 0.15);
+    transform: translateY(-2px);
 }
 
 /* Contact Form Styles */
