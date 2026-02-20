@@ -135,11 +135,9 @@ nav {
 .logo {
     display: block;
     height: 85px;
-    /* Even larger logo */
     transition: var(--transition-fast);
     position: relative;
     z-index: 2001;
-    /* Above drawer */
 }
 
 .logo img {
@@ -147,7 +145,16 @@ nav {
     width: auto;
     display: block;
     filter: brightness(0);
-    /* Ensure logo is visible on light bg */
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    z-index: 2500;
+    padding: 10px;
+    margin-right: -10px;
 }
 
 .nav-links {
@@ -193,10 +200,13 @@ nav {
     transition: opacity 0.3s ease;
 }
 
+.nav-links a:hover {
+    opacity: 1;
+}
+
 .btn-budget {
     margin-left: 1rem;
     background: var(--text-primary);
-    /* Initial black for elegance */
     color: #ffffff !important;
     font-size: 0.75rem;
     text-transform: uppercase;
@@ -212,7 +222,6 @@ nav {
 .btn-budget:hover {
     transform: translateY(-2px);
     background: var(--accent-color);
-    /* Blue highlight on hover */
     box-shadow: 0 10px 20px rgba(40, 32, 118, 0.2);
 }
 
@@ -239,23 +248,6 @@ nav {
     border-radius: 2px;
 }
 
-.nav-links a:hover {
-    opacity: 1;
-}
-
-/* Cinematic Hero */
-.hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    background: #fff;
-    padding-top: 80px;
-    /* Space for the header */
-}
-
 .drawer {
     position: fixed;
     top: 0;
@@ -271,12 +263,28 @@ nav {
     flex-direction: column;
     gap: 1.5rem;
     transform: translateX(100%);
-    /* Use transform for better performance and hiding */
+    visibility: hidden;
 }
 
 .drawer.open {
     transform: translateX(0);
+    visibility: visible;
     box-shadow: -20px 0 60px rgba(0, 0, 0, 0.05);
+}
+
+body.drawer-open {
+    overflow: hidden;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+    padding-top: 80px;
 }
 
 .drawer a {

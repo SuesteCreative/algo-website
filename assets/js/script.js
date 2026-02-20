@@ -42,19 +42,25 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mobile Drawer Logic
     const menuToggle = document.getElementById('menuToggle');
     const drawer = document.getElementById('drawer');
+    const body = document.body;
 
     if (menuToggle && drawer) {
         menuToggle.addEventListener('click', () => {
-            drawer.classList.toggle('open');
-            // Animate hamburger to X (optional but nice)
+            const isOpen = drawer.classList.toggle('open');
+            body.classList.toggle('drawer-open', isOpen);
+
+            // Animate hamburger to X
             const spans = menuToggle.querySelectorAll('span');
-            spans.forEach(span => span.classList.toggle('active'));
+            spans.forEach(span => span.classList.toggle('active', isOpen));
         });
 
         // Close drawer when clicking a link
         drawer.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 drawer.classList.remove('open');
+                body.classList.remove('drawer-open');
+                const spans = menuToggle.querySelectorAll('span');
+                spans.forEach(span => span.classList.remove('active'));
             });
         });
     }
