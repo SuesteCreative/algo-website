@@ -195,9 +195,9 @@ nav {
 
 .btn-budget {
     margin-left: 1rem;
-    background: var(--accent-color);
+    background: var(--text-primary);
+    /* Initial black for elegance */
     color: #ffffff !important;
-    /* Ensure white text */
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.15em;
@@ -211,8 +211,8 @@ nav {
 
 .btn-budget:hover {
     transform: translateY(-2px);
-    background: #1a1550;
-    /* Darker version for hover */
+    background: var(--accent-color);
+    /* Blue highlight on hover */
     box-shadow: 0 10px 20px rgba(40, 32, 118, 0.2);
 }
 
@@ -455,8 +455,67 @@ nav {
 }
 
 .btn-all:hover {
-    background: var(--text-primary);
+    background: var(--accent-color);
+    border-color: var(--accent-color);
     color: #fff;
+    box-shadow: 0 10px 20px rgba(40, 32, 118, 0.1);
+}
+
+/* Contact Form Styles */
+.contact-form {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    background: #fff;
+    font-family: inherit;
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+.privacy-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    margin: 1rem 0;
+}
+
+.privacy-group input {
+    margin-top: 0.2rem;
+}
+
+.privacy-group label {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    line-height: 1.4;
+}
+
+.privacy-group a {
+    color: var(--accent-color);
+    text-decoration: underline;
 }
 
 /* Animations */
