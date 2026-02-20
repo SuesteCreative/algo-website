@@ -53,24 +53,52 @@
     </div>
 
     <main>
-        <section class="container" style="padding-top: var(--spacing-xl);">
-            <div style="max-width: 800px;">
-                <span class="caps fade-up active">Contact</span>
-                <h1 class="hero-title fade-up active" style="margin-top: 1rem;">The starting point for your build.</h1>
+        <section class="container" style="padding-top: var(--spacing-xl); padding-bottom: var(--spacing-lg);">
+            <div class="contact-grid">
+                <div class="fade-up active">
+                    <span class="caps">Contact</span>
+                    <h1 class="page-title" style="margin-top: 1rem;">The starting point for your build.</h1>
 
-                <div class="contact-grid fade-up active">
-                    <div>
-                        <h3 class="caps" style="font-size: 0.7rem; margin-bottom: 1rem; opacity: 0.5;">Email</h3>
-                        <p style="font-size: 1.2rem;">info@algoatelier.pt</p>
+                    <div style="display: grid; grid-template-columns: 1fr; gap: 3rem; margin-top: var(--spacing-lg);">
+                        <div>
+                            <h3 class="caps" style="font-size: 0.7rem; margin-bottom: 0.5rem; opacity: 0.5;">Email</h3>
+                            <p style="font-size: 1.2rem;">info@algoatelier.pt</p>
+                        </div>
+                        <div>
+                            <h3 class="caps" style="font-size: 0.7rem; margin-bottom: 0.5rem; opacity: 0.5;">Phone</h3>
+                            <p style="font-size: 1.2rem;">+351 966 666 666</p>
+                        </div>
+                        <div>
+                            <h3 class="caps" style="font-size: 0.7rem; margin-bottom: 0.5rem; opacity: 0.5;">Location
+                            </h3>
+                            <p style="font-size: 1.2rem;">Architecture Street, 123<br>8500-000 Algarve, Portugal</p>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="caps" style="font-size: 0.7rem; margin-bottom: 1rem; opacity: 0.5;">Phone</h3>
-                        <p style="font-size: 1.2rem;">+351 912 345 678</p>
-                    </div>
-                    <div>
-                        <h3 class="caps" style="font-size: 0.7rem; margin-bottom: 1rem; opacity: 0.5;">Location</h3>
-                        <p style="font-size: 1.2rem;">Rua da Arquitetura, 123<br>4700-000 Braga, Portugal</p>
-                    </div>
+                </div>
+
+                <div class="fade-up active">
+                    <form action="#" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required placeholder="What's your name?">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="example@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required
+                                placeholder="Tell us about your project..."></textarea>
+                        </div>
+                        <div class="privacy-group">
+                            <input type="checkbox" id="privacy" name="privacy" required>
+                            <label for="privacy">I have read and accept the <a href="#">Privacy Policy</a> and the
+                                processing of my data for contact purposes.</label>
+                        </div>
+                        <button type="submit" class="btn-budget" style="width: 100%; margin: 0; padding: 1.2rem;">Send
+                            Message</button>
+                    </form>
                 </div>
             </div>
         </section>
@@ -81,7 +109,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <a href="../" class="logo">
-                        <img src="../../assets/img/algo-logo-black.webp"
+                        <img src="../../assets/img/algo-logo-white.webp"
                             alt="Algo Atelier Logo - Contemporary Architecture">
                     </a>
                     <p class="footer-tagline">Designed with rigor. Built with precision.</p>

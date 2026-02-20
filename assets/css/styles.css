@@ -245,27 +245,86 @@ nav {
 
 .hero-description-tag {
     display: inline-block;
-    padding: 0.8rem 1.8rem;
-    background: #F5F5F5;
-    font-size: 0.9rem;
+    padding: 0.4rem 1.2rem;
+    background: #fcfcfc;
+    font-size: 0.85rem;
     line-height: 1.6;
     color: var(--text-primary);
     position: relative;
     z-index: 10;
-    margin-top: 1.5rem;
+    margin-top: 1.2rem;
     border-radius: 2px;
 }
 
 .hero-title {
-    font-size: clamp(2rem, 8vw, 6rem);
-    /* Adaptive size that won't overflow */
+    font-size: clamp(2.2rem, 8vw, 6rem);
     position: relative;
     z-index: 10;
     line-height: 1.1;
     overflow-wrap: break-word;
     max-width: 100%;
     width: fit-content;
-    /* Ensure width is based on content wrapping */
+}
+
+.page-title {
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    line-height: 1.1;
+    position: relative;
+    z-index: 10;
+    margin-top: 1rem;
+}
+
+/* Contact Form Styles */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.6rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1.1rem;
+    background: #fcfcfc;
+    border: 1px solid var(--border-color);
+    border-radius: 2px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    color: var(--text-primary);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--text-primary);
+    background: #fff;
+}
+
+.privacy-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.privacy-group input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin-top: 0.1rem;
+    cursor: pointer;
 }
 
 .hero-title em {
@@ -353,8 +412,8 @@ nav {
 /* Site Footer */
 .site-footer {
     padding: var(--spacing-xl) 0 4rem;
-    background: #fff;
-    border-top: 1px solid var(--border-color);
+    background: #111;
+    color: #fff;
     margin-top: var(--spacing-xl);
 }
 
@@ -372,8 +431,8 @@ nav {
 }
 
 .footer-tagline {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
+    font-size: 0.85rem;
+    color: #888;
     max-width: 300px;
     line-height: 1.6;
 }
@@ -390,7 +449,7 @@ nav {
     text-transform: uppercase;
     letter-spacing: 0.15em;
     margin-bottom: 1.5rem;
-    color: var(--text-primary);
+    color: #fff;
     font-weight: 600;
 }
 
@@ -398,25 +457,25 @@ nav {
 .footer-column p {
     display: block;
     text-decoration: none;
-    color: var(--text-secondary);
-    font-size: 0.85rem;
+    color: #888;
+    font-size: 0.8rem;
     margin-bottom: 0.8rem;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .footer-column a:hover {
-    color: var(--accent-color);
+    color: #fff;
 }
 
 .footer-bottom {
     margin-top: 5rem;
     padding-top: 2rem;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 0.75rem;
-    color: var(--text-secondary);
+    color: #666;
 }
 
 .footer-legal a {
