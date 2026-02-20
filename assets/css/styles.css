@@ -66,10 +66,13 @@ nav {
 
 .logo {
     display: block;
-    height: 85px;
+    height: 70px;
+    /* Slightly smaller for elegance */
     transition: var(--transition-fast);
     position: relative;
     z-index: 5001;
+    margin-left: -4px;
+    /* Optical adjustment to align with text below */
 }
 
 .logo img {
@@ -265,6 +268,21 @@ nav {
     transition: transform 0.8s ease;
 }
 
+.project-card h3,
+.project-card p.location,
+.project-card p.description {
+    color: #3b4cff;
+    /* Vibrant blue as requested */
+    text-decoration: underline;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover h3,
+.project-card:hover p.location,
+.project-card:hover p.description {
+    opacity: 0.8;
+}
+
 .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -298,17 +316,25 @@ footer .logo img {
     }
 
     header {
-        padding: 1rem 0 !important;
+        padding: 1.5rem 0 !important;
+        background: transparent !important;
+        /* Back to transparent to show hero sketch */
+        border-bottom: none !important;
+    }
+
+    header.scrolled {
         background: rgba(250, 250, 250, 0.98) !important;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
     }
 
     .logo {
-        height: 45px !important;
-        /* Slightly smaller for better alignment */
+        height: 38px !important;
+        /* Slightly smaller for mobile elegance */
         max-width: 50% !important;
         display: flex;
         align-items: center;
+        margin-left: -3px;
+        /* Align with hero text below */
     }
 
     .logo img {
