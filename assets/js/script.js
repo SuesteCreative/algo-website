@@ -39,6 +39,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Mobile Drawer Logic
+    const menuToggle = document.getElementById('menuToggle');
+    const drawer = document.getElementById('drawer');
+
+    if (menuToggle && drawer) {
+        menuToggle.addEventListener('click', () => {
+            drawer.classList.toggle('open');
+            // Animate hamburger to X (optional but nice)
+            const spans = menuToggle.querySelectorAll('span');
+            spans.forEach(span => span.classList.toggle('active'));
+        });
+
+        // Close drawer when clicking a link
+        drawer.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                drawer.classList.remove('open');
+            });
+        });
+    }
+
     document.querySelectorAll('.fade-up, .img-reveal').forEach(el => {
         observer.observe(el);
     });

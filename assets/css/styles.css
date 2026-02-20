@@ -13,6 +13,9 @@
 
     --transition-smooth: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
     --transition-fast: all 0.3s ease;
+    --glass-bg: rgba(255, 255, 255, 0.4);
+    /* Glass background */
+    --glass-blur: blur(15px);
     --font-serif: 'Playfair Display', serif;
     --font-sans: 'Outfit', sans-serif;
 }
@@ -24,33 +27,22 @@
     }
 
     nav {
-        flex-direction: column;
-        gap: 1.5rem;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .logo {
-        height: 45px;
+        height: 50px;
     }
 
-    .nav-links {
-        display: flex;
-        gap: 1.2rem;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .nav-links a {
-        font-size: 0.6rem;
-    }
-
-    .btn-budget {
-        padding: 0.5rem 1rem;
-    }
-
+    .nav-glass-bar,
     .lang-switch {
-        border: none;
-        padding: 0;
-        margin: 0;
+        display: none;
+    }
+
+    .menu-toggle {
+        display: flex;
     }
 
     .container {
@@ -118,8 +110,8 @@ nav {
 
 .logo {
     display: block;
-    height: 60px;
-    /* Much larger logo as requested */
+    height: 85px;
+    /* Even larger logo */
     transition: var(--transition-fast);
 }
 
@@ -133,9 +125,19 @@ nav {
 
 .nav-links {
     display: flex;
-    gap: 2.5rem;
+    gap: 1rem;
     list-style: none;
     align-items: center;
+}
+
+.nav-glass-bar {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    padding: 0.5rem 1.5rem;
+    border-radius: 100px;
 }
 
 .nav-links a {
@@ -150,8 +152,13 @@ nav {
 }
 
 .btn-budget {
+    margin-left: 1rem;
     background: #121212;
-    color: #fff !important;
+    color: var(--text-primary);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 500;
     padding: 0.8rem 1.5rem;
     border-radius: 2px;
     opacity: 1 !important;
@@ -232,13 +239,13 @@ nav {
 
 .hero-bg video {
     z-index: 1;
-    opacity: 0.4;
-    /* Set initial video opacity to 40% */
+    opacity: 0.3;
+    /* Set initial video opacity to 30% */
 }
 
 .hero-bg.video-ended img {
-    opacity: 0.4;
-    /* Set final image opacity to 40% */
+    opacity: 0.3;
+    /* Set final image opacity to 30% */
 }
 
 .hero-bg.video-ended video {
