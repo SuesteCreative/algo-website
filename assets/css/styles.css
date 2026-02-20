@@ -243,20 +243,16 @@ nav {
     opacity: 0;
 }
 
-.hero-subheading {
+.hero-description-tag {
     display: inline-block;
-    padding: 0.5rem 1.5rem;
+    padding: 0.8rem 1.8rem;
     background: #F5F5F5;
-    /* Background box as requested */
-    font-size: 0.65rem;
-    letter-spacing: 0.25em;
-    margin-bottom: 1rem;
-    /* Closer to title */
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-primary);
     position: relative;
     z-index: 10;
-    color: var(--text-primary);
-    text-transform: uppercase;
-    font-weight: 600;
+    margin-top: 1.5rem;
     border-radius: 2px;
 }
 
