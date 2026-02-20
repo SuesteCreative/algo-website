@@ -304,9 +304,11 @@ footer .logo img {
     }
 
     .logo {
-        height: 60px !important;
-        /* Adjusted to a balanced 'large' size */
+        height: 45px !important;
+        /* Slightly smaller for better alignment */
         max-width: 50% !important;
+        display: flex;
+        align-items: center;
     }
 
     .logo img {
@@ -350,8 +352,8 @@ footer .logo img {
     }
 
     .drawer {
-        padding-top: 8rem;
-        /* Balanced spacing for the new logo size */
+        padding-top: 7rem;
+        /* Adjusted for smaller logo */
     }
 }
 
