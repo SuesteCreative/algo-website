@@ -222,7 +222,8 @@ nav {
 }
 
 .hero-bg img {
-    opacity: 0.3;
+    opacity: 0;
+    /* Hidden until 9s or video ends */
     z-index: 1;
     transition: opacity 0.8s ease;
 }
@@ -244,16 +245,19 @@ nav {
 
 .hero-subheading {
     display: inline-block;
-    padding: 0.4rem 1.2rem;
-    border: 1px solid #F5F5F5;
-    font-size: 0.7rem;
-    letter-spacing: 0.3em;
-    margin-bottom: 2rem;
+    padding: 0.5rem 1.5rem;
+    background: #F5F5F5;
+    /* Background box as requested */
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    margin-bottom: 1rem;
+    /* Closer to title */
     position: relative;
     z-index: 10;
     color: var(--text-primary);
     text-transform: uppercase;
-    font-weight: 500;
+    font-weight: 600;
+    border-radius: 2px;
 }
 
 .hero-title {
@@ -293,10 +297,17 @@ nav {
     transition: transform 0.8s ease;
 }
 
+.project-card,
+.project-card:hover {
+    text-decoration: none !important;
+    display: block;
+}
+
 .project-card h3 {
     font-size: 1.4rem;
     margin-bottom: 0.5rem;
     color: var(--text-primary);
+    text-decoration: none !important;
 }
 
 .project-card p.location {
@@ -305,32 +316,146 @@ nav {
     letter-spacing: 0.1em;
     color: var(--text-secondary);
     margin-bottom: 0.5rem;
+    text-decoration: none !important;
 }
 
 .project-card p.description {
     font-size: 0.9rem;
     color: var(--text-secondary);
     line-height: 1.6;
+    text-decoration: none !important;
 }
 
 .project-card:hover h3,
 .project-card:hover p.location,
 .project-card:hover p.description {
-    opacity: 0.8;
+    opacity: 0.7;
+    text-decoration: none !important;
 }
 
-/* Footer Grid */
+.btn-all {
+    display: inline-block;
+    padding: 1.1rem 2.8rem;
+    border: 1.5px solid #121212;
+    color: #121212;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    font-weight: 600;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    margin-top: 2rem;
+    border-radius: 2px;
+}
+
+.btn-all:hover {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #fff !important;
+}
+
+/* Site Footer */
+.site-footer {
+    padding: var(--spacing-xl) 0 4rem;
+    background: #fff;
+    border-top: 1px solid var(--border-color);
+    margin-top: var(--spacing-xl);
+}
+
 .footer-grid {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 2rem;
+    gap: 4rem;
 }
 
-@media (max-width: 768px) {
+.footer-brand .logo {
+    height: 40px;
+    margin-bottom: 2rem;
+    display: block;
+}
+
+.footer-tagline {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    max-width: 300px;
+    line-height: 1.6;
+}
+
+.footer-links {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4rem;
+    flex-grow: 1;
+}
+
+.footer-column h4 {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.footer-column a,
+.footer-column p {
+    display: block;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 0.8rem;
+    transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+    color: var(--accent-color);
+}
+
+.footer-bottom {
+    margin-top: 5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.footer-legal a {
+    text-decoration: none;
+    color: inherit;
+    margin-left: 2rem;
+}
+
+@media (max-width: 1024px) {
     .footer-grid {
         flex-direction: column;
-        text-align: left;
+        gap: 4rem;
+    }
+
+    .footer-links {
+        width: 100%;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .footer-links {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+
+    .footer-legal a {
+        margin-left: 0;
+        margin-right: 1.5rem;
     }
 }
 
