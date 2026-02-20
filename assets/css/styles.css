@@ -39,6 +39,7 @@ body {
     max-width: 1600px;
     margin: 0 auto;
     padding: 0 var(--spacing-md);
+    position: relative;
 }
 
 header {
@@ -50,6 +51,8 @@ header {
     z-index: 5000;
     /* Always above everything, including drawer */
     transition: all 0.4s ease;
+    overflow-x: hidden;
+    /* Prevent any sub-pixel overflow issues */
 }
 
 header.scrolled {
@@ -219,18 +222,23 @@ nav {
 }
 
 .hero-bg img {
-    opacity: 0;
-    z-index: 2;
-    transition: opacity 0.1s ease-in-out;
+    opacity: 0.3;
+    z-index: 1;
+    /* Below video */
+    transition: opacity 0.8s ease;
 }
 
 .hero-bg video {
-    z-index: 1;
-    opacity: 0.3;
+    opacity: 1;
+    z-index: 2;
+    /* On top of image */
+    transition: opacity 0.8s ease;
 }
 
 .hero-bg.video-ended img {
     opacity: 0.3;
+    z-index: 3;
+    /* Bring forward if video ends/fails */
 }
 
 .hero-bg.video-ended video {
@@ -238,9 +246,15 @@ nav {
 }
 
 .hero-title {
-    font-size: clamp(2.5rem, 8vw, 6.5rem);
+    font-size: clamp(2rem, 8vw, 6rem);
+    /* Adaptive size that won't overflow */
     position: relative;
     z-index: 10;
+    line-height: 1.1;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    width: fit-content;
+    /* Ensure width is based on content wrapping */
 }
 
 .hero-title em {
@@ -281,6 +295,21 @@ nav {
 .project-card:hover p.location,
 .project-card:hover p.description {
     opacity: 0.8;
+}
+
+/* Footer Grid */
+.footer-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .footer-grid {
+        flex-direction: column;
+        text-align: left;
+    }
 }
 
 .contact-grid {
@@ -389,7 +418,10 @@ footer .logo img {
     }
 
     .hero-title {
-        font-size: 2.2rem;
+        font-size: 2rem;
+        /* Reduced from 2.2rem for better safety margin on mobile */
+        width: 100%;
+        overflow-wrap: break-word;
     }
 
     .drawer {
