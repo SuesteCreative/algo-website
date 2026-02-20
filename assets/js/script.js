@@ -33,12 +33,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Specific requirement: stop at 9 seconds and show image
         const handleVideoEnd = () => {
-            if (heroBg) heroBg.classList.add('video-ended');
+            if (heroBg && !heroBg.classList.contains('video-ended')) {
+                heroVideo.pause();
+                heroVideo.currentTime = 9; // Snap to 9s to be sure
+                heroBg.classList.add('video-ended');
+            }
         };
 
         heroVideo.addEventListener('timeupdate', () => {
+            // If it goes beyond 9s, stop it immediately
             if (heroVideo.currentTime >= 9) {
-                heroVideo.pause();
                 handleVideoEnd();
             }
         });
