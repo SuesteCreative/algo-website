@@ -552,16 +552,17 @@ footer .logo img {
 
     .menu-toggle {
         display: flex !important;
-        /* Force visibility */
         position: relative;
-        z-index: 2501;
-        /* High above everything in header scope */
+        z-index: 2600;
+        /* Highest priority */
         width: 44px;
         height: 44px;
         flex-direction: column;
         justify-content: center;
         align-items: flex-end;
         cursor: pointer;
+        margin-right: -5px;
+        /* Adjust if too close to edge */
     }
 
     .menu-toggle span {
@@ -581,7 +582,8 @@ footer .logo img {
     }
 
     .logo {
-        height: 28px;
+        height: 40px;
+        /* Increased from 28px */
     }
 
     .projects-grid {
@@ -596,8 +598,8 @@ footer .logo img {
     }
 
     .hero-title {
-        font-size: 2.1rem;
-        line-height: 1.2;
+        font-size: 2rem;
+        line-height: 1.15;
     }
 
     .hero p {
@@ -620,8 +622,10 @@ footer .logo img {
     }
 
     .drawer-logo {
-        height: 30px;
-        margin-bottom: 1.5rem;
+        height: 28px;
+        /* Slightly smaller to feel more elegant */
+        margin-bottom: 2rem;
+        display: inline-block;
     }
 
     .drawer .btn-budget {
