@@ -31,12 +31,19 @@ document.addEventListener('DOMContentLoaded', () => {
             if (heroBg) heroBg.classList.add('video-ended');
         });
 
-        // Use the event to switch to image exactly when video ends
-        heroVideo.addEventListener('ended', () => {
-            if (heroBg) {
-                heroBg.classList.add('video-ended');
+        // Specific requirement: stop at 9 seconds and show image
+        const handleVideoEnd = () => {
+            if (heroBg) heroBg.classList.add('video-ended');
+        };
+
+        heroVideo.addEventListener('timeupdate', () => {
+            if (heroVideo.currentTime >= 9) {
+                heroVideo.pause();
+                handleVideoEnd();
             }
         });
+
+        heroVideo.addEventListener('ended', handleVideoEnd);
     }
 
     // Mobile Drawer Logic

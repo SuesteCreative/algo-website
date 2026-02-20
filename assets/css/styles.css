@@ -224,25 +224,36 @@ nav {
 .hero-bg img {
     opacity: 0.3;
     z-index: 1;
-    /* Below video */
     transition: opacity 0.8s ease;
 }
 
 .hero-bg video {
-    opacity: 1;
+    opacity: 0.3;
     z-index: 2;
-    /* On top of image */
     transition: opacity 0.8s ease;
 }
 
 .hero-bg.video-ended img {
     opacity: 0.3;
     z-index: 3;
-    /* Bring forward if video ends/fails */
 }
 
 .hero-bg.video-ended video {
     opacity: 0;
+}
+
+.hero-subheading {
+    display: inline-block;
+    padding: 0.4rem 1.2rem;
+    border: 1px solid #F5F5F5;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 10;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    font-weight: 500;
 }
 
 .hero-title {
@@ -282,13 +293,24 @@ nav {
     transition: transform 0.8s ease;
 }
 
-.project-card h3,
-.project-card p.location,
+.project-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.project-card p.location {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
 .project-card p.description {
-    color: #3b4cff;
-    /* Vibrant blue as requested */
-    text-decoration: underline;
-    transition: opacity 0.3s ease;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
 }
 
 .project-card:hover h3,
@@ -407,8 +429,16 @@ footer .logo img {
     }
 
     .drawer {
-        padding-top: 7rem;
-        /* Adjusted for smaller logo */
+        padding-top: 8rem;
+    }
+
+    .drawer .btn-budget {
+        margin: 1.5rem 0 0 0 !important;
+        width: 100% !important;
+        text-align: center;
+        border-bottom: 1.5px solid var(--text-primary) !important;
+        padding: 1.2rem !important;
+        display: block;
     }
 }
 
