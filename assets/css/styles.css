@@ -86,11 +86,20 @@ nav {
 }
 
 .logo {
-    font-family: var(--font-serif);
-    font-size: 1.5rem;
-    text-decoration: none;
-    color: inherit;
-    letter-spacing: 0.05em;
+    display: block;
+    height: 30px;
+}
+
+.logo img {
+    height: 100%;
+    width: auto;
+    display: block;
+}
+
+.logo-header {
+    filter: invert(1);
+    /* Invert white logo to black for white bg */
+    mix-blend-mode: difference;
 }
 
 .nav-links {
