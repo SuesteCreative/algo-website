@@ -28,15 +28,15 @@ document.addEventListener('DOMContentLoaded', () => {
         // Attempt to autoplay
         heroVideo.play().catch(error => {
             console.log("Autoplay blocked or video missing:", error);
-            // If autoplay fails, show the image immediately
             if (heroBg) heroBg.classList.add('video-ended');
         });
 
-        heroVideo.onended = () => {
+        // Use the event to switch to image exactly when video ends
+        heroVideo.addEventListener('ended', () => {
             if (heroBg) {
                 heroBg.classList.add('video-ended');
             }
-        };
+        });
     }
 
     document.querySelectorAll('.fade-up, .img-reveal').forEach(el => {
