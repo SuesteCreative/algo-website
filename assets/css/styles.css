@@ -66,25 +66,6 @@ nav {
     align-items: center;
 }
 
-.menu-toggle span {
-    width: 30px;
-    height: 2px;
-    background: #121212;
-    transition: var(--transition-fast);
-}
-
-.menu-toggle span.active:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
-}
-
-.menu-toggle span.active:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-toggle span.active:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
-}
-
 .logo {
     display: block;
     height: 85px;
@@ -100,17 +81,6 @@ nav {
     width: auto;
     display: block;
     filter: brightness(0);
-}
-
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-    cursor: pointer;
-    z-index: 2500;
-    padding: 10px;
-    transition: var(--transition-fast);
 }
 
 .nav-links {
@@ -204,6 +174,36 @@ nav {
     opacity: 1;
     background: rgba(0, 0, 0, 0.05);
     border-radius: 2px;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 2500;
+    padding: 10px;
+    transition: var(--transition-fast);
+}
+
+.menu-toggle span {
+    width: 30px;
+    height: 2px;
+    background: #121212;
+    transition: var(--transition-fast);
+}
+
+.menu-toggle span.active:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.menu-toggle span.active:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle span.active:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
 }
 
 .drawer {
@@ -559,51 +559,56 @@ footer .logo img {
     .menu-toggle {
         display: flex !important;
         position: relative;
-        z-index: 2605;
+        z-index: 2610;
+        /* Highest priority */
         width: 44px;
         height: 44px;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        /* Centered to avoid cropping */
         cursor: pointer;
-        margin-right: 0;
+        margin-right: -10px;
         transition: var(--transition-fast);
+        background: transparent;
     }
 
     .menu-toggle span {
-        background: #121212;
-        display: block;
-        width: 28px;
-        height: 2px;
-        margin: 3px 0;
-        transition: var(--transition-fast);
+        background: #121212 !important;
+        display: block !important;
+        width: 28px !important;
+        height: 2px !important;
+        margin: 3px 0 !important;
+        transition: var(--transition-fast) !important;
         pointer-events: none;
+        opacity: 1 !important;
+        visibility: visible !important;
     }
 
     .menu-toggle span.active:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
+        transform: translateY(8px) rotate(45deg) !important;
     }
 
     .menu-toggle span.active:nth-child(2) {
-        opacity: 0;
+        opacity: 0 !important;
     }
 
     .menu-toggle span.active:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
+        transform: translateY(-8px) rotate(-45deg) !important;
     }
 
     header {
-        padding: 0.8rem 0;
+        padding: 1.2rem 0;
+        /* Slightly more height for the big logo */
     }
 
     header.scrolled {
-        padding: 0.6rem 0;
+        padding: 0.8rem 0;
     }
 
     .logo {
-        height: 55px;
-        /* Increased from 40px */
+        height: 70px !important;
+        /* Doubled/Aumentado conforme pedido */
+        max-width: none !important;
     }
 
     .projects-grid {
@@ -647,8 +652,8 @@ footer .logo img {
     }
 
     .drawer-logo {
-        height: 45px;
-        /* Increased from 28px */
+        height: 60px !important;
+        /* Também aumentado no drawer */
         margin-bottom: 2.5rem;
         display: inline-block;
     }
