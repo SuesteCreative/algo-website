@@ -20,6 +20,25 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Hero Video Logic
+    const heroVideo = document.getElementById('heroVideo');
+    const heroBg = document.getElementById('heroBg');
+
+    if (heroVideo) {
+        // Attempt to autoplay
+        heroVideo.play().catch(error => {
+            console.log("Autoplay blocked or video missing:", error);
+            // If autoplay fails, show the image immediately
+            if (heroBg) heroBg.classList.add('video-ended');
+        });
+
+        heroVideo.onended = () => {
+            if (heroBg) {
+                heroBg.classList.add('video-ended');
+            }
+        };
+    }
+
     document.querySelectorAll('.fade-up, .img-reveal').forEach(el => {
         observer.observe(el);
     });
