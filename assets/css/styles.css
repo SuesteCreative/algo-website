@@ -69,8 +69,8 @@ nav {
 
 .logo {
     display: block;
-    height: 70px;
-    /* Slightly smaller for elegance */
+    height: 85px;
+    /* Balanced size for high-end presence */
     transition: var(--transition-fast);
     position: relative;
     z-index: 5001;
@@ -425,7 +425,7 @@ nav {
 }
 
 .footer-brand .logo {
-    height: 40px;
+    height: 85px;
     margin-bottom: 2rem;
     display: inline-block;
 }
@@ -499,6 +499,10 @@ nav {
         width: 100%;
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .footer-brand .logo {
+        height: 50px;
+    }
 }
 
 @media (max-width: 600px) {
@@ -517,7 +521,7 @@ nav {
 
     .footer-brand .logo {
         margin-bottom: 1.5rem;
-        height: 35px;
+        height: 50px;
     }
 
     .footer-tagline {
@@ -581,8 +585,8 @@ footer .logo img {
     }
 
     .logo {
-        height: 38px !important;
-        /* Slightly smaller for mobile elegance */
+        height: 50px !important;
+        /* Balanced mobile scale */
         max-width: 50% !important;
         display: flex;
         align-items: center;
