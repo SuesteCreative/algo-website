@@ -1,6 +1,278 @@
-/* Main Styles */
-body {
-    font-family: Arial, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap');
+
+:root {
+    --bg-color: #ffffff;
+    --text-primary: #121212;
+    --text-secondary: #666666;
+    --accent-color: #1a1a1a;
+    --border-color: #e5e5e5;
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 8rem;
+    --transition-smooth: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-sans: 'Inter', sans-serif;
+}
+
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+}
+
+p {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--text-secondary);
+}
+
+.caps {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    font-weight: 500;
+}
+
+/* Layout */
+.container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: var(--spacing-md) 0;
+    z-index: 100;
+    mix-blend-mode: difference;
+    color: white;
+    /* Will blend with bg */
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    letter-spacing: 0.05em;
+}
+
+.nav-links {
+    display: flex;
+    gap: var(--spacing-md);
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.lang-switch {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-top: var(--spacing-xl);
+}
+
+.hero-title {
+    font-size: clamp(3rem, 10vw, 8rem);
+    line-height: 0.9;
+    margin-bottom: var(--spacing-md);
+    overflow: hidden;
+}
+
+.hero-title .line {
+    display: block;
+    transform: translateY(100%);
+}
+
+/* Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: var(--transition-smooth);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.img-reveal-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.img-reveal-wrapper img {
+    transform: scale(1.1);
+    transition: var(--transition-smooth);
+}
+
+.img-reveal-wrapper.active img {
+    transform: scale(1);
+}
+
+.mask-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color);
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mask-overlay.active {
+    transform: translateY(-100%);
+}
+
+/* Sections */
+section {
+    padding: var(--spacing-xl) 0;
+}
+
+.section-tag {
+    margin-bottom: var(--spacing-sm);
+    display: block;
+}
+
+/* Hover Effects */
+.nav-links a {
+    position: relative;
+    padding-bottom: 2px;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: width 0.4s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.project-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Mobile Menu & Responsiveness */
+@media (max-width: 1024px) {
+    .hero-title {
+        font-size: 5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --spacing-lg: 3rem;
+        --spacing-xl: 5rem;
+    }
+
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+
+    .hero-title {
+        font-size: 3.5rem;
+    }
+
+    .philosophy-detail,
+    .approach .container,
+    .project-details .container,
+    .contact-content .container {
+        grid-template-columns: 1fr !important;
+        gap: var(--spacing-md);
+    }
+
+    .projects-grid .container>div {
+        grid-template-columns: 1fr !important;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    /* Mobile Menu Placeholder - can be expanded with JS */
+    .mobile-menu-trigger {
+        display: block;
+        cursor: pointer;
+    }
+}
+
+/* Micro-animations */
+button,
+.btn {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+button:active,
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* Featured image aspect ratio fixes */
+.img-reveal-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Footer */
+footer {
+    padding: var(--spacing-lg) 0;
+    border-top: 1px solid var(--border-color);
 }
