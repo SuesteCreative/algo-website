@@ -46,7 +46,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 2rem 0;
+    padding: 3rem 0;
     z-index: 5000;
     /* Always above everything, including drawer */
     transition: all 0.4s ease;
@@ -192,6 +192,7 @@ nav {
     flex-direction: column;
     justify-content: center;
     padding-top: 80px;
+    padding-bottom: 80px;
     position: relative;
 }
 
@@ -204,11 +205,33 @@ nav {
     z-index: 1;
 }
 
-.hero-bg video {
+.hero-bg video,
+.hero-bg img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.hero-bg img {
+    opacity: 0;
+    z-index: 2;
+    transition: opacity 0.1s ease-in-out;
+}
+
+.hero-bg video {
+    z-index: 1;
     opacity: 0.3;
+}
+
+.hero-bg.video-ended img {
+    opacity: 0.3;
+}
+
+.hero-bg.video-ended video {
+    opacity: 0;
 }
 
 .hero-title {
