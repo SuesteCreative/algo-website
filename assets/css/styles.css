@@ -162,10 +162,13 @@ nav {
 
 .hero-bg video {
     z-index: 1;
+    opacity: 0.4;
+    /* Set initial video opacity to 40% */
 }
 
 .hero-bg.video-ended img {
-    opacity: 1;
+    opacity: 0.4;
+    /* Set final image opacity to 40% */
 }
 
 .hero-bg.video-ended video {
