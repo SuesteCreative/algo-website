@@ -12,12 +12,47 @@
     --spacing-xl: 10rem;
 
     --transition-smooth: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    --transition-fast: all 0.3s ease;
     --font-serif: 'Playfair Display', serif;
     --font-sans: 'Outfit', sans-serif;
 }
 
 /* Mobile Adaptations */
 @media (max-width: 768px) {
+    header {
+        padding: 1.5rem 0;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .logo {
+        height: 45px;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 1.2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-links a {
+        font-size: 0.6rem;
+    }
+
+    .btn-budget {
+        padding: 0.5rem 1rem;
+    }
+
+    .lang-switch {
+        border: none;
+        padding: 0;
+        margin: 0;
+    }
+
     .container {
         padding: 0 1.5rem;
     }
@@ -29,10 +64,6 @@
     .hero p {
         margin-top: 2rem !important;
         font-size: 1rem;
-    }
-
-    .nav-links {
-        display: none;
     }
 
     .hero-bg video,
@@ -87,8 +118,9 @@ nav {
 
 .logo {
     display: block;
-    height: 20px;
-    /* More discreet logo as requested by the initial style */
+    height: 60px;
+    /* Much larger logo as requested */
+    transition: var(--transition-fast);
 }
 
 .logo img {
@@ -101,8 +133,9 @@ nav {
 
 .nav-links {
     display: flex;
-    gap: 3rem;
+    gap: 2.5rem;
     list-style: none;
+    align-items: center;
 }
 
 .nav-links a {
@@ -114,6 +147,43 @@ nav {
     font-weight: 500;
     opacity: 0.5;
     transition: opacity 0.3s ease;
+}
+
+.btn-budget {
+    background: #121212;
+    color: #fff !important;
+    padding: 0.8rem 1.5rem;
+    border-radius: 2px;
+    opacity: 1 !important;
+    transition: transform 0.3s ease;
+}
+
+.btn-budget:hover {
+    transform: translateY(-2px);
+    background: #333;
+}
+
+.lang-switch {
+    display: flex;
+    gap: 0.5rem;
+    border-left: 1px solid var(--border-color);
+    padding-left: 1.5rem;
+    margin-left: 1rem;
+}
+
+.lang-switch a {
+    text-decoration: none;
+    color: var(--text-primary);
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    transition: var(--transition-fast);
+    opacity: 0.4;
+}
+
+.lang-switch a.active {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 2px;
 }
 
 .nav-links a:hover {
