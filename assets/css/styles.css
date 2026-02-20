@@ -46,7 +46,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 2.5rem 0;
+    padding: 2rem 0;
     z-index: 5000;
     /* Always above everything, including drawer */
     transition: all 0.4s ease;
@@ -191,7 +191,7 @@ nav {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-top: 100px;
+    padding-top: 80px;
     position: relative;
 }
 
@@ -281,8 +281,9 @@ footer .logo img {
     }
 
     .logo {
-        height: 120px !important;
-        max-width: 65% !important;
+        height: 60px !important;
+        /* Adjusted to a balanced 'large' size */
+        max-width: 50% !important;
     }
 
     .logo img {
@@ -299,8 +300,8 @@ footer .logo img {
 
     .menu-toggle span {
         background: #121212 !important;
-        width: 35px !important;
-        height: 4px !important;
+        width: 30px !important;
+        height: 3px !important;
     }
 
     .menu-toggle span.active:nth-child(1) {
@@ -326,8 +327,8 @@ footer .logo img {
     }
 
     .drawer {
-        padding-top: 14rem;
-        /* Clear the massive logo area */
+        padding-top: 8rem;
+        /* Balanced spacing for the new logo size */
     }
 }
 
