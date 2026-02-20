@@ -97,7 +97,6 @@ nav {
 }
 
 .logo-header {
-    filter: invert(1);
     /* Invert white logo to black for white bg */
     mix-blend-mode: difference;
 }
