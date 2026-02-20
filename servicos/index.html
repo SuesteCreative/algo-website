@@ -4,128 +4,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Serviços de arquitetura, interiores e consultoria do Algo Atlier.">
-    <title>Serviços | Algo Atlier</title>
-    <link rel="stylesheet" href="/assets/css/styles.css">
+    <meta name="description" content="Serviços de arquitetura, interiores e gestão de projeto no Algo Atelier.">
+    <title>Serviços | Algo Atelier</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
 
 <body>
-    <header>
+    <header id="header">
         <div class="container">
             <nav>
-                <a href="/" class="logo logo-header">
-                    <img src="/assets/img/algo-logo-white.webp" alt="Algo Atlier Logo">
+                <a href="../" class="logo">
+                    <img src="../assets/img/algo-logo-black.webp" alt="Algo Atelier Logo">
                 </a>
-                <ul class="nav-links">
-                    <li><a href="/sobre/">Sobre</a></li>
-                    <li><a href="/servicos/" style="border-bottom: 1px solid white;">Serviços</a></li>
-                    <li><a href="/projetos/">Projetos</a></li>
-                    <li><a href="/contacto/">Contacto</a></li>
-                </ul>
-                <div class="lang-switch">
-                    <a href="/servicos/" class="caps">PT</a>
-                    <a href="/en/services/" class="caps" style="opacity: 0.5;">EN</a>
+                <div class="nav-links">
+                    <div class="nav-glass-bar">
+                        <a href="../sobre/">Sobre</a>
+                        <a href="../servicos/">Serviços</a>
+                        <a href="../projetos/">Projetos</a>
+                        <a href="../contacto/">Contacto</a>
+                        <div class="lang-switch" style="border: none; padding: 0; margin: 0;">
+                            <a href="../" class="active">PT</a>
+                            <a href="../en/services/">EN</a>
+                        </div>
+                    </div>
+                    <a href="../orcamento/" class="btn-budget">Pedir Orçamento</a>
+                </div>
+                <div class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
             </nav>
         </div>
     </header>
 
+    <div class="drawer" id="drawer">
+        <a href="../sobre/">Sobre</a>
+        <a href="../servicos/">Serviços</a>
+        <a href="../projetos/">Projetos</a>
+        <a href="../contacto/">Contacto</a>
+        <a href="../orcamento/">Pedir Orçamento</a>
+        <div style="margin-top: auto; display: flex; gap: 1rem;">
+            <a href="../" style="font-size: 1rem; font-weight: 600;">PT</a>
+            <a href="../en/services/" style="font-size: 1rem; opacity: 0.5;">EN</a>
+        </div>
+    </div>
+
     <main>
-        <section class="page-header" style="padding-top: var(--spacing-xl);">
-            <div class="container">
-                <span class="section-tag caps reveal">O que fazemos</span>
-                <h1 class="reveal" style="font-size: clamp(3rem, 8vw, 5rem); margin-top: var(--spacing-sm);">Onde a
-                    ideia se torna forma.</h1>
+        <section class="container" style="padding-top: var(--spacing-xl);">
+            <div style="max-width: 800px;">
+                <span class="caps fade-up active">Áreas de Atuação</span>
+                <h1 class="hero-title fade-up active" style="margin-top: 1rem;">Soluções integradas de design e rigor
+                    técnico.</h1>
             </div>
-        </section>
 
-        <section class="services-list">
-            <div class="container">
-                <div
-                    style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--spacing-lg);">
-                    <div class="reveal">
-                        <h2 style="font-size: 2rem; margin-bottom: 1rem;">Arquitetura</h2>
-                        <p>Desenvolvimento integral de projetos, desde a habitação unifamiliar a edifícios de maior
-                            escala. Focamos na harmonia entre a função e a estética.</p>
-                    </div>
-                    <div class="reveal">
-                        <h2 style="font-size: 2rem; margin-bottom: 1rem;">Design de Interiores</h2>
-                        <p>Curadoria de espaços, escolha de materiais e mobiliário assente num design contemporâneo e
-                            intemporal.</p>
-                    </div>
-                    <div class="reveal">
-                        <h2 style="font-size: 2rem; margin-bottom: 1rem;">Acompanhamento de Obra</h2>
-                        <p>Garantimos que o rigor do projeto se traduz na realidade da construção, através de uma
-                            fiscalização atenta e detalhada.</p>
-                    </div>
-                    <div class="reveal">
-                        <h2 style="font-size: 2rem; margin-bottom: 1rem;">Estudos Prévios</h2>
-                        <p>Análise de viabilidade e conceitos iniciais para dar vida às primeiras ideias do cliente.</p>
-                    </div>
-                    <div class="reveal">
-                        <h2 style="font-size: 2rem; margin-bottom: 1rem;">Licenciamento</h2>
-                        <p>Tratamos de todo o processo administrativo junto das entidades competentes, garantindo a
-                            conformidade legal.</p>
-                    </div>
-                    <div class="reveal">
-                        <h2 style="font-size: 2rem; margin-bottom: 1rem;">Consultoria</h2>
-                        <p>Apoio técnico na escolha de terrenos e avaliação de imóveis do ponto de vista arquitetónico.
-                        </p>
-                    </div>
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem; margin-top: var(--spacing-lg);">
+                <div class="fade-up active">
+                    <h3 class="caps" style="font-size: 0.8rem; margin-bottom: 1.5rem;">01. Licenciamento</h3>
+                    <p style="opacity: 0.7; line-height: 1.6;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat.</p>
                 </div>
-            </div>
-        </section>
-
-        <section class="process-banner reveal"
-            style="background: #121212; color: white; margin-top: var(--spacing-lg);">
-            <div class="container" style="text-align: center;">
-                <h2 style="font-size: 3rem; margin-bottom: 1rem;">Soluções integradas,<br>resultados excepcionais.</h2>
-                <a href="/contacto/" class="caps"
-                    style="color: white; border-bottom: 1px solid white; text-decoration: none;">Solicitar reunião</a>
+                <div class="fade-up active">
+                    <h3 class="caps" style="font-size: 0.8rem; margin-bottom: 1.5rem;">02. Execução</h3>
+                    <p style="opacity: 0.7; line-height: 1.6;">Duis aute irure dolor in reprehenderit in voluptate velit
+                        esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+                </div>
+                <div class="fade-up active">
+                    <h3 class="caps" style="font-size: 0.8rem; margin-bottom: 1.5rem;">03. Interiores</h3>
+                    <p style="opacity: 0.7; line-height: 1.6;">Sed ut perspiciatis unde omnis iste natus error sit
+                        voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
+                        inventore.</p>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer style="margin-top: var(--spacing-xl);">
         <div class="container">
-            <div
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-lg);">
-                <div>
-                    <a href="/" class="logo">
-                        <img src="/assets/img/algo-logo-black.webp" alt="Algo Atlier Logo">
-                    </a>
-                    <p style="margin-top: var(--spacing-sm); font-size: 0.9rem;">© 2026 Algo Atlier de
-                        Arquitetura.<br>Todos os direitos reservados.</p>
-                </div>
-                <div>
-                    <span class="caps" style="margin-bottom: var(--spacing-sm); display: block;">Menu</span>
-                    <ul style="list-style: none; line-height: 2;">
-                        <li><a href="/sobre/"
-                                style="text-decoration: none; color: inherit; font-size: 0.9rem;">Sobre</a></li>
-                        <li><a href="/servicos/"
-                                style="text-decoration: none; color: inherit; font-size: 0.9rem;">Serviços</a></li>
-                        <li><a href="/projetos/"
-                                style="text-decoration: none; color: inherit; font-size: 0.9rem;">Projetos</a></li>
-                        <li><a href="/contacto/"
-                                style="text-decoration: none; color: inherit; font-size: 0.9rem;">Contacto</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <span class="caps" style="margin-bottom: var(--spacing-sm); display: block;">Social</span>
-                    <ul style="list-style: none; line-height: 2;">
-                        <li><a href="#" style="text-decoration: none; color: inherit; font-size: 0.9rem;">Instagram</a>
-                        </li>
-                        <li><a href="#" style="text-decoration: none; color: inherit; font-size: 0.9rem;">LinkedIn</a>
-                        </li>
-                        <li><a href="#" style="text-decoration: none; color: inherit; font-size: 0.9rem;">Pinterest</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <p style="color: #888; border-top: 1px solid var(--border-color); padding-top: 3rem;">© 2026 Algo Atelier.
+                Todos os direitos reservados.</p>
         </div>
     </footer>
 
-    <script src="/assets/js/script.js"></script>
+    <script src="../assets/js/script.js"></script>
 </body>
 
 </html>
