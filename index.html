@@ -4,27 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Algo Atlier de Arquitetura - Onde o rigor encontra a sensibilidade estética.">
-    <title>Algo Atlier | Arquitetura Contemporânea</title>
-    <link rel="stylesheet" href="/assets/css/styles.css">
+    <meta name="description" content="Algo Atlier - Arquitetura Contemporânea & Design Minimalista.">
+    <title>Algo Atlier | Início</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body>
-    <header>
+    <header id="header">
         <div class="container">
             <nav>
-                <a href="/" class="logo">
-                    <img src="/assets/img/algo-logo-white.webp" alt="Algo Atlier Logo">
+                <a href="./" class="logo">
+                    <img src="assets/img/algo-logo-black.webp" alt="Algo Atlier Logo">
                 </a>
                 <ul class="nav-links">
-                    <li><a href="/sobre/">Sobre</a></li>
-                    <li><a href="/servicos/">Serviços</a></li>
-                    <li><a href="/projetos/">Projetos</a></li>
-                    <li><a href="/contacto/">Contacto</a></li>
+                    <li><a href="sobre/">Sobre</a></li>
+                    <li><a href="servicos/">Serviços</a></li>
+                    <li><a href="projetos/">Projetos</a></li>
+                    <li><a href="contacto/">Contacto</a></li>
                 </ul>
                 <div class="lang-switch">
-                    <a href="/" class="active">PT</a>
-                    <a href="/en/">EN</a>
+                    <a href="./" style="font-weight: 600;">PT</a>
+                    <a href="en/"
+                        style="opacity: 0.4; text-decoration: none; color: inherit; font-size: 0.75rem; margin-left: 1rem;">EN</a>
                 </div>
             </nav>
         </div>
@@ -33,112 +34,42 @@
     <main>
         <section class="hero">
             <div class="container">
-                <h1 class="hero-title">
-                    <span class="reveal-container active">
-                        <span class="reveal-text"><em>Construir</em> a</span>
-                    </span>
-                    <span class="reveal-container active">
-                        <span class="reveal-text">Luz & o <em>Silêncio</em>.</span>
-                    </span>
+                <h1 class="hero-title fade-up active">
+                    Desenhamos o <em>rigor</em>.<br>
+                    Construímos a <em>luz</em>.
                 </h1>
-                <div class="hero-description fade-in active">
-                    <p>Ateliê de arquitetura focado na pureza da forma e no rigor do detalhe. Transformamos contextos em
-                        experiências espaciais únicas.</p>
-                </div>
-                <div class="scroll-indicator fade-in active">
-                    <span class="caps">Scroll para explorar</span>
-                </div>
+                <p class="fade-up active" style="max-width: 500px; margin-top: 3rem;">
+                    Um ateliê focado na essência do espaço e na verdade dos materiais. Criamos arquitetura que perdura.
+                </p>
             </div>
         </section>
 
-        <section class="projects-section">
-            <div class="container">
-                <span class="section-tag caps fade-in">Trabalhos Selecionados</span>
-
-                <a href="/projetos/projeto-exemplo/" class="project-card">
-                    <div class="img-wrapper">
-                        <div class="img-reveal-overlay"></div>
-                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2070"
-                            alt="Casa do Penedo">
-                    </div>
-                    <div class="project-meta fade-in">
-                        <div>
-                            <h2 class="project-title">Casa do Penedo</h2>
-                            <p>Braga, Portugal</p>
-                        </div>
-                        <span class="caps">Ver Projeto</span>
-                    </div>
-                </a>
-
-                <a href="/projetos/projeto-exemplo/" class="project-card">
-                    <div class="img-wrapper">
-                        <div class="img-reveal-overlay"></div>
-                        <img src="https://images.unsplash.com/photo-1449156001437-37e67175440d?auto=format&fit=crop&q=80&w=2070"
-                            alt="Villa Minimal">
-                    </div>
-                    <div class="project-meta fade-in">
-                        <div>
-                            <h2 class="project-title">Villa Minimal</h2>
-                            <p>Alentejo, Portugal</p>
-                        </div>
-                        <span class="caps">Ver Projeto</span>
-                    </div>
-                </a>
-            </div>
-        </section>
-
-        <section class="statement" style="padding: var(--spacing-xl) 0; border-top: 1px solid var(--border-color);">
-            <div class="container">
-                <div style="max-width: 900px;">
-                    <h2 class="fade-in" style="font-size: clamp(2rem, 5vw, 4rem);">Acreditamos numa arquitetura
-                        silenciosa, que não grita por atenção, mas que se revela através da matéria e da luz.</h2>
-                </div>
+        <section class="container" style="padding-bottom: var(--spacing-xl);">
+            <div class="img-reveal" style="height: 80vh;">
+                <div class="reveal-overlay"></div>
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2070"
+                    alt="Destaque">
             </div>
         </section>
     </main>
 
     <footer>
         <div class="container">
-            <div class="footer-grid">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
                 <div>
-                    <a href="/" class="logo" style="height: 30px; margin-bottom: 2rem;">
-                        <img src="/assets/img/algo-logo-white.webp" alt="Algo Atlier Logo">
+                    <a href="./" class="logo" style="margin-bottom: 2rem;">
+                        <img src="assets/img/algo-logo-black.webp" alt="Algo Atlier Logo">
                     </a>
-                    <p style="max-width: 300px;">Rigor, sensibilidade e inovação na criação de espaços contemporâneos.
-                    </p>
+                    <p style="color: #888;">© 2026 Algo Atlier.</p>
                 </div>
                 <div>
-                    <span class="caps" style="display: block; margin-bottom: 1.5rem;">Explorar</span>
-                    <ul style="list-style: none; line-height: 2;">
-                        <li><a href="/sobre/" style="color: var(--text-secondary); text-decoration: none;">Sobre</a>
-                        </li>
-                        <li><a href="/servicos/"
-                                style="color: var(--text-secondary); text-decoration: none;">Serviços</a></li>
-                        <li><a href="/projetos/"
-                                style="color: var(--text-secondary); text-decoration: none;">Projetos</a></li>
-                        <li><a href="/contacto/"
-                                style="color: var(--text-secondary); text-decoration: none;">Contacto</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <span class="caps" style="display: block; margin-bottom: 1.5rem;">Contacto</span>
-                    <p>hello@algoatlier.pt<br>+351 253 123 456</p>
-                    <div style="margin-top: 2rem;">
-                        <span class="caps">Instagram</span>
-                    </div>
-                </div>
-            </div>
-            <div
-                style="margin-top: 5rem; padding-top: 2rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between;">
-                <p style="font-size: 0.8rem;">© 2026 Algo Atlier. Design by Sueste.</p>
-                <div class="lang-switch">
-                    <a href="/legal/privacidade/" style="font-size: 0.8rem;">Privacidade</a>
+                    <p style="font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;">Braga, Portugal</p>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script src="/assets/js/script.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>
