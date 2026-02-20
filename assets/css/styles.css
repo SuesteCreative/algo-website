@@ -16,6 +16,32 @@
     --font-sans: 'Outfit', sans-serif;
 }
 
+/* Mobile Adaptations */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    .hero-title {
+        font-size: 2.8rem;
+    }
+
+    .hero p {
+        margin-top: 2rem !important;
+        font-size: 1rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero-bg video,
+    .hero-bg img {
+        object-position: center bottom;
+        /* Adjust sketch focus for mobile */
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -137,11 +163,19 @@ nav {
 }
 
 .hero-title {
-    font-size: clamp(3rem, 10vw, 8rem);
+    font-size: clamp(2.5rem, 8vw, 7rem);
     font-weight: 300;
-    line-height: 1;
+    line-height: 1.1;
     color: #121212;
-    z-index: 1;
+    z-index: 10;
+    position: relative;
+    max-width: 900px;
+}
+
+.hero p {
+    position: relative;
+    z-index: 10;
+    color: #333;
 }
 
 .hero-title em {
