@@ -21,7 +21,7 @@
     /* Added for technical feel */
 
     /* Dotted background pattern */
-    --dot-bg: radial-gradient(rgba(0, 0, 0, 0.08) 0.5px, transparent 0.5px);
+    --dot-bg: radial-gradient(circle, rgba(0, 0, 0, 0.12) 1px, transparent 1px);
     --dot-size: 30px 30px;
 }
 
@@ -35,6 +35,7 @@ body {
     background-color: var(--bg-color);
     background-image: var(--dot-bg);
     background-size: var(--dot-size);
+    background-repeat: repeat;
     color: var(--text-primary);
     font-family: var(--font-sans);
     line-height: 1.5;
@@ -253,8 +254,7 @@ nav {
     padding-top: 80px;
     padding-bottom: 80px;
     position: relative;
-    background: #fafafa;
-    /* Solid background to hide dots at start */
+    /* Removed solid background to ensure dots show through from body */
     z-index: 100;
 }
 
