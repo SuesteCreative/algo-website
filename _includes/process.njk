@@ -2,12 +2,21 @@
     <div class="container">
         <div class="process-grid">
             <div class="process-content">
+                {% if lang == 'pt' %}
                 <span class="caps fade-up">O Método</span>
                 <h2 class="section-headline fade-up">Da Ideia à Realidade</h2>
                 <div class="content-text fade-up">
                     <p>Acreditamos que cada projeto é uma jornada única. Por isso, acompanhamos cada fase com o máximo rigor, garantindo que o conceito inicial se materializa com precisão absoluta.</p>
                     <p>Através de maquetes físicas, renderizações 3D e desenhos técnicos rigorosos, permitimos-lhe visualizar e sentir o espaço muito antes de a primeira pedra ser colocada.</p>
                 </div>
+                {% else %}
+                <span class="caps fade-up">The Method</span>
+                <h2 class="section-headline fade-up">From Idea to Reality</h2>
+                <div class="content-text fade-up">
+                    <p>We believe each project is a unique journey. That's why we accompany each phase with maximum rigor, ensuring the initial concept materializes with absolute precision.</p>
+                    <p>Through physical models, 3D renderings and rigorous technical drawings, we allow you to visualize and feel the space long before the first stone is laid.</p>
+                </div>
+                {% endif %}
             </div>
             <div class="process-visual fade-up">
                 <div class="video-wrapper">
@@ -24,7 +33,9 @@
                             <iframe src="https://www.youtube.com/embed/{{ site.process_video.youtube_id }}?autoplay=1&mute=1&loop=1&playlist={{ site.process_video.youtube_id }}&controls=0&showinfo=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                         </div>
                     {% else %}
-                        <img src="/assets/img/house-placeholder.webp" alt="Arquitetura Minimalista" class="fallback-img">
+                        <video autoplay muted loop playsinline class="process-video">
+                            <source src="/assets/img/video-placeholder.mp4" type="video/mp4">
+                        </video>
                     {% endif %}
                 </div>
             </div>
@@ -36,6 +47,8 @@
 .process-section {
     padding: var(--spacing-xl) 0;
     background-color: var(--bg-color);
+    background-image: var(--dot-bg);
+    background-size: var(--dot-size);
 }
 
 .process-grid {

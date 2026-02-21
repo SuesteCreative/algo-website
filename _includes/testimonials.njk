@@ -1,6 +1,10 @@
 <section class="testimonials" id="testimonials">
     <div class="container">
+        {% if lang == 'pt' %}
         <h2 class="section-headline fade-up">O que dizem os nossos clientes</h2>
+        {% else %}
+        <h2 class="section-headline fade-up">What our clients say</h2>
+        {% endif %}
         
         <div class="testimonials-carousel-wrapper">
             <div class="testimonials-track">
@@ -42,9 +46,11 @@
 
 <style>
 .testimonials {
-    padding: var(--spacing-xl) 0;
+    padding: var(--spacing-lg) 0; /* Reduced from XL */
     overflow: hidden;
     background-color: var(--bg-color);
+    background-image: var(--dot-bg);
+    background-size: var(--dot-size);
 }
 
 .testimonials .section-headline {

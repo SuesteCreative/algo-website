@@ -2,8 +2,13 @@
     <div class="container">
         <div class="contact-cta-grid">
             <div class="contact-cta-content fade-up">
+                {% if lang == 'pt' %}
                 <h2 class="section-headline">Vamos Conversar</h2>
                 <p class="scroller-subheading">Tem um projeto em mente ou gostaria de saber mais sobre o nosso método de trabalho? Entre em contacto connosco.</p>
+                {% else %}
+                <h2 class="section-headline">Let's Talk</h2>
+                <p class="scroller-subheading">Have a project in mind or would like to know more about our working method? Get in touch with us.</p>
+                {% endif %}
                 
                 <div class="contact-methods">
                     <div class="method-item">
@@ -11,7 +16,7 @@
                         <a href="mailto:{{ site.contacts.contact_email }}">{{ site.contacts.contact_email }}</a>
                     </div>
                     <div class="method-item">
-                        <span class="caps-mini">Telefone</span>
+                        <span class="caps-mini">{% if lang == 'pt' %}Telefone{% else %}Phone{% endif %}</span>
                         <a href="tel:{{ site.contacts.phone | replace(' ', '') }}">{{ site.contacts.phone }}</a>
                     </div>
                 </div>
@@ -19,6 +24,7 @@
             
             <div class="contact-cta-form fade-up">
                 <form action="#" class="contact-form">
+                    {% if lang == 'pt' %}
                     <div class="form-group">
                         <label for="cta-name">Nome Completo</label>
                         <input type="text" id="cta-name" name="name" required placeholder="Como se chama?">
@@ -32,6 +38,21 @@
                         <textarea id="cta-message" name="message" rows="4" required placeholder="Fale-nos do seu projeto..."></textarea>
                     </div>
                     <button type="submit" class="btn-budget" style="width: 100%; margin: 2rem 0 0;">Enviar Mensagem</button>
+                    {% else %}
+                    <div class="form-group">
+                        <label for="cta-name">Full Name</label>
+                        <input type="text" id="cta-name" name="name" required placeholder="What is your name?">
+                    </div>
+                    <div class="form-group">
+                        <label for="cta-email">Email</label>
+                        <input type="email" id="cta-email" name="email" required placeholder="example@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="cta-message">Message</label>
+                        <textarea id="cta-message" name="message" rows="4" required placeholder="Tell us about your project..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-budget" style="width: 100%; margin: 2rem 0 0;">Send Message</button>
+                    {% endif %}
                 </form>
             </div>
         </div>
@@ -42,6 +63,8 @@
 .contact-cta-section {
     padding: var(--spacing-xl) 0;
     background-color: var(--bg-color);
+    background-image: var(--dot-bg);
+    background-size: var(--dot-size);
     border-top: 1px solid var(--border-color);
 }
 

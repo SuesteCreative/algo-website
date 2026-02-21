@@ -22,6 +22,7 @@ permalink: /
     {% include "header-pt.njk" %}
 
     <main>
+        {% set lang = 'pt' %}
         <section class="hero">
             <div class="hero-bg" id="heroBg">
                 <video id="heroVideo" autoplay muted playsinline aria-hidden="true" poster="/assets/img/hero-image-final.webp">
@@ -84,7 +85,6 @@ permalink: /
                     </div>
         </section>
 
-        {% set lang = 'pt' %}
         {% include "scroller-section.njk" %}
 
         {% include "testimonials.njk" %}

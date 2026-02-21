@@ -27,6 +27,10 @@ map:
     width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
     referrerpolicy="no-referrer-when-downgrade"></iframe>
 process_video:
+<<<<<<< HEAD
   external_url: https://fpdl.vimeocdn.com/vimeo-prod-skyfire-std-us/01/1075/18/455375338/2006611388.mp4
   file: "Video by Yaroslav Shuraev from Pexels:
     https://www.pexels.com/video/man-drafting-some-architectural-work-6283047/"
+=======
+  file: "/assets/img/video-placeholder.mp4"
+>>>>>>> a674ad6 (refactor: design refinements and UX fixes for landing page and footer)
