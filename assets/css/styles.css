@@ -326,7 +326,7 @@ nav {
 }
 
 .hero-title {
-    font-size: clamp(2.2rem, 8vw, 6rem);
+    font-size: clamp(2.2rem, 5vw, 4rem);
     position: relative;
     z-index: 10;
     line-height: 1.1;
