@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://algo-website.com/sitemap.xml

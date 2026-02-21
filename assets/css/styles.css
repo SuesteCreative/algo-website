@@ -21,7 +21,7 @@
     /* Added for technical feel */
 
     /* Dotted background pattern - Enhanced visibility */
-    --dot-bg: radial-gradient(circle, rgba(0, 0, 0, 0.3) 1.5px, transparent 1.5px);
+    --dot-bg: radial-gradient(circle, rgba(0, 0, 0, 0.1) 1.5px, transparent 1.5px);
     --dot-size: 30px 30px;
 }
 
@@ -882,5 +882,167 @@ footer .logo img {
 
     .drawer {
         max-width: 100%;
+    }
+}
+
+/* Project Detail Page Styles */
+.project-detail-hero {
+    padding-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
+}
+
+.project-specs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    margin: var(--spacing-lg) 0;
+}
+
+.spec-item .label {
+    display: block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.spec-item .value {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.project-description {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.project-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.gallery-item {
+    height: 60vh;
+    overflow: hidden;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery-item.full-width {
+    grid-column: span 2;
+    height: 80vh;
+}
+
+.project-next-nav {
+    padding: var(--spacing-xl) 0;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.next-project-link {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--text-primary);
+}
+
+.next-project-link span {
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    opacity: 0.5;
+    margin-bottom: 1rem;
+}
+
+.next-project-link h2 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    transition: var(--transition-smooth);
+}
+
+.next-project-link:hover h2 {
+    transform: translateY(-5px);
+    color: var(--accent-color);
+}
+
+/* Animation Staggering */
+[class*="stagger-"]>* {
+    transition-delay: var(--delay, 0s);
+}
+
+.stagger-1>*:nth-child(1) {
+    --delay: 0.1s;
+}
+
+.stagger-1>*:nth-child(2) {
+    --delay: 0.2s;
+}
+
+.stagger-1>*:nth-child(3) {
+    --delay: 0.3s;
+}
+
+.stagger-1>*:nth-child(4) {
+    --delay: 0.4s;
+}
+
+.stagger-1>*:nth-child(5) {
+    --delay: 0.5s;
+}
+
+.stagger-1>*:nth-child(6) {
+    --delay: 0.6s;
+}
+
+/* Refined Reveal for Gallery */
+.img-reveal {
+    overflow: hidden;
+    position: relative;
+}
+
+.img-reveal img {
+    transform: scale(1.1);
+    transition: transform 1.5s cubic-bezier(0.23, 1, 0.32, 1), opacity 1.5s ease;
+    opacity: 0;
+}
+
+.img-reveal.active img {
+    transform: scale(1);
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .project-specs {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .project-description {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .project-gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-item {
+        height: 40vh;
+    }
+
+    .gallery-item.full-width {
+        grid-column: span 1;
+        height: 50vh;
     }
 }
