@@ -22,15 +22,6 @@ social:
   linkedin_url: https://linkedin.com
   facebook_url: https://www.facebook.com/
 map:
-  iframe: <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21712.571714421207!2d-8.6038014742034!3d37.127219086925045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1b2fa1cce1c459%3A0x71ec22e8c07d0e8a!2sPraia%20dos%20Tr%C3%AAs%20Irm%C3%A3os!5e1!3m2!1spt-PT!2spt!4v1771705861901!5m2!1spt-PT!2spt"
-    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade"></iframe>
+  iframe: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21712.571714421207!2d-8.6038014742034!3d37.127219086925045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1b2fa1cce1c459%3A0x71ec22e8c07d0e8a!2sPraia%20dos%20Tr%C3%AAs%20Irm%C3%A3os!5e1!3m2!1spt-PT!2spt!4v1771705861901!5m2!1spt-PT!2spt" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'
 process_video:
-<<<<<<< HEAD
-  external_url: https://fpdl.vimeocdn.com/vimeo-prod-skyfire-std-us/01/1075/18/455375338/2006611388.mp4
-  file: "Video by Yaroslav Shuraev from Pexels:
-    https://www.pexels.com/video/man-drafting-some-architectural-work-6283047/"
-=======
   file: "/assets/img/video-placeholder.mp4"
->>>>>>> a674ad6 (refactor: design refinements and UX fixes for landing page and footer)

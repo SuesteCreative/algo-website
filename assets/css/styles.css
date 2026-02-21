@@ -503,10 +503,10 @@ nav {
 
 /* Site Footer */
 .site-footer {
-    padding: 4rem 0;
+    padding: 3rem 0;
     background: #111;
     color: #fff;
-    margin-top: 4rem;
+    margin-top: 0;
 }
 
 .footer-grid {
@@ -517,14 +517,15 @@ nav {
 }
 
 .footer-brand .logo {
-    height: 85px;
-    margin-bottom: 2rem;
+    height: 100px;
+    margin-bottom: 1.5rem;
     display: inline-block;
 }
 
 .footer-brand .logo img {
     filter: none !important;
-    height: 100%;
+    height: 100% !important;
+    width: auto !important;
 }
 
 .footer-tagline {
@@ -685,7 +686,7 @@ nav {
     }
 
     .footer-brand .logo {
-        height: 50px;
+        height: 100px !important;
     }
 }
 
@@ -705,7 +706,7 @@ nav {
 
     .footer-brand .logo {
         margin-bottom: 1.5rem;
-        height: 50px;
+        height: 100px !important;
     }
 
     .footer-tagline {
@@ -807,13 +808,11 @@ footer .logo img {
     }
 
     .logo {
-        height: 50px !important;
-        /* Balanced mobile scale */
-        max-width: 50% !important;
+        height: 70px !important;
+        max-width: 60% !important;
         display: flex;
         align-items: center;
         margin-left: -3px;
-        /* Align with hero text below */
     }
 
     .logo img {
@@ -1099,7 +1098,7 @@ footer .logo img {
 .wave-brand path {
     stroke: currentColor;
     fill: none;
-    stroke-width: 2;
+    stroke-width: 1.2;
     animation: wave-wobble 2s ease-in-out infinite;
     transform-origin: center;
 }
@@ -1116,10 +1115,9 @@ footer .logo img {
     }
 }
 
-/* Footer Mobile Logo Sizing - Full fix */
 @media (max-width: 768px) {
     .footer-brand .logo {
-        height: 60px !important;
+        height: 100px !important;
         margin-bottom: 1rem;
     }
 
@@ -1127,24 +1125,35 @@ footer .logo img {
         height: 100% !important;
         width: auto !important;
     }
+
+    .site-footer {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
 }
 
-/* Fullscreen Section Control (Desktop) */
+/* Desktop refinements */
 @media (min-width: 1025px) {
-    section.container {
-        min-height: 80vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
     .projects-grid {
-        max-height: 60vh;
         margin-bottom: 2rem;
     }
+}
 
-    .project-card .img-wrapper {
-        aspect-ratio: 16 / 10;
-        height: auto;
-    }
+/* Styled Map for Contact Page */
+.map-clean-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 3rem auto;
+    height: 400px;
+    border-radius: 8px;
+    overflow: hidden;
+    filter: grayscale(1) invert(0.05) contrast(1.1);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+}
+
+.map-clean-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
 }
