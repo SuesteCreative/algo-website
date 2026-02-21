@@ -1,8 +1,5 @@
 [11ty] Writing _site/index.html from ./index.njk
-[11ty] Writing _site/en/index.html from ./en/index.njk
-[11ty] Writing _site/sitemap.xml from ./sitemap.njk
 [11ty] Writing _site/contacto/index.html from ./contacto/index.njk
-[11ty] Writing _site/servicos/index.html from ./servicos/index.njk
 [11ty] Writing _site/projetos/centro-civico/index.html from ./projetos/project-pages.njk
 [11ty] Writing _site/projetos/sede-tecnologica-x/index.html from ./projetos/project-pages.njk
 [11ty] Writing _site/projetos/torre-de-luz/index.html from ./projetos/project-pages.njk
@@ -10,11 +7,12 @@
 [11ty] Writing _site/projetos/luz-do-sul/index.html from ./projetos/project-pages.njk
 [11ty] Writing _site/projetos/pavilhao-entre-aguas/index.html from ./projetos/project-pages.njk
 [11ty] Writing _site/projetos/casa-do-penedo/index.html from ./projetos/project-pages.njk
-[11ty] Writing _site/sobre/index.html from ./sobre/index.njk
+[11ty] Writing _site/servicos/index.html from ./servicos/index.njk
+[11ty] Writing _site/sitemap.xml from ./sitemap.njk
+[11ty] Writing _site/en/index.html from ./en/index.njk
 [11ty] Writing _site/projetos/index.html from ./projetos/index.njk
-[11ty] Writing _site/en/contact/index.html from ./en/contact/index.njk
+[11ty] Writing _site/sobre/index.html from ./sobre/index.njk
 [11ty] Writing _site/en/about/index.html from ./en/about/index.njk
-[11ty] Writing _site/en/projects/index.html from ./en/projects/index.njk
 [11ty] Writing _site/en/projects/civic-center/index.html from ./en/projects/project-pages.njk
 [11ty] Writing _site/en/projects/x-tech-hq/index.html from ./en/projects/project-pages.njk
 [11ty] Writing _site/en/projects/tower-of-light/index.html from ./en/projects/project-pages.njk
@@ -22,5 +20,7 @@
 [11ty] Writing _site/en/projects/southern-light/index.html from ./en/projects/project-pages.njk
 [11ty] Writing _site/en/projects/between-waters-pavilion/index.html from ./en/projects/project-pages.njk
 [11ty] Writing _site/en/projects/penedo-house/index.html from ./en/projects/project-pages.njk
+[11ty] Writing _site/en/contact/index.html from ./en/contact/index.njk
+[11ty] Writing _site/en/projects/index.html from ./en/projects/index.njk
 [11ty] Writing _site/en/services/index.html from ./en/services/index.njk
-[11ty] Copied 40 files / Wrote 25 files in 0.18 seconds (7.2ms each, v2.0.1)
+[11ty] Copied 63 files / Wrote 25 files in 0.19 seconds (7.6ms each, v2.0.1)

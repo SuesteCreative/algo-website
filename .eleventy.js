@@ -68,11 +68,27 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.ignores.add("_site/**");
     eleventyConfig.ignores.add("Algo-v2-backup/**");
 
-    // ── Passthrough: assets & static pages ────────────────────────
+    // ── Passthrough: assets & favicons ──────────────────────────
     eleventyConfig.addPassthroughCopy("assets");
-    eleventyConfig.addPassthroughCopy("favicon.ico");
-    eleventyConfig.addPassthroughCopy("apple-touch-icon.png");
-    eleventyConfig.addPassthroughCopy("site.webmanifest");
+
+    // Favicons: Public Site (Root)
+    eleventyConfig.addPassthroughCopy({
+        "assets/img/favicon/favicon-32x32.ico": "favicon.ico",
+        "assets/img/favicon/fav-icon.svg": "favicon.svg",
+        "assets/img/favicon/favicon-16x16.png": "favicon-16x16.png",
+        "assets/img/favicon/favicon-32x32.png": "favicon-32x32.png",
+        "assets/img/favicon/apple-touch-icon.png": "apple-touch-icon.png"
+    });
+
+    // Favicons: Back-office (/admin/)
+    eleventyConfig.addPassthroughCopy({
+        "assets/img/favicon/favicon-admin32x32.ico": "admin/favicon-admin.ico",
+        "assets/img/favicon/fav-icon-admin.svg": "admin/favicon-admin.svg",
+        "assets/img/favicon/favicon-admin-16x16.png": "admin/favicon-admin-16x16.png",
+        "assets/img/favicon/favicon-admin-32x32.png": "admin/favicon-admin-32x32.png",
+        "assets/img/favicon/apple-touch-icon-admin.png": "admin/apple-touch-icon-admin.png"
+    });
+
     eleventyConfig.addPassthroughCopy("robots.txt");
     eleventyConfig.addPassthroughCopy("admin");
     eleventyConfig.addPassthroughCopy("404.html");
