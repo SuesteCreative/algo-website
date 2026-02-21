@@ -306,22 +306,16 @@ nav {
 }
 
 .hero-description-tag {
-    display: block;
-    padding: 0;
-    background: transparent;
+    display: inline-block;
+    padding: 0.4rem 1.2rem;
+    background: #fcfcfc;
     font-size: 0.85rem;
     line-height: 1.6;
     color: var(--text-primary);
-    /* Subtle outline for better small text legibility */
-    text-shadow:
-        -0.5px -0.5px 0 #fcfcfc,
-        0.5px -0.5px 0 #fcfcfc,
-        -0.5px 0.5px 0 #fcfcfc,
-        0.5px 0.5px 0 #fcfcfc;
     position: relative;
     z-index: 10;
-    margin-top: 1.5rem;
-    max-width: 600px;
+    margin-top: 1.2rem;
+    border-radius: 2px;
 }
 
 .hero-title {
@@ -332,12 +326,6 @@ nav {
     overflow-wrap: break-word;
     max-width: 100%;
     width: fit-content;
-    /* Clean outline that stays outside the text */
-    text-shadow:
-        -1px -1px 0 #fcfcfc,
-        1px -1px 0 #fcfcfc,
-        -1px 1px 0 #fcfcfc,
-        1px 1px 0 #fcfcfc;
 }
 
 .page-title {
