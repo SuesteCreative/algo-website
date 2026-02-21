@@ -3,9 +3,9 @@
 # ─────────────────────────────────────────────
 
 [build]
-  # No build tool needed — pure static HTML/CSS/JS
-  command   = ""
-  publish   = "."
+  # Eleventy static site generator
+  command   = "npx @11ty/eleventy"
+  publish   = "_site"
 
 # ─── Custom 404 page ──────────────────────────
 [[redirects]]

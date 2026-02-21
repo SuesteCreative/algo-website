@@ -1,0 +1,14 @@
+# Eleventy build output — gerado automaticamente, não versionar
+_site/
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Eleventy debug logs
+eleventy-log.txt
+eleventy-dry.txt
+
+# OS
+.DS_Store
+Thumbs.db

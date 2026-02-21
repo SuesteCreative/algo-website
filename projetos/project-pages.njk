@@ -1,0 +1,81 @@
+---
+pagination:
+  data: collections.projetos
+  size: 1
+  alias: projeto
+eleventyExcludeFromCollections: true
+permalink: "/projetos/{{ projeto.data.slug }}/"
+---
+{% set p = projeto.data %}
+{% set pageTitle = p.title + " | Algo Atelier" %}
+{% set metaDesc = p.meta_description_pt or (p.title + " — Projeto de arquitetura do Algo Atelier.") %}
+{% set canonical = "https://algoatelier.pt/projetos/" + p.slug + "/" %}
+{% set hreflangPt = "https://algoatelier.pt/projetos/" + p.slug + "/" %}
+{% set hreflangEn = "https://algoatelier.pt/en/projects/" + p.slug_en + "/" %}
+{% set activeSection = "projetos" %}
+{% set ptUrl = "/projetos/" + p.slug + "/" %}
+{% set enUrl = "/en/projects/" + p.slug_en + "/" %}
+{% set nextItem = collections.projetos | nextProject(p.slug) %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>{% include "head.njk" %}</head>
+<body>
+{% include "header-pt.njk" %}
+<main>
+    <section class="container project-detail-hero" style="padding-top: var(--spacing-xl);">
+        <div style="max-width: 800px;">
+            <span class="caps fade-up active">{{ p.typology | typologyLabel("pt") }}</span>
+            <h1 class="page-title fade-up active" style="margin-top: 0.5rem;">{{ p.title }}</h1>
+        </div>
+
+        <div class="img-reveal active" style="margin-top: var(--spacing-lg); height: 80vh;">
+            <img src="{{ p.cover_image }}" alt="{{ p.cover_image_alt or p.title }}" style="width:100%;height:100%;object-fit:cover;" loading="eager">
+        </div>
+
+        <div class="project-specs stagger-1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2rem;margin-top:var(--spacing-lg);padding:var(--spacing-md) 0;border-top:1px solid #eee;border-bottom:1px solid #eee;">
+            <div class="spec-item fade-up active">
+                <span style="display:block;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;opacity:0.5;margin-bottom:0.3rem;">Localização</span>
+                <span style="font-size:1rem;">{{ p.location }}</span>
+            </div>
+            <div class="spec-item fade-up active">
+                <span style="display:block;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;opacity:0.5;margin-bottom:0.3rem;">Área</span>
+                <span style="font-size:1rem;">{{ p.area_m2 }} m²</span>
+            </div>
+            <div class="spec-item fade-up active">
+                <span style="display:block;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;opacity:0.5;margin-bottom:0.3rem;">Ano</span>
+                <span style="font-size:1rem;">{{ p.year }}</span>
+            </div>
+            <div class="spec-item fade-up active">
+                <span style="display:block;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;opacity:0.5;margin-bottom:0.3rem;">Tipologia</span>
+                <span style="font-size:1rem;">{{ p.typology | typologyLabel("pt") }}</span>
+            </div>
+        </div>
+
+        <div class="project-description fade-up active" style="max-width:720px;margin-top:var(--spacing-lg);line-height:1.8;color:#444;">
+            {{ p.description_pt | markdownify | safe }}
+        </div>
+
+        {% if p.gallery_images and p.gallery_images.length > 0 %}
+        <div class="project-gallery-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem;margin-top:var(--spacing-lg);">
+            {% for item in p.gallery_images %}
+            <div class="img-reveal active">
+                <img src="{{ item.image }}" alt="{{ p.title }} — imagem {{ loop.index }}" style="width:100%;aspect-ratio:4/3;object-fit:cover;" loading="lazy">
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if nextItem %}
+        <div class="project-next-nav" style="margin-top:var(--spacing-xl);padding-top:var(--spacing-md);border-top:1px solid #eee;">
+            <span class="caps" style="font-size:0.7rem;opacity:0.5;">Próximo Projeto</span>
+            <a href="/projetos/{{ nextItem.data.slug }}/" style="display:block;margin-top:0.5rem;font-family:'Playfair Display',serif;font-size:clamp(1.5rem,4vw,2.5rem);text-decoration:none;color:inherit;">
+                {{ nextItem.data.title }} →
+            </a>
+        </div>
+        {% endif %}
+    </section>
+</main>
+{% include "footer-pt.njk" %}
+<script src="/assets/js/script.js"></script>
+</body>
+</html>

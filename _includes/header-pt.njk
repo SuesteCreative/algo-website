@@ -1,0 +1,36 @@
+<header id="header">
+    <div class="container">
+        <nav>
+            <a href="/" class="logo">
+                <img src="/assets/img/algo-logo-black.webp" alt="Algo Atelier Logo">
+            </a>
+            <div class="nav-links">
+                <div class="nav-glass-bar">
+                    <a href="/sobre/" {% if activeSection == "sobre" %}class="active"{% endif %}>Sobre</a>
+                    <a href="/servicos/" {% if activeSection == "servicos" %}class="active"{% endif %}>Serviços</a>
+                    <a href="/projetos/" {% if activeSection == "projetos" %}class="active"{% endif %}>Projetos</a>
+                    <a href="/contacto/" {% if activeSection == "contacto" %}class="active"{% endif %}>Contacto</a>
+                    <div class="lang-switch" style="border: none; padding: 0; margin: 0;">
+                        <a href="{{ ptUrl | default('/') }}" class="active">PT</a>
+                        <a href="{{ enUrl | default('/en/') }}">EN</a>
+                    </div>
+                </div>
+                <a href="/orcamento/" class="btn-budget">Pedir Orçamento</a>
+            </div>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span><span></span><span></span>
+            </div>
+        </nav>
+    </div>
+</header>
+<div class="drawer" id="drawer">
+    <a href="/sobre/">Sobre</a>
+    <a href="/servicos/">Serviços</a>
+    <a href="/projetos/">Projetos</a>
+    <a href="/contacto/">Contacto</a>
+    <a href="/orcamento/" class="btn-budget">Pedir Orçamento</a>
+    <div style="margin-top: auto; display: flex; gap: 1rem;">
+        <a href="{{ ptUrl | default('/') }}" style="font-size: 1rem; font-weight: 600;">PT</a>
+        <a href="{{ enUrl | default('/en/') }}" style="font-size: 1rem; opacity: 0.5;">EN</a>
+    </div>
+</div>
