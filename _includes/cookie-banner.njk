@@ -23,13 +23,12 @@
         {% if lang == 'en' %}
         {# ── ENGLISH ─────────────────────────────────────────── #}
         <div class="cookie-banner__text">
-            <p id="cookie-banner-title" class="cookie-banner__title">
-                We use cookies
-            </p>
+            <h2 id="cookie-banner-title" class="cookie-banner__title">Cookie Preferences</h2>
             <p class="cookie-banner__body">
-                We use analytical cookies to understand how visitors use our site.
-                No cookies are loaded before your consent.
-                <a href="/en/legal/cookies/" class="cookie-banner__link">Learn more</a>
+                We use cookies to analyze traffic and optimize your experience. 
+                Tracking is only activated with your explicit permission.
+                <br><br>
+                <a href="/en/legal/cookies/" class="cookie-banner__link">View detailed Cookie Policy</a>
             </p>
         </div>
         <div class="cookie-banner__actions">
@@ -37,26 +36,23 @@
                 id="cookie-accept"
                 class="cookie-banner__btn cookie-banner__btn--accept"
                 onclick="acceptCookies()"
-                aria-label="Accept cookies"
-            >Accept</button>
+            >Accept All</button>
             <button
                 id="cookie-reject"
                 class="cookie-banner__btn cookie-banner__btn--reject"
                 onclick="rejectCookies()"
-                aria-label="Reject non-essential cookies"
-            >Reject</button>
+            >Essential Only</button>
         </div>
 
         {% else %}
         {# ── PORTUGUÊS (default) ──────────────────────────────── #}
         <div class="cookie-banner__text">
-            <p id="cookie-banner-title" class="cookie-banner__title">
-                Utilizamos cookies
-            </p>
+            <h2 id="cookie-banner-title" class="cookie-banner__title">Preferências de Cookies</h2>
             <p class="cookie-banner__body">
-                Usamos cookies analíticos para entender como os visitantes usam o nosso site.
-                Nenhum cookie é carregado antes do seu consentimento.
-                <a href="/legal/cookies/" class="cookie-banner__link">Saber mais</a>
+                Utilizamos cookies para analisar o tráfego e otimizar a sua experiência. 
+                O rastreio só é ativado com a sua permissão explícita.
+                <br><br>
+                <a href="/legal/cookies/" class="cookie-banner__link">Consultar Política de Cookies</a>
             </p>
         </div>
         <div class="cookie-banner__actions">
@@ -64,14 +60,12 @@
                 id="cookie-accept"
                 class="cookie-banner__btn cookie-banner__btn--accept"
                 onclick="acceptCookies()"
-                aria-label="Aceitar cookies"
-            >Aceitar</button>
+            >Aceitar Todos</button>
             <button
                 id="cookie-reject"
                 class="cookie-banner__btn cookie-banner__btn--reject"
                 onclick="rejectCookies()"
-                aria-label="Recusar cookies não essenciais"
-            >Recusar</button>
+            >Apenas Essenciais</button>
         </div>
         {% endif %}
 
