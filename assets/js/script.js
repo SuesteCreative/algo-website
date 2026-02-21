@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    document.querySelectorAll('.fade-up, .img-reveal, .reveal-image, section:not(.hero)').forEach(el => {
+    document.querySelectorAll('.fade-up, .img-reveal, .reveal-image, section:not(.hero), .reveal-left, .reveal-right').forEach(el => {
         observer.observe(el);
     });
 });
