@@ -13,7 +13,7 @@ permalink: /sobre/
 <body class="site-grid">
 {% include "header-pt.njk" %}
 
-<main class="main-content container mt-xl">
+<main class="container page-padding">
     <!-- 01. INTRODUÇÃO -->
     <article class="about-section grid-section">
         <div class="col-left">
@@ -83,11 +83,15 @@ permalink: /sobre/
 </main>
 
 <style>
+    .page-padding {
+        padding-top: var(--spacing-xl);
+    }
+
     .about-section {
         margin-bottom: var(--spacing-xl);
         display: grid;
         grid-template-columns: 1fr;
-        gap: var(--spacing-md);
+        gap: 2rem;
     }
 
     @media (min-width: 992px) {
@@ -97,29 +101,38 @@ permalink: /sobre/
         }
     }
 
+    .col-left .caps {
+        font-size: 0.7rem;
+        letter-spacing: 0.2em;
+        opacity: 0.5;
+        position: sticky;
+        top: 15vh;
+    }
+
     .section-title {
         font-family: var(--font-serif);
         font-size: clamp(1.8rem, 4vw, 2.8rem);
         font-weight: 400;
         margin-bottom: var(--spacing-md);
         line-height: 1.2;
+        color: var(--text-primary);
     }
 
     .content-text {
-        font-size: 1.1rem;
+        font-size: 1.15rem;
         line-height: 1.8;
         color: var(--text-secondary);
-        max-width: 700px;
+        max-width: 720px;
     }
 
     .content-text p {
-        margin-bottom: var(--spacing-md);
+        margin-bottom: 2rem;
     }
 
     .about-image {
         margin: var(--spacing-xl) 0;
         width: 100%;
-        height: 70vh;
+        height: 75vh;
         overflow: hidden;
     }
 
@@ -131,7 +144,6 @@ permalink: /sobre/
 
     .site-grid {
         background-color: var(--bg-color);
-        color: var(--text-color);
     }
 </style>
 
