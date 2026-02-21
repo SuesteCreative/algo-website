@@ -306,16 +306,21 @@ nav {
 }
 
 .hero-description-tag {
-    display: inline-block;
-    padding: 0.4rem 1.2rem;
-    background: #fcfcfc;
+    display: block;
+    padding: 0;
+    background: transparent;
     font-size: 0.85rem;
     line-height: 1.6;
     color: var(--text-primary);
     position: relative;
     z-index: 10;
-    margin-top: 1.2rem;
-    border-radius: 2px;
+    margin-top: 1.5rem;
+    max-width: 600px;
+    /* Soft 'skin' aura for legibility over video */
+    text-shadow:
+        0 0 8px #fcfcfc,
+        0 0 4px #fcfcfc,
+        0 0 1px #fcfcfc;
 }
 
 .hero-title {
@@ -326,6 +331,12 @@ nav {
     overflow-wrap: break-word;
     max-width: 100%;
     width: fit-content;
+    /* Soft 'skin' aura for legibility over video */
+    text-shadow:
+        0 0 15px #fcfcfc,
+        0 0 10px #fcfcfc,
+        0 0 5px #fcfcfc,
+        0 0 2px #fcfcfc;
 }
 
 .page-title {
