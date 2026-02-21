@@ -1,0 +1,89 @@
+---
+permalink: /en/
+---
+{% set pageTitle = "Algo Atelier | Home" %}
+{% set metaDesc = "Algo Atelier - Contemporary Architecture & Minimalist Design in Algarve." %}
+{% set canonical = "https://algoatelier.pt/en/" %}
+{% set hreflangPt = "https://algoatelier.pt/" %}
+{% set hreflangEn = "https://algoatelier.pt/en/" %}
+{% set activeSection = "home" %}
+{% set ptUrl = "/" %}
+{% set enUrl = "/en/" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "head.njk" %}
+    <link rel="preload" as="image" href="/assets/img/hero-image-final.webp">
+    <!-- Netlify Identity -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+    {% include "header-en.njk" %}
+
+    <main>
+        <section class="hero">
+            <div class="hero-bg" id="heroBg">
+                <video id="heroVideo" autoplay muted playsinline aria-hidden="true" poster="/assets/img/hero-image-final.webp">
+                    <source src="/assets/img/hero-section-video.mp4" type="video/mp4">
+                </video>
+                <img src="/assets/img/hero-image-final.webp" alt="Initial architectural sketch of Algo Atelier - Minimalist Concept">
+            </div>
+            <div class="container">
+                <h1 class="hero-title">
+                    Designed with <em>rigor</em>.<br>
+                    Built with <em>precision</em>.
+                </h1>
+                <div class="hero-description-tag fade-up">
+                    A studio in the Algarve focused on the essence of space and the truth of materials. We create architecture that lasts.
+                </div>
+            </div>
+        </section>
+
+        <section class="container" style="padding: var(--spacing-lg) var(--spacing-md);">
+            <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                <h2 class="caps" style="font-weight: 400; font-size: 0.8rem; letter-spacing: 0.2em;">Selected Projects</h2>
+                <a href="/en/projects/" class="caps" style="text-decoration: none; color: inherit; font-size: 0.7rem; letter-spacing: 0.1em; border-bottom: 1px solid #ddd;">View All</a>
+            </div>
+
+            <div class="projects-grid">
+                {% set featuredProjects = collections.projetos | where("data.featured", true) | limit(3) %}
+                {% for projeto in featuredProjects %}
+                <a href="/en/projects/{{ projeto.data.slug_en }}/" class="project-card fade-up">
+                    <div class="img-wrapper">
+                        <img src="{{ projeto.data.cover_image }}" alt="{{ projeto.data.cover_image_alt or projeto.data.title_en }}" class="reveal-image">
+                    </div>
+                    <p class="location">{{ projeto.data.location }}</p>
+                    <h3>{{ projeto.data.title_en }}</h3>
+                    <p class="description">{{ projeto.data.meta_description_en | truncate(100) }}</p>
+                </a>
+                {% endfor %}
+            </div>
+
+            <div style="text-align: center;">
+                <a href="/en/projects/" class="btn-all">Explore Portfolio</a>
+            </div>
+        </section>
+
+        <!-- About Summary Section -->
+        <section class="about-summary">
+            <div class="container">
+                <div class="about-summary-grid">
+                    <div class="about-scribble-wrapper reveal-left">
+                        <img src="/assets/img/logo-scribbled-transparent.webp" alt="Algo Atelier Scribble Logo">
+                    </div>
+                    <div class="about-content-preview reveal-right">
+                        <span class="caps" style="display: block; margin-bottom: 1rem; opacity: 0.6;">The Studio</span>
+                        <h2>Architecture is the balance between light and shadow.</h2>
+                        <p>At Algo Atelier, we focus on the essence of space and the truth of materials. We create projects that not only occupy the territory but dialogue with it, prioritizing technical rigor and aesthetic sensitivity.</p>
+                        <a href="/en/about/" class="btn-budget" style="padding: 0.8rem 2rem;">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    {% include "footer-en.njk" %}
+
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>

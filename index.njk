@@ -1,0 +1,100 @@
+---
+permalink: /
+---
+{% set pageTitle = "Algo Atelier | Início" %}
+{% set metaDesc = "Algo Atelier - Arquitetura Contemporânea & Design Minimalista no Algarve." %}
+{% set canonical = "https://algoatelier.pt/" %}
+{% set hreflangPt = "https://algoatelier.pt/" %}
+{% set hreflangEn = "https://algoatelier.pt/en/" %}
+{% set activeSection = "home" %}
+{% set ptUrl = "/" %}
+{% set enUrl = "/en/" %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    {% include "head.njk" %}
+    <link rel="preload" as="image" href="/assets/img/hero-image-final.webp">
+    <!-- Netlify Identity: necessário para o redirect de login do CMS -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+    {% include "header-pt.njk" %}
+
+    <main>
+        <section class="hero">
+            <div class="hero-bg" id="heroBg">
+                <video id="heroVideo" autoplay muted playsinline aria-hidden="true" poster="/assets/img/hero-image-final.webp">
+                    <source src="/assets/img/hero-section-video.mp4" type="video/mp4">
+                </video>
+                <img src="/assets/img/hero-image-final.webp" alt="Esboço arquitetónico inicial da Algo Atelier - Conceito Minimalista">
+            </div>
+            <div class="container">
+                <h1 class="hero-title">
+                    Desenhado com <em>rigor</em>.<br>
+                    Construído com <em>precisão</em>.
+                </h1>
+                <div class="hero-description-tag fade-up">
+                    Um atelier no Algarve focado na essência do espaço e na verdade dos materiais. Criamos arquitetura que perdura.
+                </div>
+            </div>
+        </section>
+
+        <section class="container" style="padding: var(--spacing-lg) var(--spacing-md);">
+            <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                <h2 class="caps" style="font-weight: 400; font-size: 0.8rem; letter-spacing: 0.2em;">Projetos Selecionados</h2>
+                <a href="/projetos/" class="caps" style="text-decoration: none; color: inherit; font-size: 0.7rem; letter-spacing: 0.1em; border-bottom: 1px solid #ddd;">Ver Todos</a>
+            </div>
+
+            <div class="projects-grid">
+                {% set featuredProjects = collections.projetos | where("data.featured", true) | limit(3) %}
+                {% for projeto in featuredProjects %}
+                <a href="/projetos/{{ projeto.data.slug }}/" class="project-card fade-up">
+                    <div class="img-wrapper">
+                        <img src="{{ projeto.data.cover_image }}" alt="{{ projeto.data.cover_image_alt or projeto.data.title }}" class="reveal-image">
+                    </div>
+                    <p class="location">{{ projeto.data.location }}</p>
+                    <h3>{{ projeto.data.title }}</h3>
+                    <p class="description">{{ projeto.data.meta_description_pt | truncate(100) }}</p>
+                </a>
+                {% endfor %}
+            </div>
+
+            <div style="text-align: center;">
+                <a href="/projetos/" class="btn-all">Explorar Portfólio</a>
+            </div>
+        </section>
+
+        <section class="about-summary">
+            <div class="container">
+                <div class="about-summary-grid">
+                    <div class="about-scribble-wrapper reveal-left">
+                        <img src="/assets/img/logo-scribbled-transparent.webp" alt="Algo Atelier Scribble Logo">
+                    </div>
+                    <div class="about-content-preview reveal-right">
+                        <span class="caps" style="display: block; margin-bottom: 1rem; opacity: 0.6;">O Atelier</span>
+                        <h2>A arquitetura é o equilíbrio entre a luz e a sombra.</h2>
+                        <p>No Algo Atelier, focamos na essência do espaço e na verdade dos materiais. Criamos projetos que não apenas ocupam o território, mas dialogam com ele, priorizando o rigor técnico e a sensibilidade estética.</p>
+                        <a href="/sobre/" class="btn-budget" style="padding: 0.8rem 2rem;">Saber Mais</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    {% include "footer-pt.njk" %}
+
+    <script src="/assets/js/script.js"></script>
+    <script>
+        // Netlify Identity — redireciona para o painel CMS após login
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", function (user) {
+                if (!user) {
+                    window.netlifyIdentity.on("login", function () {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>

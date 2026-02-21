@@ -1046,3 +1046,31 @@ footer .logo img {
         height: 50vh;
     }
 }
+
+/* Social Media Icons */
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+    opacity: 0.6;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+.social-icon svg {
+    display: block;
+}
+
+.site-footer .social-icon {
+    color: #fff;
+    opacity: 0.5;
+}
+
+.site-footer .social-icon:hover {
+    opacity: 1;
+}

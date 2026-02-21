@@ -39,6 +39,21 @@ module.exports = function (eleventyConfig) {
         return collection[(idx + 1) % collection.length];
     });
 
+    eleventyConfig.addFilter("limit", (array, limit) => {
+        return array.slice(0, limit);
+    });
+
+    eleventyConfig.addFilter("where", (array, key, value) => {
+        return array.filter(item => {
+            const keys = key.split('.');
+            let result = item;
+            for (const k of keys) {
+                result = result[k];
+            }
+            return result === value;
+        });
+    });
+
     // ── Collections ────────────────────────────────────────────────
     eleventyConfig.addCollection("projetos", api =>
         api.getFilteredByGlob("content/projetos/*.md")
@@ -60,12 +75,10 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy("admin");
     eleventyConfig.addPassthroughCopy("404.html");
 
-    // Static HTML pages — passthrough as-is
-    const staticDirs = ["sobre", "servicos", "contacto", "orcamento", "legal",
-        "en/about", "en/services", "en/contact"];
+    // Static HTML pages — passthrough as-is (Only the ones not yet converted to .njk)
+    const staticDirs = ["orcamento", "legal"];
     staticDirs.forEach(d => eleventyConfig.addPassthroughCopy(d));
-    eleventyConfig.addPassthroughCopy("index.html");
-    eleventyConfig.addPassthroughCopy("en/index.html");
+
 
     // ── Config ─────────────────────────────────────────────────────
     return {

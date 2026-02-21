@@ -1,0 +1,41 @@
+---
+permalink: /servicos/
+---
+{% set pageTitle = "Serviços | Algo Atelier" %}
+{% set metaDesc = "Serviços de arquitetura, interiores e gestão de projeto no Algo Atelier." %}
+{% set canonical = "https://algoatelier.pt/servicos/" %}
+{% set activeSection = "servicos" %}
+{% set ptUrl = "/servicos/" %}
+{% set enUrl = "/en/services/" %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>{% include "head.njk" %}</head>
+<body>
+{% include "header-pt.njk" %}
+<main>
+    <section class="container" style="padding-top: var(--spacing-xl); padding-bottom: var(--spacing-lg);">
+        <div style="max-width: 800px;">
+            <span class="caps fade-up active">Áreas de Atuação</span>
+            <h1 class="page-title fade-up active">Soluções integradas de design e rigor técnico.</h1>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem; margin-top: var(--spacing-lg);">
+            <div class="fade-up active">
+                <h3 class="caps" style="font-size: 0.8rem; margin-bottom: 1.5rem;">01. Licenciamento</h3>
+                <p style="opacity: 0.7; line-height: 1.6;">Acompanhamos todo o processo burocrático, desde o estudo prévio até à aprovação final pelas entidades competentes, garantindo que a sua visão cumpre todos os requisitos normativos.</p>
+            </div>
+            <div class="fade-up active">
+                <h3 class="caps" style="font-size: 0.8rem; margin-bottom: 1.5rem;">02. Execução</h3>
+                <p style="opacity: 0.7; line-height: 1.6;">O detalhe é a nossa prioridade. Desenvolvemos projetos de execução minuciosos que permitem um controlo absoluto sobre a qualidade e o custo da construção.</p>
+            </div>
+            <div class="fade-up active">
+                <h3 class="caps" style="font-size: 0.8rem; margin-bottom: 1.5rem;">03. Interiores</h3>
+                <p style="opacity: 0.7; line-height: 1.6;">Desenhamos a atmosfera dos seus espaços. Através da escolha cuidada de materiais, iluminação e mobiliário, criamos ambientes que refletem a essência de quem os habita.</p>
+            </div>
+        </div>
+    </section>
+</main>
+{% include "footer-pt.njk" %}
+<script src="/assets/js/script.js"></script>
+</body>
+</html>

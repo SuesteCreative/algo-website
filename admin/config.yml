@@ -192,6 +192,11 @@ collections:
         name:  "general"
         file:  "content/settings/general.yml"
         fields:
+          - label: "Favicon do Site"
+            name:  "site_favicon"
+            widget: image
+            default: "/assets/img/fav-icon.svg"
+            hint: "Upload do ícone que aparece no separador do browser (SVG recomendado)"
           - label: "Email de Contacto"
             name:  "contact_email"
             widget: string
@@ -209,3 +214,8 @@ collections:
             name:  "linkedin_url"
             widget: string
             required: false
+          - label: "Facebook URL"
+            name:  "facebook_url"
+            widget: string
+            required: false
+            placeholder: "https://facebook.com"
