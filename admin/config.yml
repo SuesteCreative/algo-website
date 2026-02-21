@@ -244,3 +244,21 @@ collections:
               - { label: "Instagram URL", name: "instagram_url", widget: string, required: false }
               - { label: "LinkedIn URL", name: "linkedin_url", widget: string, required: false }
               - { label: "Facebook URL", name: "facebook_url", widget: string, required: false }
+
+          - label: "Analytics & Publicidade"
+            name: "tracking"
+            widget: object
+            hint: "Apenas IDs — nunca cole scripts ou HTML. Se os campos estiverem vazios, nenhum tracking é carregado."
+            fields:
+              - label: "Google Analytics ID"
+                name: "ga_id"
+                widget: string
+                required: false
+                hint: "Formato: G-XXXXXXXXXX — deixar vazio para desativar"
+                pattern: ['^(G-[A-Z0-9]+)?$', "Formato inválido. Use G-XXXXXXXXXX ou deixe vazio."]
+              - label: "Google Ads Conversion ID"
+                name: "ads_id"
+                widget: string
+                required: false
+                hint: "Formato: AW-XXXXXXXXXX — deixar vazio para desativar"
+                pattern: ['^(AW-[0-9]+)?$', "Formato inválido. Use AW-XXXXXXXXXX ou deixe vazio."]

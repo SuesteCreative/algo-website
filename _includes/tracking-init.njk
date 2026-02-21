@@ -1,0 +1,34 @@
+{#
+  tracking-init.njk
+  ────────────────────────────────────────────────────────────────
+  Include central de tracking e consentimento de cookies.
+  Colocar ANTES de </body> em TODOS os templates.
+
+  O que faz:
+  - Injeta data-ga-id e data-ads-id como atributos no body (via JS inline)
+  - Inclui o banner de cookies bilíngue
+  - Carrega o script de tracking (que lê os IDs e gere consentimento)
+
+  Os IDs vêm de content/settings/general.yml via `site.tracking`.
+  Se estiverem vazios, nenhum tracking é carregado.
+  ────────────────────────────────────────────────────────────────
+#}
+
+{# Injetar IDs no <body> via script — forma segura de expor dados ao JS #}
+<script>
+(function() {
+    var b = document.body;
+    {% if site.tracking.ga_id %}
+    b.dataset.gaId = {{ site.tracking.ga_id | dump | safe }};
+    {% endif %}
+    {% if site.tracking.ads_id %}
+    b.dataset.adsId = {{ site.tracking.ads_id | dump | safe }};
+    {% endif %}
+})();
+</script>
+
+{# Banner de cookies (bilíngue — deteta via variável `lang`) #}
+{% include "cookie-banner.njk" %}
+
+{# Script de tracking e consentimento GDPR #}
+<script src="/assets/js/algo-tracking.js" defer></script>

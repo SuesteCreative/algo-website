@@ -1,0 +1,79 @@
+{#
+  cookie-banner.njk
+  ────────────────────────────────────────────────────────────────
+  Banner GDPR de consentimento de cookies.
+  Bilíngue: deteta lang via variável `lang` (definida em cada template).
+  Escondido por defeito — o JS (algo-tracking.js) torna-o visível
+  apenas se não houver consentimento guardado.
+
+  Incluir ANTES de </body> em todos os layouts.
+  ────────────────────────────────────────────────────────────────
+#}
+
+<div
+    id="cookie-banner"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="cookie-banner-title"
+    aria-hidden="true"
+    style="display:none;"
+>
+    <div class="cookie-banner__inner">
+
+        {% if lang == 'en' %}
+        {# ── ENGLISH ─────────────────────────────────────────── #}
+        <div class="cookie-banner__text">
+            <p id="cookie-banner-title" class="cookie-banner__title">
+                We use cookies
+            </p>
+            <p class="cookie-banner__body">
+                We use analytical cookies to understand how visitors use our site.
+                No cookies are loaded before your consent.
+                <a href="/en/legal/cookies/" class="cookie-banner__link">Learn more</a>
+            </p>
+        </div>
+        <div class="cookie-banner__actions">
+            <button
+                id="cookie-accept"
+                class="cookie-banner__btn cookie-banner__btn--accept"
+                onclick="acceptCookies()"
+                aria-label="Accept cookies"
+            >Accept</button>
+            <button
+                id="cookie-reject"
+                class="cookie-banner__btn cookie-banner__btn--reject"
+                onclick="rejectCookies()"
+                aria-label="Reject non-essential cookies"
+            >Reject</button>
+        </div>
+
+        {% else %}
+        {# ── PORTUGUÊS (default) ──────────────────────────────── #}
+        <div class="cookie-banner__text">
+            <p id="cookie-banner-title" class="cookie-banner__title">
+                Utilizamos cookies
+            </p>
+            <p class="cookie-banner__body">
+                Usamos cookies analíticos para entender como os visitantes usam o nosso site.
+                Nenhum cookie é carregado antes do seu consentimento.
+                <a href="/legal/cookies/" class="cookie-banner__link">Saber mais</a>
+            </p>
+        </div>
+        <div class="cookie-banner__actions">
+            <button
+                id="cookie-accept"
+                class="cookie-banner__btn cookie-banner__btn--accept"
+                onclick="acceptCookies()"
+                aria-label="Aceitar cookies"
+            >Aceitar</button>
+            <button
+                id="cookie-reject"
+                class="cookie-banner__btn cookie-banner__btn--reject"
+                onclick="rejectCookies()"
+                aria-label="Recusar cookies não essenciais"
+            >Recusar</button>
+        </div>
+        {% endif %}
+
+    </div>
+</div>
