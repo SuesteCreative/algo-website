@@ -21,9 +21,8 @@
     /* Added for technical feel */
 
     /* Dotted background pattern */
-    --dot-bg: radial-gradient(#000 0.5px, transparent 0.5px);
+    --dot-bg: radial-gradient(rgba(0, 0, 0, 0.08) 0.5px, transparent 0.5px);
     --dot-size: 30px 30px;
-    --dot-color: rgba(0, 0, 0, 0.05);
 }
 
 * {
@@ -254,8 +253,9 @@ nav {
     padding-top: 80px;
     padding-bottom: 80px;
     position: relative;
-    background: var(--bg-color);
-    /* Cover the body grid on hero */
+    background: #fafafa;
+    /* Solid background to hide dots at start */
+    z-index: 100;
 }
 
 .hero-bg {
@@ -594,28 +594,7 @@ nav {
     margin-bottom: 2rem;
 }
 
-/* Directional reveals for About Summary */
-.reveal-left {
-    opacity: 0;
-    transform: translateX(-50px);
-    transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
-}
 
-.reveal-left.active {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.reveal-right {
-    opacity: 0;
-    transform: translateX(50px);
-    transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.reveal-right.active {
-    opacity: 1;
-    transform: translateX(0);
-}
 
 @media (max-width: 768px) {
 
@@ -748,6 +727,26 @@ nav {
 .fade-up.active {
     opacity: 1;
     transform: translateY(0);
+}
+
+.reveal-left,
+.reveal-right {
+    opacity: 0;
+    transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.reveal-left {
+    transform: translateX(-40px);
+}
+
+.reveal-right {
+    transform: translateX(40px);
+}
+
+.reveal-left.active,
+.reveal-right.active {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 /* Specific section reveals */
