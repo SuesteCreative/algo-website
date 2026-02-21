@@ -71,6 +71,8 @@ module.exports = function (eleventyConfig) {
     // ── Passthrough: assets & static pages ────────────────────────
     eleventyConfig.addPassthroughCopy("assets");
     eleventyConfig.addPassthroughCopy("favicon.ico");
+    eleventyConfig.addPassthroughCopy("apple-touch-icon.png");
+    eleventyConfig.addPassthroughCopy("site.webmanifest");
     eleventyConfig.addPassthroughCopy("robots.txt");
     eleventyConfig.addPassthroughCopy("admin");
     eleventyConfig.addPassthroughCopy("404.html");
