@@ -1,0 +1,83 @@
+---
+permalink: /legal/cookies/
+eleventyExcludeFromCollections: true
+---
+{% set pageTitle = "Política de Cookies | Algo Atelier" %}
+{% set metaDesc = "Política de Cookies do Algo Atelier — que cookies utilizamos e como pode gerir as suas preferências." %}
+{% set canonical = "https://algoatelier.netlify.app/legal/cookies/" %}
+{% set activeSection = "" %}
+{% set ptUrl = "/legal/cookies/" %}
+{% set enUrl = "/en/legal/cookies/" %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>{% include "head.njk" %}</head>
+<body>
+{% include "header-pt.njk" %}
+<main>
+    <section class="container" style="padding: 185px var(--spacing-md) var(--spacing-xl); max-width: 760px;">
+        <span class="caps" style="display:block; margin-bottom:1rem; opacity:0.5; font-size:0.65rem;">Legal</span>
+        <h1 class="page-title" style="margin-bottom: var(--spacing-lg);">Política de Cookies</h1>
+        <p style="font-size:0.75rem; opacity:0.5; margin-bottom: var(--spacing-lg);">Última atualização: fevereiro de 2026</p>
+
+        <div class="legal-content">
+
+            <h2>O que são cookies?</h2>
+            <p>Cookies são pequenos ficheiros de texto guardados no seu dispositivo quando visita um website. Permitem que o site reconheça o seu dispositivo em visitas futuras e memorize as suas preferências.</p>
+
+            <h2>Cookies que utilizamos</h2>
+
+            <h3>Cookies Essenciais</h3>
+            <p>Estes cookies são necessários para o funcionamento básico do website. Não requerem consentimento.</p>
+            <table class="legal-table">
+                <thead><tr><th>Nome</th><th>Finalidade</th><th>Duração</th></tr></thead>
+                <tbody>
+                    <tr><td><code>algo_cookie_consent</code></td><td>Guarda a sua preferência de cookies</td><td>Sessão / localStorage</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Cookies Analíticos (requerem consentimento)</h3>
+            <p>Utilizamos o Google Analytics para compreender como os visitantes interagem com o nosso website. Estes dados são anónimos e agregados.</p>
+            <table class="legal-table">
+                <thead><tr><th>Nome</th><th>Fornecedor</th><th>Finalidade</th><th>Duração</th></tr></thead>
+                <tbody>
+                    <tr><td><code>_ga</code></td><td>Google</td><td>Distinguir utilizadores únicos</td><td>2 anos</td></tr>
+                    <tr><td><code>_ga_*</code></td><td>Google</td><td>Sessão do Google Analytics 4</td><td>2 anos</td></tr>
+                    <tr><td><code>_gid</code></td><td>Google</td><td>Identificar sessão (24h)</td><td>24 horas</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Cookies de Publicidade (requerem consentimento)</h3>
+            <p>Utilizamos o Google Ads para medir a eficácia das nossas campanhas publicitárias.</p>
+            <table class="legal-table">
+                <thead><tr><th>Nome</th><th>Fornecedor</th><th>Finalidade</th><th>Duração</th></tr></thead>
+                <tbody>
+                    <tr><td><code>_gcl_au</code></td><td>Google</td><td>Conversões de anúncios</td><td>3 meses</td></tr>
+                    <tr><td><code>IDE</code></td><td>Google DoubleClick</td><td>Publicidade direcionada</td><td>1 ano</td></tr>
+                </tbody>
+            </table>
+
+            <h2>Como gerir os seus cookies</h2>
+            <p>Pode gerir ou revogar o seu consentimento a qualquer momento:</p>
+            <ul>
+                <li>Usando o botão <strong>"Preferências de cookies"</strong> no rodapé deste website</li>
+                <li>Através das definições do seu browser</li>
+                <li>Acedendo a <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out</a></li>
+            </ul>
+            <p>
+                <button class="cookie-preferences-link" onclick="openCookiePreferences()" style="font-size:1rem; text-decoration:underline;">
+                    Abrir preferências de cookies
+                </button>
+            </p>
+
+            <h2>Mais informações</h2>
+            <p>Para dúvidas sobre a nossa política de cookies ou privacidade, contacte-nos em <a href="mailto:info@algoatelier.pt">info@algoatelier.pt</a>.</p>
+            <p>Consulte também a nossa <a href="/legal/privacidade/">Política de Privacidade</a>.</p>
+
+        </div>
+    </section>
+</main>
+{% include "footer-pt.njk" %}
+<script src="/assets/js/script.js"></script>
+    {% include "tracking-init.njk" %}
+</body>
+</html>

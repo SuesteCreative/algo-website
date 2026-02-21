@@ -1,0 +1,294 @@
+---
+permalink: /orcamento/
+---
+{% set pageTitle = "Pedir Orçamento | Algo Atelier" %}
+{% set metaDesc = "Peça o seu orçamento para projeto de arquitetura no Algo Atelier." %}
+{% set canonical = "https://algoatelier.netlify.app/orcamento/" %}
+{% set activeSection = "orcamento" %}
+{% set ptUrl = "/orcamento/" %}
+{% set enUrl = "/en/" %}
+{% set lang = 'pt' %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    {% include "head.njk" %}
+    <style>
+        /* ── Página Orçamento — Night Mode ───────────────────────── */
+        body.orcamento-page {
+            --bg-color: #0e0e0e;
+            --text-primary: #f0ede8;
+            --text-secondary: rgba(240, 237, 232, 0.55);
+            --border-color: rgba(240, 237, 232, 0.15);
+            --dot-bg: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+        }
+
+        body.orcamento-page header {
+            background: rgba(14, 14, 14, 0.0);
+        }
+
+        body.orcamento-page header.scrolled {
+            background: rgba(14, 14, 14, 0.95);
+            border-bottom-color: rgba(255,255,255,0.08);
+        }
+
+        body.orcamento-page .logo img {
+            filter: brightness(0) invert(1);
+        }
+
+        body.orcamento-page .nav-glass-bar {
+            background: rgba(255,255,255,0.07);
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        body.orcamento-page .nav-glass-bar a {
+            color: rgba(255,255,255,0.7);
+        }
+
+        body.orcamento-page .nav-glass-bar a:hover,
+        body.orcamento-page .nav-glass-bar a.active {
+            color: #fff;
+        }
+
+        body.orcamento-page .btn-budget {
+            background: #f0ede8;
+            color: #0e0e0e;
+            border-color: #f0ede8;
+        }
+
+        body.orcamento-page .btn-budget:hover {
+            background: transparent;
+            color: #f0ede8;
+        }
+
+        body.orcamento-page .menu-toggle span {
+            background: #f0ede8;
+        }
+
+        body.orcamento-page .drawer {
+            background: #121212;
+        }
+
+        /* Form night mode */
+        body.orcamento-page input,
+        body.orcamento-page select,
+        body.orcamento-page textarea {
+            color: var(--text-primary);
+            background: rgba(255,255,255,0.04) !important;
+            border-color: var(--border-color) !important;
+        }
+
+        body.orcamento-page input::placeholder,
+        body.orcamento-page textarea::placeholder {
+            color: var(--text-secondary);
+        }
+
+        body.orcamento-page select option {
+            background: #1a1a1a;
+            color: #f0ede8;
+        }
+
+        /* Ripple Transition Overlay */
+        #page-transition {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 99999;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        #page-transition .ripple {
+            position: absolute;
+            width: 0; height: 0;
+            border-radius: 50%;
+            background: #0e0e0e;
+            transform: translate(-50%, -50%);
+            transition: none;
+        }
+
+        /* Form styling */
+        .orcamento-form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 640px) {
+            .orcamento-form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-field label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-family: var(--font-mono);
+            color: var(--text-secondary);
+        }
+
+        .form-field input,
+        .form-field select,
+        .form-field textarea {
+            width: 100%;
+            padding: 1rem 1.1rem;
+            border: 1px solid var(--border-color);
+            background: none;
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            transition: border-color 0.25s;
+            border-radius: 0;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .form-field input:focus,
+        .form-field select:focus,
+        .form-field textarea:focus {
+            border-color: var(--text-primary);
+        }
+
+        .form-field textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+    </style>
+</head>
+
+<body class="orcamento-page">
+
+    <!-- Transition Ripple -->
+    <div id="page-transition">
+        <div class="ripple" id="ripple"></div>
+    </div>
+
+    {% include "header-pt.njk" %}
+
+    <main>
+        <section class="container" style="padding: 185px var(--spacing-md) var(--spacing-xl); max-width: 860px;">
+            <span class="caps fade-up active" style="display: block; margin-bottom: 1rem; opacity: 0.6;">Investimento</span>
+            <h1 class="hero-title fade-up active" style="margin-bottom: 0.5rem;">Vamos dar forma<br>ao seu projeto.</h1>
+            <p style="opacity: 0.55; margin-bottom: var(--spacing-lg); font-size: 1rem; max-width: 520px; line-height: 1.7;">
+                Conte-nos brevemente sobre a sua ideia e entraremos em contacto em 48 horas.
+            </p>
+
+            <form
+                name="orcamento"
+                method="POST"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                style="display: grid; gap: 1.8rem;"
+                class="fade-up active"
+            >
+                <input type="hidden" name="form-name" value="orcamento">
+                <p style="display:none;"><label>Don't fill this: <input name="bot-field"></label></p>
+
+                <div class="orcamento-form-grid">
+                    <div class="form-field">
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" name="nome" placeholder="O seu nome" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="nome@email.com" required>
+                    </div>
+                </div>
+
+                <div class="orcamento-form-grid">
+                    <div class="form-field">
+                        <label for="telefone">Telefone</label>
+                        <input type="tel" id="telefone" name="telefone" placeholder="+351 900 000 000">
+                    </div>
+                    <div class="form-field">
+                        <label for="tipologia">Tipo de Projeto</label>
+                        <select id="tipologia" name="tipologia">
+                            <option value="habitacao">Habitação Unifamiliar</option>
+                            <option value="remodelacao">Remodelação / Interiores</option>
+                            <option value="comercio">Comércio / Serviços</option>
+                            <option value="coletivo">Habitação Coletiva</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <label for="mensagem">Mensagem</label>
+                    <textarea id="mensagem" name="mensagem" rows="5" placeholder="Descreva brevemente o seu terreno, ideia ou projeto..."></textarea>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn-budget" style="border: none; cursor: pointer; font-family: inherit;">
+                        Enviar Pedido
+                    </button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    {% include "footer-pt.njk" %}
+
+    <script src="/assets/js/script.js"></script>
+    {% include "tracking-init.njk" %}
+
+    <script>
+    /* ── Ripple Transition Logic ───────────────────────────── */
+    (function() {
+        const ripple = document.getElementById('ripple');
+        const DURATION = 620;
+
+        function maxRadius() {
+            return Math.sqrt(Math.pow(window.innerWidth, 2) + Math.pow(window.innerHeight, 2));
+        }
+
+        function expand(cx, cy, onDone) {
+            const r = maxRadius();
+            ripple.style.transition = 'none';
+            ripple.style.width = '0px'; ripple.style.height = '0px';
+            ripple.style.left = cx + 'px'; ripple.style.top = cy + 'px';
+            ripple.style.opacity = '1';
+            ripple.getBoundingClientRect();
+            ripple.style.transition = 'width ' + DURATION + 'ms cubic-bezier(0.4,0,0.2,1), height ' + DURATION + 'ms cubic-bezier(0.4,0,0.2,1)';
+            ripple.style.width = (r * 2) + 'px'; ripple.style.height = (r * 2) + 'px';
+            setTimeout(onDone, DURATION);
+        }
+
+        function collapse(cx, cy) {
+            const r = maxRadius();
+            ripple.style.transition = 'none';
+            ripple.style.width = (r * 2) + 'px'; ripple.style.height = (r * 2) + 'px';
+            ripple.style.left = cx + 'px'; ripple.style.top = cy + 'px';
+            ripple.style.opacity = '1';
+            ripple.getBoundingClientRect();
+            ripple.style.transition = 'width ' + DURATION + 'ms cubic-bezier(0.4,0,0.2,1), height ' + DURATION + 'ms cubic-bezier(0.4,0,0.2,1), opacity 0.1s ' + (DURATION - 80) + 'ms';
+            ripple.style.width = '0px'; ripple.style.height = '0px';
+            ripple.style.opacity = '0';
+        }
+
+        // On entry
+        window.addEventListener('DOMContentLoaded', function() {
+            collapse(window.innerWidth / 2, window.innerHeight / 2);
+        });
+
+        // On exit
+        document.addEventListener('click', function(e) {
+            var link = e.target.closest('a[href]');
+            if (!link || link.target === '_blank') return;
+            var href = link.getAttribute('href');
+            if (!href || href.startsWith('http') || href.startsWith('#') || href.startsWith('mailto')) return;
+            
+            e.preventDefault();
+            var rect = link.getBoundingClientRect();
+            expand(rect.left + rect.width / 2, rect.top + rect.height / 2, function() {
+                window.location.href = href;
+            });
+        });
+    }());
+    </script>
+
+</body>
+</html>

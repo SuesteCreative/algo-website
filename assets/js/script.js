@@ -1,4 +1,4 @@
-window.addEventListener('scroll', () => {
+﻿window.addEventListener('scroll', () => {
     const header = document.querySelector('header');
     if (window.scrollY > 50) {
         header.classList.add('scrolled');
@@ -79,7 +79,100 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.fade-up, .img-reveal, .reveal-image, section:not(.hero), .reveal-left, .reveal-right').forEach(el => {
         observer.observe(el);
     });
+
+    /* ── Transição circular ao clicar em "Pedir Orçamento" ────────
+       Cria um ripple overlay preto que expande e depois navega.
+       Só ativo fora da página /orcamento/ (que tem a sua própria lógica).
+    */
+    if (!document.body.classList.contains('orcamento-page')) {
+        const _ov = document.createElement('div');
+        _ov.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;pointer-events:none;overflow:hidden;';
+        const _ball = document.createElement('div');
+        _ball.style.cssText = 'position:absolute;width:0;height:0;border-radius:50%;background:#0e0e0e;transform:translate(-50%,-50%);';
+        _ov.appendChild(_ball);
+        document.body.appendChild(_ov);
+
+        function _orcExpand(cx, cy, href) {
+            var r = Math.sqrt(Math.pow(window.innerWidth,2)+Math.pow(window.innerHeight,2));
+            _ball.style.transition = 'none';
+            _ball.style.width = '0px'; _ball.style.height = '0px';
+            _ball.style.left = cx+'px'; _ball.style.top = cy+'px';
+            _ball.getBoundingClientRect();
+            _ball.style.transition = 'width 620ms cubic-bezier(0.4,0,0.2,1),height 620ms cubic-bezier(0.4,0,0.2,1)';
+            _ball.style.width = (r*2)+'px'; _ball.style.height = (r*2)+'px';
+            setTimeout(function(){ window.location.href = href; }, 620);
+        }
+
+        document.querySelectorAll('a.btn-budget, a[href="/orcamento/"]').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                var href = this.getAttribute('href');
+                if (!href || !href.includes('orcamento')) return;
+                e.preventDefault();
+                var rect = this.getBoundingClientRect();
+                _orcExpand(rect.left+rect.width/2, rect.top+rect.height/2, href);
+            });
+        });
+    }
 });
+
+/* ── Transição circular Pedir Orcamento ── */
+(function() {
+    const DURATION = 620;
+    function getRipple() {
+        let ov = document.getElementById('orcamento-transition-overlay');
+        if (!ov) {
+            ov = document.createElement('div');
+            ov.id = 'orcamento-transition-overlay';
+            ov.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;pointer-events:none;overflow:hidden;';
+            const ball = document.createElement('div');
+            ball.id = 'orcamento-transition-ball';
+            ball.style.cssText = 'position:absolute;width:0;height:0;border-radius:50%;background:#0e0e0e;transform:translate(-50%,-50%);transition:none;';
+            ov.appendChild(ball);
+            document.body.appendChild(ov);
+        }
+        return { ov, ball: ov.firstChild };
+    }
+
+    function expand(cx, cy, href) {
+        const { ball } = getRipple();
+        const r = Math.sqrt(Math.pow(window.innerWidth,2)+Math.pow(window.innerHeight,2));
+        ball.style.transition = 'none'; ball.style.width = '0px'; ball.style.height = '0px';
+        ball.style.left = cx+'px'; ball.style.top = cy+'px'; ball.style.opacity = '1';
+        ball.getBoundingClientRect();
+        ball.style.transition = `width ${DURATION}ms cubic-bezier(0.4,0,0.2,1), height ${DURATION}ms cubic-bezier(0.4,0,0.2,1)`;
+        ball.style.width = (r*2)+'px'; ball.style.height = (r*2)+'px';
+        setTimeout(() => { if(href) window.location.href = href; }, DURATION);
+    }
+
+    function collapse(cx, cy) {
+        const { ball } = getRipple();
+        const r = Math.sqrt(Math.pow(window.innerWidth,2)+Math.pow(window.innerHeight,2));
+        ball.style.transition = 'none'; ball.style.width = (r*2)+'px'; ball.style.height = (r*2)+'px';
+        ball.style.left = cx+'px'; ball.style.top = cy+'px'; ball.style.opacity = '1';
+        ball.getBoundingClientRect();
+        ball.style.transition = `width ${DURATION}ms cubic-bezier(0.4,0,0.2,1), height ${DURATION}ms cubic-bezier(0.4,0,0.2,1), opacity 0.1s ${DURATION-80}ms`;
+        ball.style.width = '0px'; ball.style.height = '0px'; ball.style.opacity = '0';
+    }
+
+    // Se viermos da página de orçamento, colapsamos a bola
+    if (document.referrer.includes('orcamento') && !document.body.classList.contains('orcamento-page')) {
+        window.addEventListener('load', () => {
+            collapse(window.innerWidth/2, window.innerHeight/2);
+        });
+    }
+
+    // Ao clicar em links de orçamento
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('a[href]');
+        if (!link || link.target === '_blank') return;
+        const href = link.getAttribute('href');
+        if (href && href.includes('orcamento') && !document.body.classList.contains('orcamento-page')) {
+            e.preventDefault();
+            const rect = link.getBoundingClientRect();
+            expand(rect.left + rect.width/2, rect.top + rect.height/2, href);
+        }
+    });
+}());
 
 /* ── Proximity Scroll Snap (Desktop Only) ──
    Fires after user stops scrolling (~150ms debounce).
