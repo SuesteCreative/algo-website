@@ -1,10 +1,18 @@
-site_favicon: /assets/img/fav-icon.svg
-contact_email: info@algoatelier.pt
-phone: +351 966 666 666
-address: |-
-  Rua da Arquitetura, 123
-  8500-000 Algarve
-  Portugal
-instagram_url: https://instagram.com
-linkedin_url: https://linkedin.com
-facebook_url: https://www.facebook.com/
+identity:
+  site_favicon: "/assets/img/fav-icon.svg"
+homepage_seo:
+  meta_title_pt: "Algo Atelier | Arquitetura"
+  meta_desc_pt: "Arquitetura Contemporânea & Design Minimalista no Algarve."
+  meta_title_en: "Algo Atelier | Architecture"
+  meta_desc_en: "Contemporary Architecture & Minimalist Design in Algarve."
+intro:
+  intro_tagline_pt: "Um atelier no Algarve focado na essência do espaço e na verdade dos materiais. Criamos arquitetura que perdura."
+  intro_tagline_en: "A studio in the Algarve focused on the essence of space and the truth of materials. We create architecture that lasts."
+contacts:
+  contact_email: "info@algoatelier.pt"
+  phone: "+351 966 666 666"
+  address: "Rua da Arquitetura, 123\n8500-000 Algarve\nPortugal"
+social:
+  instagram_url: "https://instagram.com"
+  linkedin_url: "https://linkedin.com"
+  facebook_url: "https://www.facebook.com/"

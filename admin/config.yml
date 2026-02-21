@@ -2,14 +2,6 @@
 #  Decap CMS — config.yml
 #  Algo Atelier Website
 # ─────────────────────────────────────────────────────────────────
-#
-#  PRÉ-REQUISITOS no painel Netlify:
-#  1. Site Settings → Identity → Enable
-#  2. Identity → Registration preferences → Invite only
-#  3. Identity → Services → Git Gateway → Enable
-#  4. Identity → Invite users → adiciona o teu email
-#
-# ─────────────────────────────────────────────────────────────────
 
 backend:
   name: git-gateway
@@ -21,14 +13,10 @@ backend:
     uploadMedia:  'content(cms): upload de imagem "{{path}}"'
     deleteMedia:  'content(cms): apagar imagem "{{path}}"'
 
-# ─── Media ───────────────────────────────────────────────────────
 media_folder:  "assets/img/projetos"
 public_folder: "/assets/img/projetos"
-
-# ─── Locale ──────────────────────────────────────────────────────
 locale: 'pt'
 
-# ─── Coleções ─────────────────────────────────────────────────────
 collections:
 
   # ── PROJETOS ──────────────────────────────────────────────────
@@ -39,60 +27,26 @@ collections:
     create: true
     delete: true
     slug: "{{slug}}"
-    preview_path: "projetos/{{slug}}"
     summary: "{{title}} — {{location}} ({{year}})"
     sortable_fields: ["title", "year", "featured"]
-    view_filters:
-      - label: "Destaques"
-        field: featured
-        pattern: true
     fields:
-      # ── Identidade ────────────────────────────────────────────
-      - label: "Título (PT)"
-        name:  "title"
+      - { label: "Título (PT)", name: "title", widget: string, hint: "Nome do projeto em português" }
+      - { label: "Título (EN)", name: "title_en", widget: string, hint: "Project name in English" }
+      - label: "Identificador (URL)"
+        name: "slug"
         widget: string
-        hint:  "Nome do projeto em português"
-
-      - label: "Título (EN)"
-        name:  "title_en"
+        hint: "Usado nos links: projetos/[identificador]/"
+        pattern: ['^[a-z0-9-]+$', "Apenas letras minúsculas e hifens"]
+      - label: "Identificador EN (URL)"
+        name: "slug_en"
         widget: string
-        hint:  "Project name in English"
-
-      - label: "Slug (URL)"
-        name:  "slug"
-        widget: string
-        hint:  "Usado no URL: projetos/[slug]/  e  en/projects/[slug_en]/"
-        pattern: ['^[a-z0-9-]+$', "Apenas letras minúsculas, números e hifens"]
-
-      - label: "Slug EN (URL)"
-        name:  "slug_en"
-        widget: string
-        hint:  "Versão EN do slug: en/projects/[slug_en]/"
-        pattern: ['^[a-z0-9-]+$', "Apenas letras minúsculas, números e hifens"]
+        hint: "EN version: en/projects/[identificador]/"
         required: false
-
-      # ── Metadados ─────────────────────────────────────────────
-      - label: "Localização"
-        name:  "location"
-        widget: string
-        hint:  "Ex: Algarve, Portugal"
-
-      - label: "Área (m²)"
-        name:  "area_m2"
-        widget: number
-        value_type: int
-        hint:  "Área total em metros quadrados"
-
-      - label: "Ano"
-        name:  "year"
-        widget: number
-        value_type: int
-        min:   2000
-        max:   2099
-        hint:  "Ano de conclusão"
-
+      - { label: "Localização", name: "location", widget: string, hint: "Ex: Algarve, Portugal" }
+      - { label: "Área (m²)", name: "area_m2", widget: number, value_type: int }
+      - { label: "Ano", name: "year", widget: number, value_type: int, min: 2000 }
       - label: "Tipologia"
-        name:  "typology"
+        name: "typology"
         widget: select
         options:
           - { label: "Habitação Unifamiliar",  value: "residential" }
@@ -102,120 +56,93 @@ collections:
           - { label: "Equipamento Público",    value: "public" }
           - { label: "Edifício Híbrido",       value: "hybrid" }
           - { label: "Interiores",             value: "interiors" }
-        hint:  "Categoria do projeto"
-
-      - label: "Tipologia (EN label)"
-        name:  "typology_label_en"
-        widget: string
-        hint:  "Etiqueta da tipologia em inglês (ex: Hybrid Building)"
-        required: false
-
-      - label: "Status"
-        name:  "status"
-        widget: select
-        options:
-          - { label: "Concluído",       value: "completed" }
-          - { label: "Em Execução",     value: "in_progress" }
-          - { label: "Em Projeto",      value: "in_design" }
-          - { label: "Em Licenciamento", value: "licensing" }
-        default: "completed"
-
-      - label: "Destaque na Homepage"
-        name:  "featured"
-        widget: boolean
-        default: false
-        hint:  "Mostra este projeto na secção de projetos da landing page"
-
-      # ── Imagens ───────────────────────────────────────────────
-      - label: "Imagem de Capa"
-        name:  "cover_image"
-        widget: image
-        hint:  "Imagem principal do projeto (recomendado: 1600×1000px, WebP)"
-        media_library:
-          config:
-            multiple: false
-
+      - { label: "Destaque na Homepage", name: "featured", widget: boolean, default: false }
+      - { label: "Imagem de Capa", name: "cover_image", widget: image }
       - label: "Galeria de Imagens"
-        name:  "gallery_images"
+        name: "gallery_images"
         widget: list
-        summary: "{{fields.image}}"
-        minimize_collapsed: true
-        hint:  "Adiciona as imagens da galeria do projeto"
-        field:
-          label: "Imagem"
-          name:  "image"
-          widget: image
-
-      - label: "Imagem de Alt (capa)"
-        name:  "cover_image_alt"
-        widget: string
-        hint:  "Texto alternativo da imagem de capa (SEO & acessibilidade)"
-        required: false
-
-      # ── Conteúdo ──────────────────────────────────────────────
+        field: { label: "Imagem", name: "image", widget: image }
       - label: "Descrição (PT)"
-        name:  "description_pt"
+        name: "description_pt"
         widget: markdown
-        hint:  "Descrição do projeto em português. Suporta parágrafos, negrito, etc."
-        buttons: [bold, italic, link, heading-two, heading-three, bulleted-list]
+        buttons: [bold, italic, link, heading-two, bulleted-list]
         editor_components: []
-
       - label: "Descrição (EN)"
-        name:  "description_en"
+        name: "description_en"
         widget: markdown
-        hint:  "Project description in English."
-        buttons: [bold, italic, link, heading-two, heading-three, bulleted-list]
+        required: false
+        buttons: [bold, italic, link, heading-two, bulleted-list]
         editor_components: []
-        required: false
 
-      # ── SEO ───────────────────────────────────────────────────
-      - label: "Meta Description (PT)"
-        name:  "meta_description_pt"
-        widget: string
-        hint:  "Descrição para motores de busca — máx. 160 caracteres"
-        pattern: ['^.{0,160}$', "Máximo 160 caracteres"]
-        required: false
-
-      - label: "Meta Description (EN)"
-        name:  "meta_description_en"
-        widget: string
-        hint:  "SEO description in English — max 160 characters"
-        pattern: ['^.{0,160}$', "Max 160 characters"]
-        required: false
+  # ── PÁGINAS FIXAS ──────────────────────────────────────────────
+  - name: "pages"
+    label: "Páginas"
+    delete: false
+    files:
+      - label: "Página Sobre"
+        name: "about"
+        file: "content/settings/about.yml"
+        fields:
+          - label: "Conteúdo PT"
+            name: "pt"
+            widget: object
+            fields:
+              - { label: "Texto Principal", name: "main_text", widget: markdown, buttons: [bold, italic, link], editor_components: [] }
+          - label: "Conteúdo EN"
+            name: "en"
+            widget: object
+            fields:
+              - { label: "Main Text", name: "main_text", widget: markdown, buttons: [bold, italic, link], editor_components: [] }
+          - label: "Imagens"
+            name: "images"
+            widget: object
+            fields:
+              - { label: "Imagem 1 (Início)", name: "image_1", widget: image, required: false }
+              - { label: "Imagem 2 (Fim)", name: "image_2", widget: image, required: false }
 
   # ── CONFIGURAÇÕES GLOBAIS ──────────────────────────────────────
   - name: "settings"
-    label: "Configurações do Site"
+    label: "Configurações"
     delete: false
     files:
-      - label: "Configurações Gerais"
-        name:  "general"
-        file:  "content/settings/general.yml"
+      - label: "Gerais & SEO"
+        name: "general"
+        file: "content/settings/general.yml"
         fields:
-          - label: "Favicon do Site"
-            name:  "site_favicon"
-            widget: image
-            default: "/assets/img/fav-icon.svg"
-            hint: "Upload do ícone que aparece no separador do browser (SVG recomendado)"
-          - label: "Email de Contacto"
-            name:  "contact_email"
-            widget: string
-          - label: "Telefone"
-            name:  "phone"
-            widget: string
-          - label: "Morada"
-            name:  "address"
-            widget: text
-          - label: "Instagram URL"
-            name:  "instagram_url"
-            widget: string
-            required: false
-          - label: "LinkedIn URL"
-            name:  "linkedin_url"
-            widget: string
-            required: false
-          - label: "Facebook URL"
-            name:  "facebook_url"
-            widget: string
-            required: false
-            placeholder: "https://facebook.com"
+          - label: "Identidade Visual"
+            name: "identity"
+            widget: object
+            fields:
+              - { label: "Favicon do Site", name: "site_favicon", widget: image, default: "/assets/img/fav-icon.svg" }
+          
+          - label: "Homepage SEO"
+            name: "homepage_seo"
+            widget: object
+            fields:
+              - { label: "Meta Title (PT)", name: "meta_title_pt", widget: string }
+              - { label: "Meta Description (PT)", name: "meta_desc_pt", widget: text }
+              - { label: "Meta Title (EN)", name: "meta_title_en", widget: string }
+              - { label: "Meta Description (EN)", name: "meta_desc_en", widget: text }
+          
+          - label: "Texto Introdutório (abaixo da Hero)"
+            name: "intro"
+            widget: object
+            fields:
+              - { label: "Parágrafo PT", name: "intro_tagline_pt", widget: text, required: false }
+              - { label: "Parágrafo EN", name: "intro_tagline_en", widget: text, required: false }
+
+          - label: "Contactos"
+            name: "contacts"
+            widget: object
+            fields:
+              - { label: "Email", name: "contact_email", widget: string }
+              - { label: "Telefone", name: "phone", widget: string }
+              - { label: "Morada", name: "address", widget: text }
+          
+          - label: "Redes Sociais"
+            name: "social"
+            widget: object
+            fields:
+              - { label: "Instagram URL", name: "instagram_url", widget: string, required: false }
+              - { label: "LinkedIn URL", name: "linkedin_url", widget: string, required: false }
+              - { label: "Facebook URL", name: "facebook_url", widget: string, required: false, placeholder: "https://facebook.com" }

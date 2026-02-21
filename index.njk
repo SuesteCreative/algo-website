@@ -1,8 +1,8 @@
 ---
 permalink: /
 ---
-{% set pageTitle = "Algo Atelier | Início" %}
-{% set metaDesc = "Algo Atelier - Arquitetura Contemporânea & Design Minimalista no Algarve." %}
+{% set pageTitle = site.homepage_seo.meta_title_pt | default("Algo Atelier | Início") %}
+{% set metaDesc = site.homepage_seo.meta_desc_pt | default("Algo Atelier - Arquitetura Contemporânea & Design Minimalista no Algarve.") %}
 {% set canonical = "https://algoatelier.pt/" %}
 {% set hreflangPt = "https://algoatelier.pt/" %}
 {% set hreflangEn = "https://algoatelier.pt/en/" %}
@@ -14,7 +14,7 @@ permalink: /
 <head>
     {% include "head.njk" %}
     <link rel="preload" as="image" href="/assets/img/hero-image-final.webp">
-    <!-- Netlify Identity: necessário para o redirect de login do CMS -->
+    <!-- Netlify Identity -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
@@ -33,9 +33,12 @@ permalink: /
                     Desenhado com <em>rigor</em>.<br>
                     Construído com <em>precisão</em>.
                 </h1>
+                
+                {% if site.intro.intro_tagline_pt %}
                 <div class="hero-description-tag fade-up">
-                    Um atelier no Algarve focado na essência do espaço e na verdade dos materiais. Criamos arquitetura que perdura.
+                    {{ site.intro.intro_tagline_pt }}
                 </div>
+                {% endif %}
             </div>
         </section>
 
@@ -73,7 +76,9 @@ permalink: /
                     <div class="about-content-preview reveal-right">
                         <span class="caps" style="display: block; margin-bottom: 1rem; opacity: 0.6;">O Atelier</span>
                         <h2>A arquitetura é o equilíbrio entre a luz e a sombra.</h2>
-                        <p>No Algo Atelier, focamos na essência do espaço e na verdade dos materiais. Criamos projetos que não apenas ocupam o território, mas dialogam com ele, priorizando o rigor técnico e a sensibilidade estética.</p>
+                        <div style="margin-bottom: 2rem; opacity: 0.8;">
+                             {{ site.about.pt.main_text | markdownify | safe | truncate(250) }}
+                        </div>
                         <a href="/sobre/" class="btn-budget" style="padding: 0.8rem 2rem;">Saber Mais</a>
                     </div>
                 </div>

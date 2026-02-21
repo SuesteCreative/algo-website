@@ -1,8 +1,8 @@
 ---
 permalink: /en/
 ---
-{% set pageTitle = "Algo Atelier | Home" %}
-{% set metaDesc = "Algo Atelier - Contemporary Architecture & Minimalist Design in Algarve." %}
+{% set pageTitle = site.homepage_seo.meta_title_en | default("Algo Atelier | Home") %}
+{% set metaDesc = site.homepage_seo.meta_desc_en | default("Algo Atelier - Contemporary Architecture & Minimalist Design in Algarve.") %}
 {% set canonical = "https://algoatelier.pt/en/" %}
 {% set hreflangPt = "https://algoatelier.pt/" %}
 {% set hreflangEn = "https://algoatelier.pt/en/" %}
@@ -33,9 +33,12 @@ permalink: /en/
                     Designed with <em>rigor</em>.<br>
                     Built with <em>precision</em>.
                 </h1>
+                
+                {% if site.intro.intro_tagline_en %}
                 <div class="hero-description-tag fade-up">
-                    A studio in the Algarve focused on the essence of space and the truth of materials. We create architecture that lasts.
+                    {{ site.intro.intro_tagline_en }}
                 </div>
+                {% endif %}
             </div>
         </section>
 
@@ -74,7 +77,9 @@ permalink: /en/
                     <div class="about-content-preview reveal-right">
                         <span class="caps" style="display: block; margin-bottom: 1rem; opacity: 0.6;">The Studio</span>
                         <h2>Architecture is the balance between light and shadow.</h2>
-                        <p>At Algo Atelier, we focus on the essence of space and the truth of materials. We create projects that not only occupy the territory but dialogue with it, prioritizing technical rigor and aesthetic sensitivity.</p>
+                        <div style="margin-bottom: 2rem; opacity: 0.8;">
+                             {{ site.about.en.main_text | markdownify | safe | truncate(250) }}
+                        </div>
                         <a href="/en/about/" class="btn-budget" style="padding: 0.8rem 2rem;">Learn More</a>
                     </div>
                 </div>
