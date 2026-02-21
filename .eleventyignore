@@ -1,0 +1,5 @@
+# Eleventy ignore — estas pastas/ficheiros não são processados pelo build
+versions/
+node_modules/
+_site/
+.git/

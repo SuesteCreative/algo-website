@@ -12,3 +12,6 @@ eleventy-dry.txt
 # OS
 .DS_Store
 Thumbs.db
+
+# Versões locais — snapshots do site, apenas para referência local
+versions/
