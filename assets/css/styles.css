@@ -312,7 +312,12 @@ nav {
     font-size: 0.85rem;
     line-height: 1.6;
     color: var(--text-primary);
-    -webkit-text-stroke: 1px #fcfcfc;
+    /* Subtle outline for better small text legibility */
+    text-shadow:
+        -0.5px -0.5px 0 #fcfcfc,
+        0.5px -0.5px 0 #fcfcfc,
+        -0.5px 0.5px 0 #fcfcfc,
+        0.5px 0.5px 0 #fcfcfc;
     position: relative;
     z-index: 10;
     margin-top: 1.5rem;
@@ -327,7 +332,12 @@ nav {
     overflow-wrap: break-word;
     max-width: 100%;
     width: fit-content;
-    -webkit-text-stroke: 1px #fcfcfc;
+    /* Clean outline that stays outside the text */
+    text-shadow:
+        -1px -1px 0 #fcfcfc,
+        1px -1px 0 #fcfcfc,
+        -1px 1px 0 #fcfcfc,
+        1px 1px 0 #fcfcfc;
 }
 
 .page-title {
