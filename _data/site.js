@@ -26,7 +26,7 @@ module.exports = function () {
         ...settings,
         about: about,
         currentYear: new Date().getFullYear(),
-        siteUrl: "https://algoatelier.pt",
+        siteUrl: "https://algoatelier.netlify.app",
         siteName: "Algo Atelier"
     };
 };

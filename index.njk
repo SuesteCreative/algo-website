@@ -3,9 +3,9 @@ permalink: /
 ---
 {% set pageTitle = site.homepage_seo.meta_title_pt | default("Algo Atelier | Início") %}
 {% set metaDesc = site.homepage_seo.meta_desc_pt | default("Algo Atelier - Arquitetura Contemporânea & Design Minimalista no Algarve.") %}
-{% set canonical = "https://algoatelier.pt/" %}
-{% set hreflangPt = "https://algoatelier.pt/" %}
-{% set hreflangEn = "https://algoatelier.pt/en/" %}
+{% set canonical = "https://algoatelier.netlify.app/" %}
+{% set hreflangPt = "https://algoatelier.netlify.app/" %}
+{% set hreflangEn = "https://algoatelier.netlify.app/en/" %}
 {% set activeSection = "home" %}
 {% set ptUrl = "/" %}
 {% set enUrl = "/en/" %}
@@ -77,7 +77,7 @@ permalink: /
                         <span class="caps" style="display: block; margin-bottom: 1rem; opacity: 0.6;">O Atelier</span>
                         <h2>A arquitetura é o equilíbrio entre a luz e a sombra.</h2>
                         <div style="margin-bottom: 2rem; opacity: 0.8;">
-                             {{ site.about.pt.main_text | markdownify | safe | truncate(250) }}
+                             {{ site.about.pt.intro.text | markdownify | safe | truncate(250) }}
                         </div>
                         <a href="/sobre/" class="btn-budget" style="padding: 0.8rem 2rem;">Saber Mais</a>
                     </div>

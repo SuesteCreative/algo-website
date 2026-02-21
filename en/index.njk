@@ -3,9 +3,9 @@ permalink: /en/
 ---
 {% set pageTitle = site.homepage_seo.meta_title_en | default("Algo Atelier | Home") %}
 {% set metaDesc = site.homepage_seo.meta_desc_en | default("Algo Atelier - Contemporary Architecture & Minimalist Design in Algarve.") %}
-{% set canonical = "https://algoatelier.pt/en/" %}
-{% set hreflangPt = "https://algoatelier.pt/" %}
-{% set hreflangEn = "https://algoatelier.pt/en/" %}
+{% set canonical = "https://algoatelier.netlify.app/en/" %}
+{% set hreflangPt = "https://algoatelier.netlify.app/" %}
+{% set hreflangEn = "https://algoatelier.netlify.app/en/" %}
 {% set activeSection = "home" %}
 {% set ptUrl = "/" %}
 {% set enUrl = "/en/" %}
@@ -78,7 +78,7 @@ permalink: /en/
                         <span class="caps" style="display: block; margin-bottom: 1rem; opacity: 0.6;">The Studio</span>
                         <h2>Architecture is the balance between light and shadow.</h2>
                         <div style="margin-bottom: 2rem; opacity: 0.8;">
-                             {{ site.about.en.main_text | markdownify | safe | truncate(250) }}
+                             {{ site.about.en.intro.text | markdownify | safe | truncate(250) }}
                         </div>
                         <a href="/en/about/" class="btn-budget" style="padding: 0.8rem 2rem;">Learn More</a>
                     </div>

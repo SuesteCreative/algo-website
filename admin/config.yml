@@ -87,18 +87,68 @@ collections:
             name: "pt"
             widget: object
             fields:
-              - { label: "Texto Principal", name: "main_text", widget: markdown, buttons: [bold, italic, link], editor_components: [] }
+              - label: "Introdução"
+                name: "intro"
+                widget: object
+                fields:
+                  - { label: "Título", name: "title", widget: string }
+                  - { label: "Texto", name: "text", widget: markdown, buttons: [bold, italic, link], editor_components: [] }
+              - label: "Visão e Filosofia"
+                name: "philosophy"
+                widget: object
+                fields:
+                  - { label: "Título", name: "title", widget: string }
+                  - { label: "Texto", name: "text", widget: markdown, buttons: [bold, italic, link], editor_components: [] }
+              - label: "Percurso e Fundação"
+                name: "foundation"
+                widget: object
+                fields:
+                  - { label: "Título", name: "title", widget: string }
+                  - { label: "Texto", name: "text", widget: markdown, buttons: [bold, italic, link], editor_components: [] }
+              - label: "Equipa"
+                name: "team"
+                widget: object
+                fields:
+                  - { label: "Título", name: "title", widget: string }
+                  - { label: "Texto", name: "text", widget: markdown, buttons: [bold, italic, link], editor_components: [] }
+
           - label: "Conteúdo EN"
             name: "en"
             widget: object
             fields:
-              - { label: "Main Text", name: "main_text", widget: markdown, buttons: [bold, italic, link], editor_components: [] }
+              - label: "Introduction"
+                name: "intro"
+                widget: object
+                fields:
+                  - { label: "Title", name: "title", widget: string }
+                  - { label: "Text", name: "text", widget: markdown, buttons: [bold, italic, link], editor_components: [] }
+              - label: "Vision and Philosophy"
+                name: "philosophy"
+                widget: object
+                fields:
+                  - { label: "Title", name: "title", widget: string }
+                  - { label: "Text", name: "text", widget: markdown, buttons: [bold, italic, link], editor_components: [] }
+              - label: "Background and Foundation"
+                name: "foundation"
+                widget: object
+                fields:
+                  - { label: "Title", name: "title", widget: string }
+                  - { label: "Text", name: "text", widget: markdown, buttons: [bold, italic, link], editor_components: [] }
+              - label: "Team"
+                name: "team"
+                widget: object
+                fields:
+                  - { label: "Title", name: "title", widget: string }
+                  - { label: "Text", name: "text", widget: markdown, buttons: [bold, italic, link], editor_components: [] }
+
           - label: "Imagens"
             name: "images"
             widget: object
             fields:
-              - { label: "Imagem 1 (Início)", name: "image_1", widget: image, required: false }
-              - { label: "Imagem 2 (Fim)", name: "image_2", widget: image, required: false }
+              - { label: "Imagem 1", name: "image_1", widget: image, required: false }
+              - { label: "Texto Alt (Imagem 1)", name: "image_1_alt", widget: string, required: false }
+              - { label: "Imagem 2", name: "image_2", widget: image, required: false }
+              - { label: "Texto Alt (Imagem 2)", name: "image_2_alt", widget: string, required: false }
 
   # ── CONFIGURAÇÕES GLOBAIS ──────────────────────────────────────
   - name: "settings"

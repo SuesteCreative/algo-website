@@ -1,13 +1,53 @@
 pt:
-  main_text: |
-    O Algo Atelier nasce da paixão pela criação de espaços que transcendem o tempo. Sediado no Algarve, o nosso trabalho foca-se na busca constante pelo equilíbrio perfeito entre a funcionalidade rigorosa e a poesia estética.
+  intro:
+    title: "A arquitetura como expressão de equilíbrio e identidade."
+    text: |
+      O Algo Atelier é uma resposta à necessidade de pensar o espaço de forma consciente e intemporal. No nosso atelier, cada traço é desenhado com o propósito de equilibrar a técnica rigorosa com a sensibilidade estética, criando lugares que não se limitam a existir, mas que comunicam com quem os habita.
 
-    Acreditamos que cada projeto é uma oportunidade de contar uma história única, respeitando o contexto local e a verdade dos materiais. O nosso compromisso é com a qualidade e o detalhe, transformando visões em realidade construída com rigor e sensibilidade.
+      Assumimos uma abordagem onde o minimalismo não é uma ausência de elementos, mas sim o apuramento da essência, eliminando o ruído para deixar sobressair a luz, a matéria e a proporção humana.
+  philosophy:
+    title: "Visão, Filosofia e Abordagem"
+    text: |
+      Acreditamos que a arquitetura deve ser honesta. O nosso processo começa sempre com uma leitura profunda do contexto e da memória do lugar, cruzando essa herança com as necessidades contemporâneas de quem nos procura. Para nós, a sustentabilidade e a verdade dos materiais são pilares fundamentais de uma construção que se pretende duradoura.
+
+      A nossa abordagem é colaborativa e meticulosa. Mantemos uma relação de proximidade com o cliente em todas as fases do projeto, garantindo que a execução técnica acompanha a visão conceptual original com o máximo rigor.
+  foundation:
+    title: "Percurso e Fundação"
+    text: |
+      O Algo Atelier consolidou-se como um reflexo de anos de experiência e exploração no campo da arquitetura contemporânea. Fundado sobre a premissa de que a qualidade arquitetónica é um direito fundamental, o atelier tem evoluído através de uma prática diversificada, desde a habitação unifamiliar ao detalhe de interiores.
+
+      Com sede no Algarve, o atelier integra influências da arquitetura mediterrânica com linguagens universais, resultando num portfólio que prima pela clareza formal e pelo respeito pelo território.
+  team:
+    title: "Equipa"
+    text: |
+      Sendo um estúdio de dimensão controlada, privilegiamos a qualidade sobre o volume. A equipa do Algo Atelier é composta por profissionais dedicados que partilham a mesma visão sobre o rigor construtivo e a paixão pelo detalhe. Trabalhamos em rede com parceiros especializados, garantindo uma resposta integrada e profissional a cada desafio.
+
 en:
-  main_text: |
-    Algo Atelier was born from a passion for creating spaces that transcend time. Based in the Algarve, our work focuses on the constant search for the perfect balance between rigorous functionality and aesthetic poetry.
+  intro:
+    title: "Architecture as an expression of balance and identity."
+    text: |
+      Algo Atelier is a response to the need to think about space in a conscious and timeless way. In our studio, every line is drawn with the purpose of balancing rigorous technique with aesthetic sensitivity, creating places that do not just exist, but communicate with those who inhabit them.
 
-    We believe that each project is an opportunity to tell a unique story, respecting the local context and the truth of the materials. Our commitment is to quality and detail, transforming visions into a reality built with rigor and sensitivity.
+      We take an approach where minimalism is not an absence of elements, but rather the refinement of essence, eliminating noise to let light, matter and human proportion stand out.
+  philosophy:
+    title: "Vision, Philosophy and Approach"
+    text: |
+      We believe that architecture should be honest. Our process always begins with a deep reading of the context and the memory of the place, crossing this heritage with the contemporary needs of those who seek us. For us, sustainability and the truth of the materials are fundamental pillars of a construction that aims to be durable.
+
+      Our approach is collaborative and meticulous. We maintain a close relationship with the client through all project phases, ensuring that technical execution follows the original conceptual vision with maximum rigor.
+  foundation:
+    title: "Background and Foundation"
+    text: |
+      Algo Atelier has consolidated itself as a reflection of years of experience and exploration in the field of contemporary architecture. Founded on the premise that architectural quality is a fundamental right, the studio has evolved through a diverse practice, from single-family housing to interior details.
+
+      Based in the Algarve, the studio integrates influences from Mediterranean architecture with universal languages, resulting in a portfolio that stands out for its formal clarity and respect for the territory.
+  team:
+    title: "Team"
+    text: |
+      As a controlled-size studio, we prioritize quality over volume. The Algo Atelier team consists of dedicated professionals who share the same vision of constructive rigor and passion for detail. We work in a network with specialized partners, ensuring an integrated and professional response to each challenge.
+
 images:
   image_1: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=2000"
-  image_2: ""
+  image_1_alt: "Ambiente de trabalho no Algo Atelier"
+  image_2: "https://images.unsplash.com/photo-1518005020480-4732049d552e?auto=format&fit=crop&q=80&w=2000"
+  image_2_alt: "Detalhe conceptual de projeto de arquitetura"

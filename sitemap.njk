@@ -5,33 +5,33 @@ eleventyExcludeFromCollections: true
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://algoatelier.pt/</loc>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://algoatelier.pt/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://algoatelier.pt/en/"/>
+    <loc>https://algoatelier.netlify.app/</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://algoatelier.netlify.app/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://algoatelier.netlify.app/en/"/>
     <priority>1.0</priority>
   </url>
-  <url><loc>https://algoatelier.pt/sobre/</loc></url>
-  <url><loc>https://algoatelier.pt/servicos/</loc></url>
-  <url><loc>https://algoatelier.pt/projetos/</loc>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://algoatelier.pt/projetos/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://algoatelier.pt/en/projects/"/>
+  <url><loc>https://algoatelier.netlify.app/sobre/</loc></url>
+  <url><loc>https://algoatelier.netlify.app/servicos/</loc></url>
+  <url><loc>https://algoatelier.netlify.app/projetos/</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://algoatelier.netlify.app/projetos/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://algoatelier.netlify.app/en/projects/"/>
   </url>
-  <url><loc>https://algoatelier.pt/contacto/</loc></url>
-  <url><loc>https://algoatelier.pt/en/</loc></url>
-  <url><loc>https://algoatelier.pt/en/about/</loc></url>
-  <url><loc>https://algoatelier.pt/en/services/</loc></url>
-  <url><loc>https://algoatelier.pt/en/projects/</loc></url>
-  <url><loc>https://algoatelier.pt/en/contact/</loc></url>
+  <url><loc>https://algoatelier.netlify.app/contacto/</loc></url>
+  <url><loc>https://algoatelier.netlify.app/en/</loc></url>
+  <url><loc>https://algoatelier.netlify.app/en/about/</loc></url>
+  <url><loc>https://algoatelier.netlify.app/en/services/</loc></url>
+  <url><loc>https://algoatelier.netlify.app/en/projects/</loc></url>
+  <url><loc>https://algoatelier.netlify.app/en/contact/</loc></url>
   {% for projeto in collections.projetos %}
   <url>
-    <loc>https://algoatelier.pt/projetos/{{ projeto.data.slug }}/</loc>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://algoatelier.pt/projetos/{{ projeto.data.slug }}/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://algoatelier.pt/en/projects/{{ projeto.data.slug_en }}/"/>
+    <loc>https://algoatelier.netlify.app/projetos/{{ projeto.data.slug }}/</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://algoatelier.netlify.app/projetos/{{ projeto.data.slug }}/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://algoatelier.netlify.app/en/projects/{{ projeto.data.slug_en }}/"/>
   </url>
   <url>
-    <loc>https://algoatelier.pt/en/projects/{{ projeto.data.slug_en }}/</loc>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://algoatelier.pt/projetos/{{ projeto.data.slug }}/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://algoatelier.pt/en/projects/{{ projeto.data.slug_en }}/"/>
+    <loc>https://algoatelier.netlify.app/en/projects/{{ projeto.data.slug_en }}/</loc>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://algoatelier.netlify.app/projetos/{{ projeto.data.slug }}/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://algoatelier.netlify.app/en/projects/{{ projeto.data.slug_en }}/"/>
   </url>
   {% endfor %}
 </urlset>

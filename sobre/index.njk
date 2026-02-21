@@ -3,38 +3,138 @@ permalink: /sobre/
 ---
 {% set pageTitle = "Sobre | Algo Atelier" %}
 {% set metaDesc = "Saiba mais sobre o percurso e a visão arquitetónica do Algo Atelier." %}
-{% set canonical = "https://algoatelier.pt/sobre/" %}
+{% set canonical = "https://algoatelier.netlify.app/sobre/" %}
 {% set activeSection = "sobre" %}
 {% set ptUrl = "/sobre/" %}
 {% set enUrl = "/en/about/" %}
 <!DOCTYPE html>
 <html lang="pt">
 <head>{% include "head.njk" %}</head>
-<body>
+<body class="site-grid">
 {% include "header-pt.njk" %}
-<main>
-    <section class="container" style="padding-top: var(--spacing-xl);">
-        <div style="max-width: 800px;">
+
+<main class="main-content container mt-xl">
+    <!-- 01. INTRODUÇÃO -->
+    <article class="about-section grid-section">
+        <div class="col-left">
             <span class="caps fade-up active">O Atelier</span>
-            <h1 class="page-title fade-up active">A arquitetura é o equilíbrio entre a luz e a sombra.</h1>
-            <div class="fade-up active" style="margin-top: var(--spacing-lg); line-height: 1.8; color: #444;">
-                {{ site.about.pt.main_text | markdownify | safe }}
+        </div>
+        <div class="col-right">
+            <h1 class="page-title fade-up active">{{ site.about.pt.intro.title }}</h1>
+            <div class="content-text fade-up active delay-1">
+                {{ site.about.pt.intro.text | markdownify | safe }}
             </div>
         </div>
+    </article>
 
-        {% if site.about.images.image_1 %}
-        <div class="img-reveal active" style="margin-top: var(--spacing-lg); height: 60vh;">
-            <img src="{{ site.about.images.image_1 }}" alt="Algo Atelier Studio" style="width: 100%; height: 100%; object-fit: cover;">
+    <!-- 02. FILOSOFIA -->
+    <article class="about-section grid-section">
+        <div class="col-left">
+            <span class="caps fade-up active">Filosofia</span>
         </div>
-        {% endif %}
+        <div class="col-right">
+            <h2 class="section-title fade-up active">{{ site.about.pt.philosophy.title }}</h2>
+            <div class="content-text fade-up active delay-1">
+                {{ site.about.pt.philosophy.text | markdownify | safe }}
+            </div>
+        </div>
+    </article>
 
-        {% if site.about.images.image_2 %}
-        <div class="img-reveal active" style="margin-top: var(--spacing-lg); height: 60vh;">
-            <img src="{{ site.about.images.image_2 }}" alt="Algo Atelier Details" style="width: 100%; height: 100%; object-fit: cover;">
+    <!-- IMAGEM 1 -->
+    {% if site.about.images.image_1 %}
+    <figure class="about-image full-width reveal active">
+        <img src="{{ site.about.images.image_1 }}" alt="{{ site.about.images.image_1_alt }}" loading="lazy">
+    </figure>
+    {% endif %}
+
+    <!-- 03. PERCURSO -->
+    <article class="about-section grid-section">
+        <div class="col-left">
+            <span class="caps fade-up active">Percurso</span>
         </div>
-        {% endif %}
-    </section>
+        <div class="col-right">
+            <h2 class="section-title fade-up active">{{ site.about.pt.foundation.title }}</h2>
+            <div class="content-text fade-up active delay-1">
+                {{ site.about.pt.foundation.text | markdownify | safe }}
+            </div>
+        </div>
+    </article>
+
+    <!-- 04. EQUIPA -->
+    {% if site.about.pt.team.text %}
+    <article class="about-section grid-section">
+        <div class="col-left">
+            <span class="caps fade-up active">{{ site.about.pt.team.title }}</span>
+        </div>
+        <div class="col-right">
+            <div class="content-text fade-up active">
+                {{ site.about.pt.team.text | markdownify | safe }}
+            </div>
+        </div>
+    </article>
+    {% endif %}
+
+    <!-- IMAGEM 2 -->
+    {% if site.about.images.image_2 %}
+    <figure class="about-image full-width reveal active">
+        <img src="{{ site.about.images.image_2 }}" alt="{{ site.about.images.image_2_alt }}" loading="lazy">
+    </figure>
+    {% endif %}
 </main>
+
+<style>
+    .about-section {
+        margin-bottom: var(--spacing-xl);
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    @media (min-width: 992px) {
+        .about-section {
+            grid-template-columns: 1fr 2fr;
+            gap: var(--spacing-lg);
+        }
+    }
+
+    .section-title {
+        font-family: var(--font-serif);
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        font-weight: 400;
+        margin-bottom: var(--spacing-md);
+        line-height: 1.2;
+    }
+
+    .content-text {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: var(--text-secondary);
+        max-width: 700px;
+    }
+
+    .content-text p {
+        margin-bottom: var(--spacing-md);
+    }
+
+    .about-image {
+        margin: var(--spacing-xl) 0;
+        width: 100%;
+        height: 70vh;
+        overflow: hidden;
+    }
+
+    .about-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .site-grid {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+    }
+</style>
+
 {% include "footer-pt.njk" %}
 <script src="/assets/js/script.js"></script>
 </body>

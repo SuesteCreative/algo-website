@@ -3,38 +3,138 @@ permalink: /en/about/
 ---
 {% set pageTitle = "About | Algo Atelier" %}
 {% set metaDesc = "Learn more about the journey and architectural vision of Algo Atelier." %}
-{% set canonical = "https://algoatelier.pt/en/about/" %}
+{% set canonical = "https://algoatelier.netlify.app/en/about/" %}
 {% set activeSection = "about" %}
 {% set ptUrl = "/sobre/" %}
 {% set enUrl = "/en/about/" %}
 <!DOCTYPE html>
 <html lang="en">
 <head>{% include "head.njk" %}</head>
-<body>
+<body class="site-grid">
 {% include "header-en.njk" %}
-<main>
-    <section class="container" style="padding-top: var(--spacing-xl);">
-        <div style="max-width: 800px;">
+
+<main class="main-content container mt-xl">
+    <!-- 01. INTRODUCTION -->
+    <article class="about-section grid-section">
+        <div class="col-left">
             <span class="caps fade-up active">The Studio</span>
-            <h1 class="page-title fade-up active">Architecture is the balance between light and shadow.</h1>
-            <div class="fade-up active" style="margin-top: var(--spacing-lg); line-height: 1.8; color: #444;">
-                {{ site.about.en.main_text | markdownify | safe }}
+        </div>
+        <div class="col-right">
+            <h1 class="page-title fade-up active">{{ site.about.en.intro.title }}</h1>
+            <div class="content-text fade-up active delay-1">
+                {{ site.about.en.intro.text | markdownify | safe }}
             </div>
         </div>
+    </article>
 
-        {% if site.about.images.image_1 %}
-        <div class="img-reveal active" style="margin-top: var(--spacing-lg); height: 60vh;">
-            <img src="{{ site.about.images.image_1 }}" alt="Algo Atelier Studio" style="width: 100%; height: 100%; object-fit: cover;">
+    <!-- 02. PHILOSOPHY -->
+    <article class="about-section grid-section">
+        <div class="col-left">
+            <span class="caps fade-up active">Philosophy</span>
         </div>
-        {% endif %}
+        <div class="col-right">
+            <h2 class="section-title fade-up active">{{ site.about.en.philosophy.title }}</h2>
+            <div class="content-text fade-up active delay-1">
+                {{ site.about.en.philosophy.text | markdownify | safe }}
+            </div>
+        </div>
+    </article>
 
-        {% if site.about.images.image_2 %}
-        <div class="img-reveal active" style="margin-top: var(--spacing-lg); height: 60vh;">
-            <img src="{{ site.about.images.image_2 }}" alt="Algo Atelier Details" style="width: 100%; height: 100%; object-fit: cover;">
+    <!-- IMAGE 1 -->
+    {% if site.about.images.image_1 %}
+    <figure class="about-image full-width reveal active">
+        <img src="{{ site.about.images.image_1 }}" alt="{{ site.about.images.image_1_alt }}" loading="lazy">
+    </figure>
+    {% endif %}
+
+    <!-- 03. BACKGROUND -->
+    <article class="about-section grid-section">
+        <div class="col-left">
+            <span class="caps fade-up active">History</span>
         </div>
-        {% endif %}
-    </section>
+        <div class="col-right">
+            <h2 class="section-title fade-up active">{{ site.about.en.foundation.title }}</h2>
+            <div class="content-text fade-up active delay-1">
+                {{ site.about.en.foundation.text | markdownify | safe }}
+            </div>
+        </div>
+    </article>
+
+    <!-- 04. TEAM -->
+    {% if site.about.en.team.text %}
+    <article class="about-section grid-section">
+        <div class="col-left">
+            <span class="caps fade-up active">{{ site.about.en.team.title }}</span>
+        </div>
+        <div class="col-right">
+            <div class="content-text fade-up active">
+                {{ site.about.en.team.text | markdownify | safe }}
+            </div>
+        </div>
+    </article>
+    {% endif %}
+
+    <!-- IMAGE 2 -->
+    {% if site.about.images.image_2 %}
+    <figure class="about-image full-width reveal active">
+        <img src="{{ site.about.images.image_2 }}" alt="{{ site.about.images.image_2_alt }}" loading="lazy">
+    </figure>
+    {% endif %}
 </main>
+
+<style>
+    .about-section {
+        margin-bottom: var(--spacing-xl);
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    @media (min-width: 992px) {
+        .about-section {
+            grid-template-columns: 1fr 2fr;
+            gap: var(--spacing-lg);
+        }
+    }
+
+    .section-title {
+        font-family: var(--font-serif);
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        font-weight: 400;
+        margin-bottom: var(--spacing-md);
+        line-height: 1.2;
+    }
+
+    .content-text {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: var(--text-secondary);
+        max-width: 700px;
+    }
+
+    .content-text p {
+        margin-bottom: var(--spacing-md);
+    }
+
+    .about-image {
+        margin: var(--spacing-xl) 0;
+        width: 100%;
+        height: 70vh;
+        overflow: hidden;
+    }
+
+    .about-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .site-grid {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+    }
+</style>
+
 {% include "footer-en.njk" %}
 <script src="/assets/js/script.js"></script>
 </body>
