@@ -1,0 +1,42 @@
+---
+permalink: /en/projects/
+eleventyExcludeFromCollections: true
+---
+{% set pageTitle = "Projects | Algo Atelier" %}
+{% set metaDesc = "Portfolio of architecture projects by Algo Atelier — housing, public facilities, and experimental spaces." %}
+{% set canonical = "https://algoatelier.netlify.app/en/projects/" %}
+{% set hreflangPt = "https://algoatelier.netlify.app/projetos/" %}
+{% set hreflangEn = "https://algoatelier.netlify.app/en/projects/" %}
+{% set activeSection = "projects" %}
+{% set ptUrl = "/projetos/" %}
+{% set enUrl = "/en/projects/" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>{% include "head.njk" %}</head>
+<body>
+{% include "header-en.njk" %}
+<main>
+    <section class="container snap-section" style="padding: 185px var(--spacing-md) var(--spacing-lg);">
+        <div style="max-width: 700px; margin-bottom: var(--spacing-md);">
+            <span class="caps fade-up active" style="display: block; margin-bottom: 1rem; opacity: 0.6;">Portfolio</span>
+            <h1 class="page-title fade-up active">Selected Projects</h1>
+        </div>
+
+        <div class="projects-grid">
+            {% for projeto in collections.projetos %}
+            <a href="/en/projects/{{ projeto.data.slug_en }}/" class="project-card fade-up">
+                <div class="img-wrapper">
+                    <img src="{{ projeto.data.cover_image }}" alt="{{ projeto.data.cover_image_alt or projeto.data.title_en }}" class="reveal-image" loading="lazy">
+                </div>
+                <p class="location">{{ projeto.data.location }}</p>
+                <h3>{{ projeto.data.title_en }}</h3>
+                <p class="description">{{ projeto.data.typology | typologyLabel("en") }} · {{ projeto.data.year }}</p>
+            </a>
+            {% endfor %}
+        </div>
+    </section>
+</main>
+{% include "footer-en.njk" %}
+<script src="/assets/js/script.js"></script>
+</body>
+</html>

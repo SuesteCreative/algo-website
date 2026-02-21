@@ -1,0 +1,73 @@
+---
+permalink: /en/contact/
+---
+{% set pageTitle = "Contact | Algo Atelier" %}
+{% set metaDesc = "Get in touch with Algo Atelier to discuss your next project." %}
+{% set canonical = "https://algoatelier.netlify.app/en/contact/" %}
+{% set activeSection = "contact" %}
+{% set ptUrl = "/contacto/" %}
+{% set enUrl = "/en/contact/" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>{% include "head.njk" %}</head>
+<body>
+{% include "header-en.njk" %}
+<main>
+    <section class="container" style="padding-top: var(--spacing-xl); padding-bottom: var(--spacing-lg);">
+        <div class="contact-grid">
+            <div class="fade-up active">
+                <span class="caps">Contact</span>
+                <h1 class="page-title fade-up active">Let's talk about your project.</h1>
+
+                <div style="display: grid; grid-template-columns: 1fr; gap: 3rem; margin-top: var(--spacing-lg);">
+                    <div>
+                        <h3 class="caps" style="font-size: 0.7rem; margin-bottom: 0.5rem; opacity: 0.5;">Email</h3>
+                        <p style="font-size: 1.2rem;"><a href="mailto:{{ site.contacts.contact_email }}" style="text-decoration:none;color:inherit;">{{ site.contacts.contact_email }}</a></p>
+                    </div>
+                    <div>
+                        <h3 class="caps" style="font-size: 0.7rem; margin-bottom: 0.5rem; opacity: 0.5;">Phone</h3>
+                        <p style="font-size: 1.2rem;"><a href="tel:{{ site.contacts.phone | replace(' ', '') }}" style="text-decoration:none;color:inherit;">{{ site.contacts.phone }}</a></p>
+                    </div>
+                    <div>
+                        <h3 class="caps" style="font-size: 0.7rem; margin-bottom: 0.5rem; opacity: 0.5;">Location</h3>
+                        <p style="font-size: 1.2rem;">{{ site.contacts.address | nl2br | safe }}</p>
+                    </div>
+                    <div>
+                        <h3 class="caps" style="font-size: 0.7rem; margin-bottom: 1rem; opacity: 0.5;">Social Networks</h3>
+                        {% import "social-links.njk" as social %}
+                        {{ social.links(site) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="fade-up active contact-form-col">
+                <form action="#" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required placeholder="What is your name?">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="example@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Tell us about your project..."></textarea>
+                    </div>
+                    <div class="privacy-group">
+                        <input type="checkbox" id="privacy" name="privacy" required>
+                        <label for="privacy">I have read and accept the <a href="/legal/privacidade/">Privacy Policy</a> and the processing of my data for contact purposes.</label>
+                    </div>
+                    <button type="submit" class="btn-budget" style="width: 100%; margin: 0; padding: 1.2rem;">Send Message</button>
+                </form>
+                <div class="map-clean-container contact-map-inline">
+                    {{ site.map.iframe | safe }}
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% include "footer-en.njk" %}
+<script src="/assets/js/script.js"></script>
+</body>
+</html>

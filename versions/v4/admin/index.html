@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Admin Favicons -->
+    <link rel="icon" href="/admin/favicon-admin.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="/admin/favicon-admin.svg">
+    <link rel="icon" type="image/png" sizes="16x16" href="/admin/favicon-admin-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/admin/favicon-admin-32x32.png">
+    <link rel="apple-touch-icon" href="/admin/apple-touch-icon-admin.png">
+
+    <title>Algo Atelier | Gestão de Conteúdo</title>
+    <!-- Netlify Identity Widget -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <style>
+        /* ── Sidebar Brand ── */
+        [class*="AppHeader"] {
+            background: #0a0a0a !important;
+        }
+
+        /* Hide default CMS logo, inject ours */
+        [class*="AppHeaderContent"]>a>svg {
+            display: none !important;
+        }
+
+        [class*="AppHeaderContent"]>a::before {
+            content: '';
+            display: block;
+            background-image: url('/assets/img/algo-logo-white.webp');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: left center;
+            width: 100px;
+            height: 32px;
+        }
+
+        [class*="AppHeaderContent"]>a::after {
+            content: 'Back-Office';
+            display: block;
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 2px;
+            font-family: -apple-system, sans-serif;
+        }
+
+        /* Sidebar */
+        [class*="Sidebar"] {
+            background: #0f0f0f !important;
+        }
+
+        [class*="SidebarNavLink"] {
+            color: rgba(255, 255, 255, 0.6) !important;
+            border-radius: 6px !important;
+            margin-bottom: 2px !important;
+        }
+
+        [class*="SidebarNavLink"]:hover,
+        [class*="SidebarNavLink"][class*="active"] {
+            background: rgba(255, 255, 255, 0.08) !important;
+            color: #fff !important;
+        }
+
+        /* Main content area */
+        [class*="App"] {
+            background: #f5f5f3 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Decap CMS -->
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+identity:
+  site_favicon: /assets/img/fav-icon.svg
+homepage_seo:
+  meta_title_pt: Algo Atelier | Arquitetura
+  meta_desc_pt: Arquitetura Contemporânea & Design Minimalista no Algarve.
+  meta_title_en: Algo Atelier | Architecture
+  meta_desc_en: Contemporary Architecture & Minimalist Design in Algarve.
+intro:
+  intro_tagline_pt: Um atelier no Algarve focado na essência do espaço e na
+    verdade dos materiais. Criamos arquitetura que perdura.
+  intro_tagline_en: A studio in the Algarve focused on the essence of space and
+    the truth of materials. We create architecture that lasts.
+contacts:
+  contact_email: info@algoatelier.pt
+  phone: +351 966 666 666
+  address: |-
+    Rua da Arquitetura, 123
+    8500-000 Algarve
+    Portugal
+social:
+  instagram_url: https://instagram.com
+  linkedin_url: https://linkedin.com
+  facebook_url: https://www.facebook.com/
+map:
+  iframe: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21712.571714421207!2d-8.6038014742034!3d37.127219086925045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1b2fa1cce1c459%3A0x71ec22e8c07d0e8a!2sPraia%20dos%20Tr%C3%AAs%20Irm%C3%A3os!5e1!3m2!1spt-PT!2spt!4v1771705861901!5m2!1spt-PT!2spt" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'
+process_video:
+  file: "/assets/img/video-placeholder.mp4"
