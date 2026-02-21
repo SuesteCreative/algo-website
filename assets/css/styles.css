@@ -299,6 +299,11 @@ nav {
     opacity: 0;
 }
 
+/* Ensure images are visible if they don't have the reveal class or if they are already active */
+.project-card img:not(.reveal-image) {
+    opacity: 1;
+}
+
 .hero-description-tag {
     display: inline-block;
     padding: 0.4rem 1.2rem;
@@ -408,9 +413,12 @@ nav {
 .reveal-image {
     clip-path: inset(100% 0 0 0);
     transition: clip-path 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+    opacity: 1 !important;
+    /* Force visibility */
 }
 
-.reveal-image.active {
+.reveal-image.active,
+.project-card.active .reveal-image {
     clip-path: inset(0 0 0 0);
 }
 
@@ -615,13 +623,30 @@ nav {
     gap: 6rem;
 }
 
+.hero-title {
+    opacity: 1;
+    transform: none;
+}
+
 .fade-up {
     opacity: 0;
-    transform: translateY(30px);
-    transition: var(--transition-smooth);
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .fade-up.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Specific section reveals */
+section:not(.hero) {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: var(--transition-smooth);
+}
+
+section.active:not(.hero) {
     opacity: 1;
     transform: translateY(0);
 }
