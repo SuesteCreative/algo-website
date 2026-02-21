@@ -1,7 +1,10 @@
-site_favicon: "/assets/img/fav-icon.svg"
-contact_email: "info@algoatelier.pt"
-phone: "+351 966 666 666"
-address: "Rua da Arquitetura, 123\n8500-000 Algarve\nPortugal"
-instagram_url: "https://instagram.com"
-linkedin_url: "https://linkedin.com"
-facebook_url: ""
+site_favicon: /assets/img/fav-icon.svg
+contact_email: info@algoatelier.pt
+phone: +351 966 666 666
+address: |-
+  Rua da Arquitetura, 123
+  8500-000 Algarve
+  Portugal
+instagram_url: https://instagram.com
+linkedin_url: https://linkedin.com
+facebook_url: https://www.facebook.com/
