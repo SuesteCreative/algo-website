@@ -1203,64 +1203,29 @@ footer .logo img {
 
 /* ───────────────────────────────────────────────────────────
    SCROLL SNAP — Desktop only (≥ 1024px)
-   Moves snap context to body, uses proximity for subtlety.
-   Sections declare their own snap points.
-   Exclude: hero video (too tall, prone to mid-snap), scroller narrative.
+   Approach: JS-assisted proximity snap via class toggling.
+   CSS only sets up the infrastructure.
 _____________________________________________________________*/
 @media (min-width: 1024px) {
-
-    /* Snap container on body, not html, to avoid conflicts with hash navigation */
-    body {
-        scroll-snap-type: y proximity;
-    }
-
     html {
         scroll-behavior: smooth;
+        /* NO scroll-snap-type here — handled by JS snap below */
     }
 
-    /* Default snap point for all snap-sections */
+    /* scroll-margin-top only: compensates fixed header for anchor links.
+       Does NOT activate snap on its own. */
     .snap-section {
-        scroll-snap-align: start;
-        scroll-margin-top: 80px;
+        scroll-margin-top: 90px;
     }
 
-    /* Hero has no extra margin offset — it's the first element */
     .hero.snap-section {
         scroll-margin-top: 0;
-        scroll-snap-align: start;
-    }
-
-    /* Process section (video) — snap to start, with header offset */
-    .process-section.snap-section {
-        scroll-snap-align: start;
-        scroll-margin-top: 80px;
-        /* Stop snap inside process from triggering mid-video */
-        scroll-snap-stop: normal;
-    }
-
-    /* Contact CTA — snap to start  */
-    .contact-cta-section.snap-section {
-        scroll-snap-align: start;
-        scroll-margin-top: 80px;
-    }
-
-    /* Testimonials — snap softly */
-    .testimonials.snap-section {
-        scroll-snap-align: start;
-        scroll-margin-top: 80px;
     }
 }
 
-/* Disable snap if user prefers reduced motion */
+/* Reduce motion: disable smooth scroll */
 @media (prefers-reduced-motion: reduce) {
-
-    body,
     html {
-        scroll-snap-type: none !important;
         scroll-behavior: auto !important;
-    }
-
-    .snap-section {
-        scroll-snap-align: none !important;
     }
 }

@@ -80,3 +80,68 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 });
+
+/* ── Proximity Scroll Snap (Desktop Only) ──
+   Fires after user stops scrolling (~150ms debounce).
+   Finds the nearest snap-section and gently scrolls to it,
+   but only if the section is within 30% of the viewport.
+   Skips: mobile, reduced-motion, and sections already visible. */
+(function initScrollSnap() {
+    if (window.innerWidth < 1024) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const HEADER_HEIGHT = 80;    // px — compensates fixed header
+    const SNAP_THRESHOLD = 0.30; // 30% of viewport — max distance to trigger snap
+    let scrollTimer = null;
+    let isSnapping = false;
+
+    function getNearestSection() {
+        const sections = document.querySelectorAll('.snap-section');
+        const viewportH = window.innerHeight;
+        const scrollY = window.scrollY;
+        let best = null;
+        let bestDist = Infinity;
+
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            // Distance of section top from ideal position (just below header)
+            const sectionTop = rect.top - HEADER_HEIGHT;
+            const absDist = Math.abs(sectionTop);
+
+            // Only consider sections within threshold
+            if (absDist < viewportH * SNAP_THRESHOLD && absDist < bestDist) {
+                bestDist = absDist;
+                best = section;
+            }
+        });
+
+        return best;
+    }
+
+    function snapToSection(section) {
+        if (!section || isSnapping) return;
+        isSnapping = true;
+
+        const targetY = window.scrollY + section.getBoundingClientRect().top - HEADER_HEIGHT;
+        window.scrollTo({ top: targetY, behavior: 'smooth' });
+
+        // Release snapping lock after animation
+        setTimeout(() => { isSnapping = false; }, 600);
+    }
+
+    window.addEventListener('scroll', () => {
+        if (isSnapping) return;
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(() => {
+            const target = getNearestSection();
+            snapToSection(target);
+        }, 150); // wait for scroll to settle
+    }, { passive: true });
+
+    // Re-init on resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth < 1024) {
+            clearTimeout(scrollTimer);
+        }
+    });
+}());
