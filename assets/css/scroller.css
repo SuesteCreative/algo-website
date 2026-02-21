@@ -10,8 +10,8 @@
 }
 
 .scroller-spacer {
-    height: 250vh;
-    /* Controlled narrative duration */
+    height: 350vh;
+    /* Increased for hold at the end */
 }
 
 .scroller-sticky {
@@ -130,8 +130,9 @@
 /* Mobile Adjustments */
 @media (max-width: 991px) {
     .scroller-sticky {
-        top: 0;
-        height: auto;
+        top: 60px;
+        /* Safe area below navbar on mobile */
+        height: calc(100vh - 60px);
     }
 
     .scroller-layout {
