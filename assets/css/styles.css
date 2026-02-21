@@ -416,11 +416,10 @@ nav {
 }
 
 .project-card .img-wrapper {
-    height: 400px;
+    height: 280px;
     overflow: hidden;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
     border: 1px solid rgba(0, 0, 0, 0.05);
-    /* Blueprint border */
     position: relative;
 }
 
@@ -1137,6 +1136,16 @@ footer .logo img {
     .projects-grid {
         margin-bottom: 2rem;
     }
+
+    /* Projects page: tighter image height so grid fits viewport */
+    .projects-grid .project-card .img-wrapper {
+        height: 230px;
+    }
+
+    /* Landing page featured projects: keep taller on desktop */
+    section.container .projects-grid .project-card .img-wrapper {
+        height: 280px;
+    }
 }
 
 /* Styled Map for Contact Page */
@@ -1170,13 +1179,21 @@ footer .logo img {
     color: #888;
     text-decoration: none;
     transition: color 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 0;
+    display: inline;
+    white-space: nowrap;
 }
 
 .sueste-link:hover {
     color: #fff;
+}
+
+/* Wave inline alignment inside link */
+.sueste-link .wave-brand {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 4px;
+    position: relative;
+    top: -1px;
 }
 
 /* Wave CSS override — ultra thin */
@@ -1186,28 +1203,64 @@ footer .logo img {
 
 /* ───────────────────────────────────────────────────────────
    SCROLL SNAP — Desktop only (≥ 1024px)
-   proximity = subtil, não agressivo
+   Moves snap context to body, uses proximity for subtlety.
+   Sections declare their own snap points.
+   Exclude: hero video (too tall, prone to mid-snap), scroller narrative.
 _____________________________________________________________*/
 @media (min-width: 1024px) {
 
-    /* Scroll container */
-    html {
+    /* Snap container on body, not html, to avoid conflicts with hash navigation */
+    body {
         scroll-snap-type: y proximity;
+    }
+
+    html {
         scroll-behavior: smooth;
     }
 
-    /* Sections that should snap */
+    /* Default snap point for all snap-sections */
     .snap-section {
         scroll-snap-align: start;
         scroll-margin-top: 80px;
-        /* Compensa o header fixo (~60–80px scrolled) */
+    }
+
+    /* Hero has no extra margin offset — it's the first element */
+    .hero.snap-section {
+        scroll-margin-top: 0;
+        scroll-snap-align: start;
+    }
+
+    /* Process section (video) — snap to start, with header offset */
+    .process-section.snap-section {
+        scroll-snap-align: start;
+        scroll-margin-top: 80px;
+        /* Stop snap inside process from triggering mid-video */
+        scroll-snap-stop: normal;
+    }
+
+    /* Contact CTA — snap to start  */
+    .contact-cta-section.snap-section {
+        scroll-snap-align: start;
+        scroll-margin-top: 80px;
+    }
+
+    /* Testimonials — snap softly */
+    .testimonials.snap-section {
+        scroll-snap-align: start;
+        scroll-margin-top: 80px;
     }
 }
 
 /* Disable snap if user prefers reduced motion */
 @media (prefers-reduced-motion: reduce) {
+
+    body,
     html {
         scroll-snap-type: none !important;
         scroll-behavior: auto !important;
+    }
+
+    .snap-section {
+        scroll-snap-align: none !important;
     }
 }
