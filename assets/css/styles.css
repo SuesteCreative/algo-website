@@ -21,7 +21,7 @@
     /* Added for technical feel */
 
     /* Dotted background pattern - Enhanced visibility */
-    --dot-bg: radial-gradient(circle, rgba(0, 0, 0, 0.2) 1.5px, transparent 1.5px);
+    --dot-bg: radial-gradient(circle, rgba(0, 0, 0, 0.3) 1.5px, transparent 1.5px);
     --dot-size: 30px 30px;
 }
 
