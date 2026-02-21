@@ -13,6 +13,8 @@
         rel="stylesheet">
     <link rel="preload" as="image" href="assets/img/hero-image-final.webp">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- Netlify Identity: necessário para o redirect de login do CMS -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 
 <body>
@@ -197,6 +199,18 @@
     </footer>
 
     <script src="assets/js/script.js"></script>
+    <script>
+        // Netlify Identity — redireciona para o painel CMS após login
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", function (user) {
+                if (!user) {
+                    window.netlifyIdentity.on("login", function () {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>
