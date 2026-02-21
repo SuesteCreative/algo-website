@@ -1,4 +1,4 @@
-# ─────────────────────────────────────────────────────────────────
+﻿# ─────────────────────────────────────────────────────────────────
 #  Decap CMS — config.yml
 #  Algo Atelier Website
 # ─────────────────────────────────────────────────────────────────
@@ -135,6 +135,7 @@ collections:
           - label: "Conteúdo PT"
             name: "pt"
             widget: object
+            collapsed: false
             fields:
               - label: "Introdução"
                 name: "intro"
@@ -164,6 +165,7 @@ collections:
           - label: "Conteúdo EN"
             name: "en"
             widget: object
+            collapsed: true
             fields:
               - label: "Introduction"
                 name: "intro"
@@ -190,14 +192,42 @@ collections:
                   - { label: "Title", name: "title", widget: string }
                   - { label: "Text", name: "text", widget: markdown, buttons: [bold, italic, link], editor_components: [] }
 
-          - label: "Imagens"
+          - label: "Imagens — Sobre"
             name: "images"
             widget: object
+            collapsed: false
             fields:
               - { label: "Imagem 1", name: "image_1", widget: image, required: false }
               - { label: "Texto Alt (Imagem 1)", name: "image_1_alt", widget: string, required: false }
               - { label: "Imagem 2", name: "image_2", widget: image, required: false }
               - { label: "Texto Alt (Imagem 2)", name: "image_2_alt", widget: string, required: false }
+
+  # ── PÁGINA SERVIÇOS ───────────────────────────────────────────
+  - name: "pagina_servicos"
+    label: "🛠️ Página Serviços"
+    delete: false
+    files:
+      - label: "Conteúdo da Página Serviços"
+        name: "services_page"
+        file: "content/settings/services.yml"
+        fields:
+          - label: "Títulos de Cabeçalho"
+            name: "header_titles"
+            widget: object
+            collapsed: false
+            fields:
+              - { label: "Título Principal (PT)", name: "title_pt", widget: string }
+              - { label: "Título Principal (EN)", name: "title_en", widget: string }
+          - label: "Lista de Serviços"
+            name: "items"
+            widget: list
+            summary: "{{fields.title_pt}}"
+            fields:
+              - { label: "Título (PT)", name: "title_pt", widget: string }
+              - { label: "Título (EN)", name: "title_en", widget: string }
+              - { label: "Texto (PT)", name: "text_pt", widget: text }
+              - { label: "Texto (EN)", name: "text_en", widget: text }
+              - { label: "Imagem (Opcional)", name: "image", widget: image, required: false, hint: "Imagem quadrada ou editorial que acompanha o card." }
 
   # ── PÁGINA CONTACTO ───────────────────────────────────────────
   - name: "pagina_contacto"
@@ -211,6 +241,7 @@ collections:
           - label: "Contactos"
             name: "contacts"
             widget: object
+            collapsed: false
             fields:
               - { label: "Email", name: "contact_email", widget: string }
               - { label: "Telefone", name: "phone", widget: string }
@@ -227,15 +258,17 @@ collections:
     label: "⚙️ Configurações Globais"
     delete: false
     files:
-      - label: "Identidade Visual & Redes Sociais"
+      - label: "Identidade Visual & Rastreio"
         name: "global_settings"
         file: "content/settings/general.yml"
         fields:
           - label: "Identidade Visual"
             name: "identity"
             widget: object
+            collapsed: false
             fields:
               - { label: "Favicon do Site", name: "site_favicon", widget: image, default: "/assets/img/fav-icon.svg" }
+              - { label: "Placeholder para Projetos", name: "project_placeholder", widget: image, required: false, hint: "Imagem usada quando um projeto não tem imagem de capa configurada." }
 
           - label: "Redes Sociais"
             name: "social"
@@ -245,20 +278,20 @@ collections:
               - { label: "LinkedIn URL", name: "linkedin_url", widget: string, required: false }
               - { label: "Facebook URL", name: "facebook_url", widget: string, required: false }
 
-          - label: "Analytics & Publicidade"
+          - label: "Analytics & Publicidade (Tracking)"
             name: "tracking"
             widget: object
-            hint: "Apenas IDs — nunca cole scripts ou HTML. Se os campos estiverem vazios, nenhum tracking é carregado."
+            hint: "Rastreio ativado após consentimento no site. Use apenas os IDs."
             fields:
-              - label: "Google Analytics ID"
+              - label: "Google Analytics Measurement ID"
                 name: "ga_id"
                 widget: string
                 required: false
-                hint: "Formato: G-XXXXXXXXXX — deixar vazio para desativar"
-                pattern: ['^(G-[A-Z0-9]+)?$', "Formato inválido. Use G-XXXXXXXXXX ou deixe vazio."]
+                hint: "Ex: G-XXXXXXXXXX"
+                pattern: ['^(G-[A-Z0-9]+)?$', "Formato inválido (G-...)"]
               - label: "Google Ads Conversion ID"
                 name: "ads_id"
                 widget: string
                 required: false
-                hint: "Formato: AW-XXXXXXXXXX — deixar vazio para desativar"
-                pattern: ['^(AW-[0-9]+)?$', "Formato inválido. Use AW-XXXXXXXXXX ou deixe vazio."]
+                hint: "Ex: AW-XXXXXXXXXX"
+                pattern: ['^(AW-[0-9]+)?$', "Formato inválido (AW-...)"]

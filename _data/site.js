@@ -6,6 +6,7 @@ module.exports = function () {
     let settings = {};
     let about = {};
     let testimonials = {};
+    let services = {};
 
     try {
         const settingsPath = path.join(__dirname, "../content/settings/general.yml");
@@ -31,10 +32,19 @@ module.exports = function () {
         console.error("Error loading testimonials from YAML:", e);
     }
 
+    try {
+        const servicesPath = path.join(__dirname, "../content/settings/services.yml");
+        const servicesContents = fs.readFileSync(servicesPath, "utf8");
+        services = yaml.load(servicesContents);
+    } catch (e) {
+        console.error("Error loading services from YAML:", e);
+    }
+
     return {
         ...settings,
         about: about,
         testimonials: testimonials,
+        services: services,
         currentYear: new Date().getFullYear(),
         siteUrl: "https://algoatelier.netlify.app",
         siteName: "Algo Atelier"

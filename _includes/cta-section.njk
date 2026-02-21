@@ -1,0 +1,33 @@
+{#
+  cta-section.njk
+  ────────────────────────────────────────────────────────────────
+  Bilingual CTA for Services and Projects.
+  ────────────────────────────────────────────────────────────────
+#}
+<section class="container cta-next-steps" style="padding: var(--spacing-xl) 0; border-top: 1px solid var(--border-color); margin-top: var(--spacing-lg);">
+    <div style="text-align: center; max-width: 700px; margin: 0 auto;" class="fade-up active">
+        <span class="caps" style="opacity: 0.5; display: block; margin-bottom: 2rem;">
+            {% if lang == 'en' %}Next Steps{% else %}Próximos Passos{% endif %}
+        </span>
+        <h2 class="section-headline" style="font-family: var(--font-serif); font-weight: 400; font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 2.5rem;">
+            {% if lang == 'en' %}
+                Ready to transform your vision into a landmark?
+            {% else %}
+                Pronto para transformar a sua visão num marco arquitetónico?
+            {% endif %}
+        </h2>
+        <a href="{% if lang == 'en' %}/en/budget/{% else %}/orcamento/{% endif %}" class="btn-budget" style="display: inline-block; padding: 1.2rem 3rem;">
+            {% if lang == 'en' %}Request a Quote{% else %}Pedir Orçamento{% endif %}
+        </a>
+    </div>
+</section>
+
+<style>
+.cta-next-steps .btn-budget {
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.cta-next-steps .btn-budget:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+</style>

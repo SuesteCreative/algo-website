@@ -55,7 +55,8 @@ permalink: /
                 {% for projeto in featuredProjects %}
                 <a href="/projetos/{{ projeto.data.slug }}/" class="project-card fade-up">
                     <div class="img-wrapper">
-                        <img src="{{ projeto.data.cover_image }}" alt="{{ projeto.data.cover_image_alt or projeto.data.title }}" class="reveal-image">
+                        {% set cover = projeto.data.cover_image or site.identity.project_placeholder %}
+                        <img src="{{ cover }}" alt="{{ projeto.data.cover_image_alt or projeto.data.title }}" class="reveal-image">
                     </div>
                     <p class="location">{{ projeto.data.location }}</p>
                     <h3>{{ projeto.data.title }}</h3>
