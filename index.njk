@@ -14,6 +14,7 @@ permalink: /
 <head>
     {% include "head.njk" %}
     <link rel="preload" as="image" href="/assets/img/hero-image-final.webp">
+    <link rel="stylesheet" href="/assets/css/scroller.css">
     <!-- Netlify Identity -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
@@ -81,14 +82,16 @@ permalink: /
                         </div>
                         <a href="/sobre/" class="btn-budget" style="padding: 0.8rem 2rem;">Saber Mais</a>
                     </div>
-                </div>
-            </div>
         </section>
+
+        {% set lang = 'pt' %}
+        {% include "scroller-section.njk" %}
     </main>
 
     {% include "footer-pt.njk" %}
 
     <script src="/assets/js/script.js"></script>
+    <script src="/assets/js/scroller.js"></script>
     <script>
         // Netlify Identity — redireciona para o painel CMS após login
         if (window.netlifyIdentity) {

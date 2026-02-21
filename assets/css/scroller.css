@@ -1,0 +1,153 @@
+/* Narrative Scroller Section Styling */
+
+.scroller-narrative {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-color);
+}
+
+.scroller-spacer {
+    height: 250vh;
+    /* Controlled narrative duration */
+}
+
+.scroller-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.scroller-layout {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.scroller-visual {
+    position: relative;
+    height: 75vh;
+    flex: 0 0 50%;
+    /* Exactly half of viewport */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.scroller-img-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform: translateX(-100%);
+    filter: blur(20px);
+    will-change: transform, filter;
+    overflow: hidden;
+}
+
+.scroller-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* Changed to contain for technical drawing precision */
+    object-position: left center;
+}
+
+.img-overlay {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+    will-change: opacity, clip-path;
+}
+
+.scroller-content {
+    flex: 0 0 50%;
+    opacity: 0;
+    transform: translateY(30px);
+    will-change: opacity, transform;
+    padding-left: var(--spacing-lg);
+    padding-right: var(--spacing-md);
+}
+
+.scroller-subheading {
+    font-size: 1.2rem;
+    margin: 1.5rem 0 2.5rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 480px;
+}
+
+/* Reusing button style */
+.scroller-content .btn-all {
+    margin-top: 0;
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .scroller-spacer {
+        height: auto;
+    }
+
+    .scroller-sticky {
+        position: relative;
+        height: auto;
+        padding: var(--spacing-lg) 0;
+    }
+
+    .scroller-img-container {
+        transform: translateX(0);
+        filter: blur(0);
+        height: 60vh;
+    }
+
+    .img-overlay {
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+    }
+
+    .scroller-content {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 991px) {
+    .scroller-layout {
+        flex-direction: column;
+        justify-content: center;
+        padding-top: var(--spacing-lg);
+    }
+
+    .scroller-visual {
+        flex: 0 0 auto;
+        width: 100%;
+        height: 40vh;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .scroller-img-container {
+        transform: translateX(-30%);
+        /* Subtle movement for mobile */
+    }
+
+    .scroller-img {
+        object-position: center;
+    }
+
+    .scroller-content {
+        flex: 0 0 auto;
+        width: 100%;
+        text-align: center;
+        padding: 0 var(--spacing-md) var(--spacing-lg);
+    }
+
+    .scroller-subheading {
+        margin: 1rem auto 2rem;
+    }
+}
