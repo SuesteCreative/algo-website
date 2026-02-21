@@ -40,7 +40,7 @@ permalink: /en/contact/
                 </div>
             </div>
 
-            <div class="fade-up active">
+            <div class="fade-up active contact-form-col">
                 <form action="#" class="contact-form">
                     <div class="form-group">
                         <label for="name">Full Name</label>
@@ -60,16 +60,10 @@ permalink: /en/contact/
                     </div>
                     <button type="submit" class="btn-budget" style="width: 100%; margin: 0; padding: 1.2rem;">Send Message</button>
                 </form>
+                <div class="map-clean-container contact-map-inline">
+                    {{ site.map.iframe | safe }}
+                </div>
             </div>
-        </div>
-    </section>
-    <section class="container" style="padding-top: 0; padding-bottom: var(--spacing-lg);">
-        <div class="map-label">
-            <h3 class="caps" style="font-size: 0.7rem; opacity: 0.5; margin-bottom: 0.5rem;">Location</h3>
-            <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">{{ site.contacts.address | nl2br | safe }}</p>
-        </div>
-        <div class="map-clean-container">
-            {{ site.map.iframe | safe }}
         </div>
     </section>
 </main>

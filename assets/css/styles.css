@@ -1157,3 +1157,57 @@ footer .logo img {
     height: 100%;
     border: none;
 }
+
+/* Map inline below contact form — same width as form column */
+.contact-map-inline {
+    max-width: 100%;
+    margin: 2.5rem 0 0;
+    height: 320px;
+}
+
+/* Sueste link in footer */
+.sueste-link {
+    color: #888;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+}
+
+.sueste-link:hover {
+    color: #fff;
+}
+
+/* Wave CSS override — ultra thin */
+.wave-brand path {
+    stroke-width: 0.8 !important;
+}
+
+/* ───────────────────────────────────────────────────────────
+   SCROLL SNAP — Desktop only (≥ 1024px)
+   proximity = subtil, não agressivo
+_____________________________________________________________*/
+@media (min-width: 1024px) {
+
+    /* Scroll container */
+    html {
+        scroll-snap-type: y proximity;
+        scroll-behavior: smooth;
+    }
+
+    /* Sections that should snap */
+    .snap-section {
+        scroll-snap-align: start;
+        scroll-margin-top: 80px;
+        /* Compensa o header fixo (~60–80px scrolled) */
+    }
+}
+
+/* Disable snap if user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-snap-type: none !important;
+        scroll-behavior: auto !important;
+    }
+}
