@@ -63,7 +63,31 @@ permalink: /contacto/
             </div>
         </div>
     </section>
+    <section class="contact-map fade-up">
+        <div class="map-container">
+            {{ site.map.iframe | safe }}
+        </div>
+    </section>
 </main>
+<style>
+.contact-map {
+    width: 100%;
+    height: 50vh;
+    margin-top: var(--spacing-lg);
+}
+
+.map-container {
+    width: 100%;
+    height: 100%;
+    filter: grayscale(1) invert(0.05) contrast(1.1); /* Black and white style */
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+</style>
 {% include "footer-pt.njk" %}
 <script src="/assets/js/script.js"></script>
 </body>

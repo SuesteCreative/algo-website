@@ -1069,9 +1069,54 @@ footer .logo img {
 
 .site-footer .social-icon {
     color: #fff;
-    opacity: 0.5;
 }
 
-.site-footer .social-icon:hover {
-    opacity: 1;
+.wave-brand {
+    display: inline-block;
+    width: 60px;
+    height: 12px;
+    margin: 0 8px;
+    color: var(--text-primary);
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+.copyright {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.wave-brand svg {
+    width: 100%;
+    height: 100%;
+}
+
+.wave-brand path {
+    stroke: #888;
+    stroke-dasharray: 150;
+    stroke-dashoffset: 150;
+    animation: wave-flow 4s linear infinite;
+}
+
+@keyframes wave-flow {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .wave-brand path {
+        animation: none;
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Footer Mobile Logo Sizing */
+@media (max-width: 1024px) {
+    .footer-brand .logo {
+        height: 50px !important;
+        /* Matches line 809 */
+    }
 }

@@ -150,6 +150,18 @@ collections:
               - { label: "Imagem 2", name: "image_2", widget: image, required: false }
               - { label: "Texto Alt (Imagem 2)", name: "image_2_alt", widget: string, required: false }
 
+      - label: "Página de Testemunhos"
+        name: "testimonials_settings"
+        file: "content/settings/testimonials.yml"
+        fields:
+          - label: "Lista de Testemunhos"
+            name: "items"
+            widget: list
+            fields:
+              - { label: "Nome", name: "name", widget: string }
+              - { label: "Classificação", name: "rating", widget: number, min: 1, max: 5 }
+              - { label: "Texto", name: "text", widget: text }
+
   # ── CONFIGURAÇÕES GLOBAIS ──────────────────────────────────────
   - name: "settings"
     label: "Configurações"
@@ -196,3 +208,17 @@ collections:
               - { label: "Instagram URL", name: "instagram_url", widget: string, required: false }
               - { label: "LinkedIn URL", name: "linkedin_url", widget: string, required: false }
               - { label: "Facebook URL", name: "facebook_url", widget: string, required: false, placeholder: "https://facebook.com" }
+
+          - label: "Localização (Mapa)"
+            name: "map"
+            widget: object
+            fields:
+              - { label: "Iframe do Google Maps", name: "iframe", widget: text, hint: "Cole aqui o código de incorporação do Google Maps" }
+
+          - label: "Vídeo — Ideia a Realidade"
+            name: "process_video"
+            widget: object
+            fields:
+              - { label: "Arquivo de Vídeo", name: "file", widget: file, required: false }
+              - { label: "Link de Vídeo Externo", name: "external_url", widget: string, required: false }
+              - { label: "ID do YouTube", name: "youtube_id", widget: string, required: false }

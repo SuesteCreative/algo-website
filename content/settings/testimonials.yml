@@ -1,0 +1,19 @@
+items:
+  - name: "Maria João"
+    rating: 5
+    text: "O Algo Atelier superou todas as nossas expetativas. A atenção ao detalhe e o rigor técnico transformaram a nossa visão numa realidade melhor do que imaginávamos."
+  - name: "Carlos Ferreira"
+    rating: 5
+    text: "Profissionalismo exemplar. O acompanhamento em todas as fases da obra deu-nos a segurança que precisávamos para um projeto desta envergadura."
+  - name: "Sofia Santos"
+    rating: 5
+    text: "Minimalismo com alma. Conseguiram criar um espaço que respira luz e tranquilidade, refletindo exatamente o que procurávamos para o nosso novo lar."
+  - name: "João Pedro"
+    rating: 5
+    text: "Um processo transparente e criativo. A equipa soube interpretar o contexto do terreno e criar uma moradia que dialoga perfeitamente com a paisagem."
+  - name: "Ana Rita"
+    rating: 4
+    text: "Excelente capacidade de resposta e criatividade. O projeto de interiores ficou fantástico, combinando estética e funcionalidade de forma irrepreensível."
+  - name: "Ricardo Lopes"
+    rating: 5
+    text: "Recomendo vivamente. O Algo Atelier é sinónimo de qualidade e dedicação. O resultado final da nossa obra fala por si."
