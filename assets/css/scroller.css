@@ -4,9 +4,6 @@
     position: relative;
     width: 100%;
     background-color: var(--bg-color);
-    background-image: var(--dot-bg);
-    /* Explicit dot background */
-    background-size: var(--dot-size);
 }
 
 .scroller-spacer {

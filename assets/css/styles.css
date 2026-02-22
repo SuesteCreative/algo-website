@@ -19,10 +19,6 @@
     --font-sans: 'Outfit', sans-serif;
     --font-mono: 'Space Mono', monospace;
     /* Added for technical feel */
-
-    /* Dotted background pattern - Enhanced visibility */
-    --dot-bg: radial-gradient(circle, rgba(0, 0, 0, 0.1) 1.5px, transparent 1.5px);
-    --dot-size: 30px 30px;
 }
 
 * {
@@ -33,9 +29,6 @@
 
 body {
     background-color: var(--bg-color);
-    background-image: var(--dot-bg);
-    background-size: var(--dot-size);
-    background-repeat: repeat;
     color: var(--text-primary);
     font-family: var(--font-sans);
     line-height: 1.5;
@@ -580,12 +573,11 @@ header .btn-budget {
 
 .about-scribble-wrapper img {
     width: 100%;
-    max-width: 500px;
+    max-width: 450px;
     height: auto;
     display: block;
     margin: 0 auto;
-    filter: grayscale(1) contrast(1.1);
-    opacity: 0.8;
+    opacity: 1;
 }
 
 .about-content-preview {
