@@ -6,12 +6,8 @@
 #}
 {% if activeSection == 'projetos' or activeSection == 'projects' %}
 <section class="container cta-architectural-quote" style="padding: var(--spacing-xl) 0; border-top: 1px solid var(--border-color); margin-top: var(--spacing-lg);">
-    <div class="manifesto-wrapper" style="position: relative; width: 100%; height: 650px; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid rgba(0,0,0,0.08); background: #eee;">
-        <!-- Background Image -->
-        <img src="{{ site.identity.manifesto_image }}" alt="Architectural Blueprint" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.6; filter: grayscale(1) contrast(1.1); z-index: 1;">
-        
-        <!-- Overlaid Content -->
-        <div class="quote-content fade-up active" style="position: relative; z-index: 2; text-align: center; max-width: 800px; padding: 2rem; background: rgba(255,255,255,0.7); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 4px;">
+    <div class="manifesto-wrapper" style="width: 100%; display: flex; align-items: center; justify-content: center; text-align: center;">
+        <div class="quote-content fade-up active" style="max-width: 800px; padding: 2rem;">
             <span class="caps" style="opacity: 0.5; display: block; margin-bottom: 2rem; letter-spacing: 0.35em; font-size: 0.7rem;">Manifesto</span>
             <blockquote style="margin: 0; padding: 0; border: none;">
                 <p style="font-family: var(--font-serif); font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.2; margin-bottom: 2rem; color: var(--text-primary); font-weight: 400; font-style: italic;">
@@ -57,13 +53,8 @@
 .cta-next-steps .btn-budget:hover {
     transform: translateY(-8px);
     box-shadow: 0 15px 40px rgba(0,0,0,0.12);
-    background: var(--accent-color); /* Highlight color */
+    background: var(--accent-color);
     border-color: var(--accent-color);
     color: #fff !important;
-}
-@media (max-width: 768px) {
-    .manifesto-wrapper {
-        height: 500px !important;
-    }
 }
 </style>

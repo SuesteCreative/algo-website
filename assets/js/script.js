@@ -89,11 +89,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // ── AJAX Form Submission ──────────────────────────────────────
     const handleFormSubmit = (e) => {
         const form = e.target;
-        if (!form.hasAttribute('data-netlify') && !form.classList.contains('contact-form')) return;
+        if (!form.hasAttribute('data-netlify')) return;
 
         e.preventDefault();
         const formData = new FormData(form);
         const submitBtn = form.querySelector('button[type="submit"]');
+        if (!submitBtn) return;
+
         const originalBtnText = submitBtn.innerText;
 
         let msgContainer = form.querySelector('.form-message');
@@ -135,10 +137,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     };
 
-    document.querySelectorAll('form').forEach(form => {
-        if (form.hasAttribute('data-netlify')) {
-            form.addEventListener('submit', handleFormSubmit);
-        }
+    document.querySelectorAll('form[data-netlify]').forEach(form => {
+        form.addEventListener('submit', handleFormSubmit);
     });
 
     // ── Observer Observation ──────────────────────────────────────
@@ -214,16 +214,26 @@ document.addEventListener('DOMContentLoaded', () => {
         ball.style.width = '0px'; ball.style.height = '0px'; ball.style.opacity = '0';
     }
 
+    function getBudgetBtnCoords() {
+        const btn = document.querySelector('header .btn-budget') || document.querySelector('.btn-budget');
+        if (btn) {
+            const rect = btn.getBoundingClientRect();
+            return { cx: rect.left + rect.width / 2, cy: rect.top + rect.height / 2 };
+        }
+        return { cx: window.innerWidth / 2, cy: window.innerHeight / 2 };
+    }
+
     window.addEventListener('load', () => {
-        // Only run collapse if we strictly came from or are on the budget page
-        // OR if the body is orcamento-page
         const isBudgetPage = document.body.classList.contains('orcamento-page');
         const fromBudgetPage = document.referrer.includes('orcamento');
 
         if (isBudgetPage || fromBudgetPage) {
-            collapse(window.innerWidth / 2, window.innerHeight / 2);
+            const coords = getBudgetBtnCoords();
+            collapse(coords.cx, coords.cy);
         } else {
             document.body.style.opacity = '1';
+            const ripple = document.getElementById('orcamento-transition-overlay');
+            if (ripple) ripple.style.display = 'none';
         }
     });
 
@@ -233,7 +243,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const href = link.getAttribute('href');
         if (!href || href.startsWith('http') || href.startsWith('#') || href.startsWith('mailto')) return;
 
-        // ONLY trigger transition if GOING TO or FROM the budget page
         const isToBudget = href.includes('orcamento');
         const isFromBudget = document.body.classList.contains('orcamento-page');
 
