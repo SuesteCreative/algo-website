@@ -24,56 +24,58 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 document.addEventListener('DOMContentLoaded', () => {
-    // ── Hero Video Logic ──────────────────────────────────────────
+    // ── Hero Video & Global Autoplay (iOS focus) ──────────────────
     const heroVideo = document.getElementById('heroVideo');
     const heroBg = document.getElementById('heroBg');
 
+    const tryPlayVideo = (video) => {
+        if (!video) return;
+        video.muted = true; // Essential for iOS
+        const playPromise = video.play();
+
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                // Success! Ensure video-ended class is removed if it was added
+                if (video.id === 'heroVideo' && heroBg) {
+                    heroBg.classList.remove('video-ended');
+                }
+            }).catch(error => {
+                console.log("Autoplay blocked/failed:", error);
+                // On failure, we show the poster/img fallback
+                if (video.id === 'heroVideo' && heroBg) {
+                    heroBg.classList.add('video-ended');
+                }
+            });
+        }
+    };
+
     if (heroVideo) {
+        // Ensure iOS attributes are present
         heroVideo.setAttribute('playsinline', '');
         heroVideo.setAttribute('webkit-playsinline', '');
         heroVideo.muted = true;
-        heroVideo.setAttribute('muted', '');
 
-        const playVideo = () => {
-            const p = heroVideo.play();
-            if (p !== undefined) {
-                p.catch(() => {
-                    if (heroBg) heroBg.classList.add('video-ended');
-                });
-            }
+        // Initial attempt
+        tryPlayVideo(heroVideo);
+
+        // Interaction enforcers
+        const fullEnforcer = () => {
+            tryPlayVideo(heroVideo);
+            // Also enforce any other autoplay videos
+            document.querySelectorAll('video[autoplay]').forEach(v => tryPlayVideo(v));
         };
 
-        playVideo();
-
-        const handleVideoEnd = () => {
-            // We allow looping now, but still keep the handleVideoEnd if needed for other logic
-            // heroVideo.pause(); // Removed to allow loop
+        window.addEventListener('touchstart', fullEnforcer, { once: true });
+        window.addEventListener('click', fullEnforcer, { once: true });
+        window.addEventListener('scroll', fullEnforcer, { once: true });
+    } else {
+        // Fallback for pages without heroVideo
+        const globalEnforce = () => {
+            document.querySelectorAll('video[autoplay]').forEach(v => tryPlayVideo(v));
         };
-
-        // heroVideo.addEventListener('timeupdate', () => {
-        //     if (heroVideo.currentTime >= 9) handleVideoEnd();
-        // });
-        heroVideo.addEventListener('ended', handleVideoEnd);
-
-        window.addEventListener('touchstart', () => {
-            if (heroVideo.paused) heroVideo.play();
-        }, { once: true });
+        window.addEventListener('touchstart', globalEnforce, { once: true });
+        window.addEventListener('click', globalEnforce, { once: true });
     }
-
-    // ── Global Autoplay Enforcer (especially for iOS) ──────────────
-    const enforceAutoplay = () => {
-        const videos = document.querySelectorAll('video[autoplay]');
-        videos.forEach(v => {
-            v.muted = true;
-            v.play().catch(err => {
-                console.log("Autoplay blocked, waiting for interaction...");
-            });
-        });
-    };
-
-    enforceAutoplay();
-    window.addEventListener('touchstart', enforceAutoplay, { once: true });
-    window.addEventListener('click', enforceAutoplay, { once: true });
 
     // ── Mobile Drawer Logic ───────────────────────────────────────
     const menuToggle = document.getElementById('menuToggle');
