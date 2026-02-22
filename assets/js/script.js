@@ -98,6 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const originalBtnText = submitBtn.innerText;
 
+        // Find or create message container
         let msgContainer = form.querySelector('.form-message');
         if (!msgContainer) {
             msgContainer = document.createElement('div');
@@ -113,7 +114,10 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.innerText = 'A enviar...';
         msgContainer.style.display = 'none';
 
-        fetch("/", {
+        // Submit to the same URL or "/" as required by Netlify AJAX
+        const fetchUrl = form.getAttribute('action') || "/";
+
+        fetch(fetchUrl, {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: new URLSearchParams(formData).toString(),
@@ -128,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitBtn.disabled = false;
             })
             .catch(() => {
-                msgContainer.innerText = 'Erro ao enviar. Tente novamente.';
+                msgContainer.innerText = 'Ocorreu um erro ao enviar. Por favor, tente novamente.';
                 msgContainer.style.background = 'rgba(100, 0, 0, 0.05)';
                 msgContainer.style.color = 'darkred';
                 msgContainer.style.display = 'block';
@@ -137,7 +141,9 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     };
 
+    // Attach to all forms with data-netlify, ensuring we don't double-attach
     document.querySelectorAll('form[data-netlify]').forEach(form => {
+        form.removeEventListener('submit', handleFormSubmit);
         form.addEventListener('submit', handleFormSubmit);
     });
 
@@ -149,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ── Unified Ripple Transition Logic ───────────────────────────────── */
 (function () {
-    const DURATION = 900;
+    const DURATION = 1000; // Increased duration for smoother feel
     const isMobile = window.innerWidth <= 768;
 
     function getRipple() {
@@ -159,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!ball) {
             ov = document.createElement('div');
             ov.id = 'orcamento-transition-overlay';
-            ov.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:999999;pointer-events:none;overflow:hidden;';
+            ov.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:999999;pointer-events:none;overflow:hidden;background:transparent;transition: background 0.4s ease;';
             ball = document.createElement('div');
             ball.id = 'orcamento-transition-ball';
             ball.style.cssText = 'position:absolute;width:0;height:0;border-radius:50%;background:#0e0e0e;transform:translate(-50%,-50%);transition:none;';
@@ -173,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function expand(cx, cy, href) {
-        const { ball } = getRipple();
+        const { ball, ov } = getRipple();
         const r = Math.sqrt(Math.pow(window.innerWidth, 2) + Math.pow(window.innerHeight, 2)) * 1.5;
 
         if (isMobile) {
@@ -183,6 +189,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        ov.style.display = 'block';
+        ov.style.pointerEvents = 'auto';
         ball.style.transition = 'none'; ball.style.width = '0px'; ball.style.height = '0px';
         ball.style.left = cx + 'px'; ball.style.top = cy + 'px'; ball.style.opacity = '1';
         ball.getBoundingClientRect();
@@ -191,8 +199,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         setTimeout(() => {
             document.body.style.opacity = '0';
-            window.location.href = href;
-        }, DURATION - 100);
+            // Final small delay to ensure opaque screen before redirect
+            setTimeout(() => { window.location.href = href; }, 100);
+        }, DURATION);
     }
 
     function collapse(cx, cy) {
@@ -200,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const r = Math.sqrt(Math.pow(window.innerWidth, 2) + Math.pow(window.innerHeight, 2)) * 1.5;
 
         if (isMobile) {
-            ball.style.display = 'none';
+            if (ball) ball.style.display = 'none';
             document.body.style.opacity = '1';
             return;
         }
@@ -210,11 +219,16 @@ document.addEventListener('DOMContentLoaded', () => {
         ball.getBoundingClientRect();
 
         document.body.style.opacity = '1';
-        ball.style.transition = `width ${DURATION}ms cubic-bezier(0.4, 0, 0.2, 1), height ${DURATION}ms cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ${DURATION - 200}ms`;
+        ball.style.transition = `width ${DURATION}ms cubic-bezier(0.4, 0, 0.2, 1), height ${DURATION}ms cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ${DURATION}ms`;
         ball.style.width = '0px'; ball.style.height = '0px'; ball.style.opacity = '0';
+
+        setTimeout(() => {
+            ball.parentElement.style.display = 'none';
+        }, DURATION + 300);
     }
 
     function getBudgetBtnCoords() {
+        // Try to find the navbar button specifically
         const btn = document.querySelector('header .btn-budget') || document.querySelector('.btn-budget');
         if (btn) {
             const rect = btn.getBoundingClientRect();

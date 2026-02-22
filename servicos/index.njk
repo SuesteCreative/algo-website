@@ -15,13 +15,13 @@ permalink: /servicos/
 <main>
     <section class="container" style="padding-top: var(--spacing-xl); padding-bottom: var(--spacing-lg);">
         <div style="max-width: 800px;">
-            <span class="caps fade-up active">Áreas de Atuação</span>
-            <h1 class="page-title fade-up active">{{ site.services.header_titles.title_pt }}</h1>
+            <span class="caps fade-up">Áreas de Atuação</span>
+            <h1 class="page-title fade-up">{{ site.services.header_titles.title_pt }}</h1>
         </div>
 
         <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 5rem 4rem; margin-top: var(--spacing-lg);">
             {% for item in site.services.items %}
-            <div class="service-card fade-up active">
+            <div class="service-card fade-up">
                 {% if item.image %}
                 <div class="service-image" style="width: 100%; height: 280px; overflow: hidden; margin-bottom: 2rem; border: 1px solid rgba(0,0,0,0.05);">
                     <img src="{{ item.image }}" alt="{{ item.title_pt }}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;">
