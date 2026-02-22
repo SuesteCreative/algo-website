@@ -179,11 +179,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function expand(cx, cy, href) {
         const { ball, ov } = getRipple();
         const r = Math.sqrt(Math.pow(window.innerWidth, 2) + Math.pow(window.innerHeight, 2)) * 1.5;
+        const isMob = window.innerWidth <= 768;
 
-        if (isMobile) {
-            document.body.style.transition = 'opacity 0.4s ease';
+        if (isMob) {
+            // Faster, more solid transition for mobile to avoid flash
+            document.body.style.transition = 'opacity 0.2s ease';
             document.body.style.opacity = '0';
-            setTimeout(() => { window.location.href = href; }, 400);
+            setTimeout(() => { window.location.href = href; }, 200);
             return;
         }
 
@@ -218,8 +220,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const { ball, ov } = getRipple();
         const r = Math.sqrt(Math.pow(window.innerWidth, 2) + Math.pow(window.innerHeight, 2)) * 1.5;
 
-        if (isMobile) {
+        // Check mobile state dynamically
+        const isMob = window.innerWidth <= 768;
+
+        if (isMob) {
             if (ball) ball.style.display = 'none';
+            if (ov) {
+                ov.style.transition = 'opacity 0.3s ease';
+                ov.style.opacity = '0';
+                setTimeout(() => { ov.style.display = 'none'; }, 300);
+            }
             document.body.style.opacity = '1';
             return;
         }
@@ -270,22 +280,38 @@ document.addEventListener('DOMContentLoaded', () => {
         return { cx: window.innerWidth / 2, cy: window.innerHeight / 2 };
     }
 
-    window.addEventListener('load', () => {
+    // Run collapse logic on DOMContentLoaded for speed, 
+    // but also on Load in case layout shifts.
+    const handleInitialCollapse = () => {
         const isBudgetPage = document.body.classList.contains('orcamento-page');
         const fromBudgetPage = document.referrer.includes('orcamento');
 
         if (isBudgetPage || fromBudgetPage) {
-            // Slight delay to ensure layout is stable for button detection
-            setTimeout(() => {
-                const coords = getBudgetBtnCoords();
-                collapse(coords.cx, coords.cy);
-            }, 50);
+            const coords = getBudgetBtnCoords();
+            collapse(coords.cx, coords.cy);
         } else {
             document.body.style.opacity = '1';
             const ripple = document.getElementById('orcamento-transition-overlay');
             if (ripple) ripple.style.display = 'none';
         }
-    });
+    };
+
+    if (document.readyState === 'complete') {
+        handleInitialCollapse();
+    } else {
+        window.addEventListener('load', handleInitialCollapse);
+    }
+
+    // Safety fallback: Ensure page is visible after 2 seconds no matter what
+    setTimeout(() => {
+        document.body.style.opacity = '1';
+        const ripple = document.getElementById('orcamento-transition-overlay');
+        if (ripple && ripple.style.display !== 'none') {
+            ripple.style.transition = 'opacity 0.5s ease';
+            ripple.style.opacity = '0';
+            setTimeout(() => { ripple.style.display = 'none'; }, 500);
+        }
+    }, 2000);
 
     document.addEventListener('click', (e) => {
         const link = e.target.closest('a[href]');
