@@ -83,7 +83,7 @@ module.exports = function (eleventyConfig) {
     // Favicons: Back-office (/admin/)
     eleventyConfig.addPassthroughCopy({
         "assets/img/favicon/favicon-admin32x32.ico": "admin/favicon-admin.ico",
-        "assets/img/favicon/fav-icon-admin.svg": "admin/favicon-admin.svg",
+        "assets/img/fav-icon-admin.svg": "admin/favicon-admin.svg",
         "assets/img/favicon/favicon-admin-16x16.png": "admin/favicon-admin-16x16.png",
         "assets/img/favicon/favicon-admin-32x32.png": "admin/favicon-admin-32x32.png",
         "assets/img/favicon/apple-touch-icon-admin.png": "admin/apple-touch-icon-admin.png"
