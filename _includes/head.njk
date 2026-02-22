@@ -2,6 +2,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="{{ metaDesc }}">
 <title>{{ pageTitle }}</title>
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ site.siteUrl }}{{ page.url }}">
+<meta property="og:title" content="{{ pageTitle }}">
+<meta property="og:description" content="{{ metaDesc }}">
+<meta property="og:image" content="{{ site.siteUrl }}{{ ogImage | default('/assets/img/hero-image-final.webp') }}">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="{{ site.siteUrl }}{{ page.url }}">
+<meta property="twitter:title" content="{{ pageTitle }}">
+<meta property="twitter:description" content="{{ metaDesc }}">
+<meta property="twitter:image" content="{{ site.siteUrl }}{{ ogImage | default('/assets/img/hero-image-final.webp') }}">
+
 {% if canonical %}<link rel="canonical" href="{{ canonical }}">{% endif %}
 {% if hreflangPt %}<link rel="alternate" hreflang="pt" href="{{ hreflangPt }}">{% endif %}
 {% if hreflangEn %}<link rel="alternate" hreflang="en" href="{{ hreflangEn }}">{% endif %}

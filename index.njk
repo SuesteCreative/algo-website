@@ -17,6 +17,35 @@ permalink: /
     <link rel="stylesheet" href="/assets/css/scroller.css">
     <!-- Netlify Identity -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    
+    <!-- LocalBusiness Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ArchitecturalService",
+      "name": "Algo Atelier",
+      "image": "{{ site.siteUrl }}/assets/img/hero-image-final.webp",
+      "@id": "{{ site.siteUrl }}",
+      "url": "{{ site.siteUrl }}",
+      "telephone": "{{ site.contacts.phone }}",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua da Arquitetura, 123",
+        "addressLocality": "Algarve",
+        "postalCode": "8500-000",
+        "addressCountry": "PT"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 37.1272,
+        "longitude": -8.6038
+      },
+      "sameAs": [
+        "{{ site.social.instagram_url }}",
+        "{{ site.social.linkedin_url }}"
+      ]
+    }
+    </script>
 </head>
 <body>
     {% include "header-pt.njk" %}
@@ -56,7 +85,7 @@ permalink: /
                 <a href="/projetos/{{ projeto.data.slug }}/" class="project-card fade-up">
                     <div class="img-wrapper">
                         {% set cover = projeto.data.cover_image or site.identity.project_placeholder %}
-                        <img src="{{ cover }}" alt="{{ projeto.data.cover_image_alt or projeto.data.title }}" class="reveal-image">
+                        <img src="{{ cover }}" alt="{{ projeto.data.cover_image_alt or projeto.data.title }}" class="reveal-image" loading="lazy">
                     </div>
                     <p class="location">{{ projeto.data.location }}</p>
                     <h3>{{ projeto.data.title }}</h3>
@@ -74,7 +103,7 @@ permalink: /
             <div class="container">
                 <div class="about-summary-grid">
                     <div class="about-scribble-wrapper reveal-left">
-                        <img src="/assets/img/logo-scribbled-transparent.webp" alt="Algo Atelier Scribble Logo">
+                        <img src="/assets/img/logo-scribbled-transparent.webp" alt="Algo Atelier Scribble Logo" loading="lazy">
                     </div>
                     <div class="about-content-preview reveal-right">
                         <span class="caps" style="display: block; margin-bottom: 1rem; opacity: 0.6;">O Atelier</span>

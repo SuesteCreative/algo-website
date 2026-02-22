@@ -103,15 +103,19 @@
 </head>
 
 <body>
-    <div class="error-page">
+    <div class="error-page"
+        style="background-image: radial-gradient(circle, rgba(0, 0, 0, 0.05) 1px, transparent 1px); background-size: 30px 30px;">
         <span class="error-code">404</span>
         <div class="error-content">
-            <span class="caps">Página não encontrada</span>
-            <h1>Esta página não existe ou foi movida.</h1>
-            <p>Verifique o endereço ou navegue de volta para o início.</p>
+            <span class="caps" style="opacity: 0.4; font-size: 0.65rem;">Erro 404</span>
+            <h1 style="margin: 1.5rem 0; line-height: 1.2;">Parece que se perdeu<br>no espaço.</h1>
+            <p style="margin-bottom: 2.5rem; opacity: 0.7;">A página que procura não existe ou foi movida para uma nova
+                coordenadas.</p>
             <div class="error-actions">
-                <a href="/" class="btn-back">← Voltar ao Início</a>
-                <a href="/projetos/" class="btn-ghost">Ver Projetos</a>
+                <a href="/" class="btn-back" style="border-radius: 4px; transition: all 0.3s ease;">← Voltar ao
+                    Início</a>
+                <a href="/projetos/" class="btn-ghost" style="border-radius: 4px; transition: all 0.3s ease;">Explorar
+                    Projetos</a>
             </div>
         </div>
     </div>
