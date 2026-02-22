@@ -168,25 +168,40 @@ nav {
     /* No dot for lang switch */
 }
 
-.btn-budget {
-    margin-left: 1rem;
+.btn-budget,
+.btn-all,
+.btn-primary {
+    display: inline-block;
     background: transparent;
     color: var(--text-primary) !important;
     border: 1.5px solid var(--text-primary);
     font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.2em;
     font-weight: 600;
-    padding: 0.7rem 1.6rem;
-    border-radius: 4px;
+    padding: 1rem 2.8rem;
+    border-radius: 2px;
     text-decoration: none;
     transition: var(--transition-fast);
+    cursor: pointer;
+    text-align: center;
+    line-height: 1;
+    min-width: 200px;
+    /* Ensures a consistent baseline width */
 }
 
-.btn-budget:hover {
+.btn-budget:hover,
+.btn-all:hover,
+.btn-primary:hover {
     background: var(--accent-color) !important;
     border-color: var(--accent-color) !important;
     color: #fff !important;
+}
+
+header .btn-budget {
+    min-width: auto;
+    padding: 0.7rem 1.6rem;
+    margin-left: 1rem;
 }
 
 .menu-toggle {
@@ -477,26 +492,7 @@ nav {
     text-decoration: none !important;
 }
 
-.btn-all {
-    display: inline-block;
-    padding: 1.1rem 2.8rem;
-    border: 1.5px solid #121212;
-    color: #121212;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 0.7rem;
-    letter-spacing: 0.25em;
-    font-weight: 600;
-    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-    margin-top: 2rem;
-    border-radius: 2px;
-}
-
-.btn-all:hover {
-    background: var(--accent-color);
-    border-color: var(--accent-color);
-    color: #fff !important;
-}
+/* btn-all is now handled by the shared class above */
 
 /* Site Footer */
 .site-footer {

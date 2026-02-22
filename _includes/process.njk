@@ -21,11 +21,11 @@
             <div class="process-visual fade-up">
                 <div class="video-wrapper">
                     {% if site.process_video.file %}
-                        <video autoplay muted loop playsinline class="process-video">
+                        <video autoplay muted loop playsinline preload="auto" class="process-video">
                             <source src="{{ site.process_video.file }}" type="video/mp4">
                         </video>
                     {% elif site.process_video.external_url %}
-                        <video autoplay muted loop playsinline class="process-video">
+                        <video autoplay muted loop playsinline preload="auto" class="process-video">
                             <source src="{{ site.process_video.external_url }}" type="video/mp4">
                         </video>
                     {% elif site.process_video.youtube_id %}
@@ -33,7 +33,7 @@
                             <iframe src="https://www.youtube.com/embed/{{ site.process_video.youtube_id }}?autoplay=1&mute=1&loop=1&playlist={{ site.process_video.youtube_id }}&controls=0&showinfo=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                         </div>
                     {% else %}
-                        <video autoplay muted loop playsinline class="process-video">
+                        <video autoplay muted loop playsinline preload="auto" class="process-video">
                             <source src="/assets/img/video-placeholder.mp4" type="video/mp4">
                         </video>
                     {% endif %}

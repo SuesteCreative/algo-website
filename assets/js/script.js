@@ -46,22 +46,34 @@ document.addEventListener('DOMContentLoaded', () => {
         playVideo();
 
         const handleVideoEnd = () => {
-            if (heroBg && !heroBg.classList.contains('video-ended')) {
-                heroVideo.pause();
-                heroVideo.currentTime = 9;
-                heroBg.classList.add('video-ended');
-            }
+            // We allow looping now, but still keep the handleVideoEnd if needed for other logic
+            // heroVideo.pause(); // Removed to allow loop
         };
 
-        heroVideo.addEventListener('timeupdate', () => {
-            if (heroVideo.currentTime >= 9) handleVideoEnd();
-        });
+        // heroVideo.addEventListener('timeupdate', () => {
+        //     if (heroVideo.currentTime >= 9) handleVideoEnd();
+        // });
         heroVideo.addEventListener('ended', handleVideoEnd);
 
         window.addEventListener('touchstart', () => {
             if (heroVideo.paused) heroVideo.play();
         }, { once: true });
     }
+
+    // ── Global Autoplay Enforcer (especially for iOS) ──────────────
+    const enforceAutoplay = () => {
+        const videos = document.querySelectorAll('video[autoplay]');
+        videos.forEach(v => {
+            v.muted = true;
+            v.play().catch(err => {
+                console.log("Autoplay blocked, waiting for interaction...");
+            });
+        });
+    };
+
+    enforceAutoplay();
+    window.addEventListener('touchstart', enforceAutoplay, { once: true });
+    window.addEventListener('click', enforceAutoplay, { once: true });
 
     // ── Mobile Drawer Logic ───────────────────────────────────────
     const menuToggle = document.getElementById('menuToggle');
