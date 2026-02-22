@@ -102,11 +102,19 @@ permalink: /sobre/
     }
 
     .col-left .caps {
-        font-size: 0.7rem;
-        letter-spacing: 0.2em;
+        font-size: 0.75rem;
+        letter-spacing: 0.25em;
         opacity: 0.5;
         position: sticky;
-        top: 15vh;
+        top: 140px; /* Aligned with desktop menu line */
+        display: inline-block;
+        transition: opacity 0.8s ease;
+    }
+
+    /* Override fade-up transform which breaks position:sticky */
+    .col-left .caps.fade-up.active {
+        transform: none !important;
+        opacity: 0.6;
     }
 
     .section-title {

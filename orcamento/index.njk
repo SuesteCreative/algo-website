@@ -227,8 +227,18 @@ permalink: /orcamento/
                     <textarea id="mensagem" name="mensagem" rows="5" placeholder="Descreva brevemente o seu terreno, ideia ou projeto..."></textarea>
                 </div>
 
+                <div class="privacy-group" style="display:flex; align-items:flex-start; gap:12px; margin: 0.5rem 0;">
+                    <input type="checkbox" id="privacy" name="privacy" required style="width:18px; height:18px; cursor:pointer; margin-top:3px; flex-shrink:0;">
+                    <label for="privacy" style="font-size:0.8rem; line-height:1.5; opacity:0.8; cursor:pointer; color: var(--text-primary);">
+                        Li e aceito a <a href="/legal/privacidade/" style="color:inherit; text-decoration:underline;">Política de Privacidade</a> e autorizo o tratamento dos meus dados para fins de contacto.
+                    </label>
+                </div>
+
+                <input type="hidden" name="recipient_email" value="{{ site.identity.contact_recipient }}">
+                <input type="hidden" name="cc_email" value="{{ site.identity.contact_cc }}">
+
                 <div>
-                    <button type="submit" class="btn-budget" style="border: none; cursor: pointer; font-family: inherit;">
+                    <button type="submit" class="btn-budget" style="border: none; cursor: pointer; font-family: inherit; transition: all 0.3s ease;">
                         Enviar Pedido
                     </button>
                 </div>

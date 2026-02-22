@@ -269,6 +269,8 @@ collections:
             fields:
               - { label: "Favicon do Site", name: "site_favicon", widget: image, default: "/assets/img/fav-icon.svg" }
               - { label: "Placeholder para Projetos", name: "project_placeholder", widget: image, required: false, hint: "Imagem usada quando um projeto não tem imagem de capa configurada." }
+              - { label: "Email Destinatário Formulários", name: "contact_recipient", widget: string, hint: "Email onde recebe os pedidos." }
+              - { label: "CC Email (Opcional)", name: "contact_cc", widget: string, required: false }
 
           - label: "Redes Sociais"
             name: "social"

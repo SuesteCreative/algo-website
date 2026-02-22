@@ -41,7 +41,10 @@ permalink: /contacto/
             </div>
 
             <div class="fade-up active contact-form-col">
-                <form action="#" class="contact-form">
+                <form name="contacto" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
+                    <input type="hidden" name="form-name" value="contacto">
+                    <p style="display:none;"><label>Don't fill this: <input name="bot-field"></label></p>
+                    
                     <div class="form-group">
                         <label for="name">Nome Completo</label>
                         <input type="text" id="name" name="name" required placeholder="Como se chama?">
@@ -56,8 +59,12 @@ permalink: /contacto/
                     </div>
                     <div class="privacy-group">
                         <input type="checkbox" id="privacy" name="privacy" required>
-                        <label for="privacy">Li e aceito a <a href="/legal/privacidade/">Política de Privacidade</a> e o tratamento dos meus dados para fins de contacto.</label>
+                        <label for="privacy">Li e aceito a <a href="/legal/privacidade/">Política de Privacidade</a> e autorizo o tratamento dos meus dados para fins de contacto.</label>
                     </div>
+
+                    <input type="hidden" name="recipient_email" value="{{ site.identity.contact_recipient }}">
+                    <input type="hidden" name="cc_email" value="{{ site.identity.contact_cc }}">
+
                     <button type="submit" class="btn-budget" style="width: 100%; margin: 0; padding: 1.2rem;">Enviar Mensagem</button>
                 </form>
                 <div class="map-clean-container contact-map-inline">

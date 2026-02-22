@@ -1,6 +1,8 @@
 identity:
   site_favicon: /assets/img/fav-icon.svg
   project_placeholder: /assets/img/house-placeholder.webp
+  contact_recipient: pedrotovarporto@gmail.com
+  contact_cc: ""
 homepage_seo:
   meta_title_pt: Algo Atelier | Arquitetura
   meta_desc_pt: Arquitetura Contemporânea & Design Minimalista em Portugal.

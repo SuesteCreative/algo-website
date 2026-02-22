@@ -78,10 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ── Unified Ripple Transition Logic ───────────────────────────────── */
 (function () {
-    const DURATION = 800;
+    const DURATION = 900; // Slightly slower for better stability
 
     function getRipple() {
-        // Tenta encontrar por qualquer um dos IDs usados (velhos ou novos)
         let ball = document.getElementById('orcamento-transition-ball') || document.getElementById('ripple');
         let ov = document.getElementById('orcamento-transition-overlay') || document.getElementById('page-transition');
 
@@ -95,7 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
             ov.appendChild(ball);
             document.body.appendChild(ov);
         } else {
-            // Se já existir (hardcoded no html), garante que o overlay tem o z-index correto
             ov = ball.parentElement;
             ov.style.zIndex = '999999';
         }
@@ -104,33 +102,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function expand(cx, cy, href) {
         const { ball } = getRipple();
-        const r = Math.sqrt(Math.pow(window.innerWidth, 2) + Math.pow(window.innerHeight, 2)) * 1.2;
+        const r = Math.sqrt(Math.pow(window.innerWidth, 2) + Math.pow(window.innerHeight, 2)) * 1.5; // Larger radius covers better
         ball.style.transition = 'none'; ball.style.width = '0px'; ball.style.height = '0px';
         ball.style.left = cx + 'px'; ball.style.top = cy + 'px'; ball.style.opacity = '1';
         ball.getBoundingClientRect();
         ball.style.transition = `width ${DURATION}ms cubic-bezier(0.4, 0, 0.2, 1), height ${DURATION}ms cubic-bezier(0.4, 0, 0.2, 1)`;
         ball.style.width = (r * 2) + 'px'; ball.style.height = (r * 2) + 'px';
-        if (href) setTimeout(() => { window.location.href = href; }, DURATION);
+        if (href) {
+            // Wait slightly longer than transition to ensure full coverage before redirect
+            setTimeout(() => {
+                document.body.style.opacity = '0'; // Ease out current content
+                window.location.href = href;
+            }, DURATION - 50);
+        }
     }
 
     function collapse(cx, cy) {
         const { ball } = getRipple();
-        const r = Math.sqrt(Math.pow(window.innerWidth, 2) + Math.pow(window.innerHeight, 2)) * 1.2;
+        const r = Math.sqrt(Math.pow(window.innerWidth, 2) + Math.pow(window.innerHeight, 2)) * 1.5;
+
+        // Ensure ball is visible covering the screen before collapsing
         ball.style.transition = 'none'; ball.style.width = (r * 2) + 'px'; ball.style.height = (r * 2) + 'px';
         ball.style.left = cx + 'px'; ball.style.top = cy + 'px'; ball.style.opacity = '1';
         ball.getBoundingClientRect();
-        ball.style.transition = `width ${DURATION}ms cubic-bezier(0.4, 0, 0.2, 1), height ${DURATION}ms cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ${DURATION - 150}ms`;
+
+        // Sync with page appearance
+        document.body.style.transition = 'opacity 0.3s ease';
+        document.body.style.opacity = '1';
+
+        ball.style.transition = `width ${DURATION}ms cubic-bezier(0.4, 0, 0.2, 1), height ${DURATION}ms cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ${DURATION - 200}ms`;
         ball.style.width = '0px'; ball.style.height = '0px'; ball.style.opacity = '0';
     }
 
-    // Ao carregar a página
     window.addEventListener('load', () => {
-        // Caso A: Entrando na página de orçamento (revelar do centro)
         if (document.body.classList.contains('orcamento-page')) {
             collapse(window.innerWidth / 2, window.innerHeight / 2);
         }
-        // Caso B: Voltando da página de orçamento (fechar no botão)
-        else if (document.referrer.includes('orcamento')) {
+        else if (document.referrer.includes('orcamento') || window.location.hash === '#budget_return') {
             let btn = document.querySelector('a.btn-budget') || document.querySelector('a[href*="orcamento"]');
             if (btn) {
                 let rect = btn.getBoundingClientRect();
@@ -141,7 +149,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Interceder cliques em links
     document.addEventListener('click', (e) => {
         const link = e.target.closest('a[href]');
         if (!link || link.target === '_blank') return;
@@ -154,7 +161,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isToBudget || isFromBudget) {
             e.preventDefault();
             const rect = link.getBoundingClientRect();
-            // Se o link for pequeno/sem rect visível (ex: link no rodapé), usa o centro como fallback
             const cx = rect.width ? (rect.left + rect.width / 2) : (window.innerWidth / 2);
             const cy = rect.height ? (rect.top + rect.height / 2) : (window.innerHeight / 2);
             expand(cx, cy, href);
