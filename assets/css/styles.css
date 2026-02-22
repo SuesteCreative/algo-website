@@ -1423,3 +1423,71 @@ _____________________________________________________________*/
         z-index: 1;
     }
 }
+
+/* ── Legal Pages Styles ────────────────────────────────────────── */
+.legal-content {
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.legal-content h2 {
+    color: var(--text-primary);
+    font-size: 1.4rem;
+    margin: 3rem 0 1.5rem;
+    font-weight: 500;
+}
+
+.legal-content h3 {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    margin: 2rem 0 1rem;
+    font-weight: 500;
+}
+
+.legal-content p,
+.legal-content ul {
+    margin-bottom: 1.5rem;
+}
+
+.legal-content ul {
+    padding-left: 1.2rem;
+}
+
+.legal-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-size: 0.85rem;
+    text-align: left;
+    border: 1px solid var(--border-color);
+}
+
+.legal-table th,
+.legal-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.legal-table th {
+    background: rgba(0, 0, 0, 0.02);
+    font-weight: 600;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+}
+
+.legal-table code {
+    background: rgba(0, 0, 0, 0.05);
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+    .legal-table {
+        display: block;
+        overflow-x: auto;
+    }
+}
