@@ -1,22 +1,29 @@
 identity:
   site_favicon: /assets/img/fav-icon.svg
   project_placeholder: /assets/img/house-placeholder.webp
-  contact_recipient: pedrotovarporto@gmail.com
+  contact_recipient: duarte.fidalgo@gmail.com
   contact_cc: ""
-  manifesto_quote_pt: "A arquitetura é o jogo sábio, correto e magnífico dos volumes sob a luz."
-  manifesto_quote_en: "Architecture is the learned game, correct and magnificent, of forms assembled in the light."
-  manifesto_author: "Le Corbusier"
-  manifesto_image: "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=2000"
+  manifesto_quote_pt: A arquitetura é o jogo sábio, correto e magnífico dos volumes sob a luz.
+  manifesto_quote_en: Architecture is the learned game, correct and magnificent,
+    of forms assembled in the light.
+  manifesto_author: Le Corbusier
+  manifesto_image: https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=2000
 homepage_seo:
   meta_title_pt: Algo Atelier | Arquitetos em Portugal (Algarve e Lisboa)
-  meta_desc_pt: Escritório de arquitetura em Portugal especializado em licenciamento, reabilitação urbana e moradias de luxo no Algarve e Grande Lisboa. Design contemporâneo e sustentável.
+  meta_desc_pt: Escritório de arquitetura em Portugal especializado em
+    licenciamento, reabilitação urbana e moradias de luxo no Algarve e Grande
+    Lisboa. Design contemporâneo e sustentável.
   meta_title_en: Algo Atelier | Architects in Portugal (Algarve & Lisbon)
-  meta_desc_en: Architectural studio in Portugal specializing in licensing, urban rehabilitation, and luxury villas in Algarve and Lisbon. Contemporary and sustainable design.
+  meta_desc_en: Architectural studio in Portugal specializing in licensing, urban
+    rehabilitation, and luxury villas in Algarve and Lisbon. Contemporary and
+    sustainable design.
 intro:
-  intro_tagline_pt: Um atelier de arquitetura com presença nacional, focado na 
-    essência do espaço e rigor técnico no Algarve e Lisboa. Projetamos o futuro com verdade e precisão.
-  intro_tagline_en: A national architectural studio focused on the essence of space 
-    and technical rigor in Algarve and Lisbon. Designing the future with truth and precision.
+  intro_tagline_pt: Um atelier de arquitetura com presença nacional, focado na
+    essência do espaço e rigor técnico no Algarve e Lisboa. Projetamos o futuro
+    com verdade e precisão.
+  intro_tagline_en: A national architectural studio focused on the essence of
+    space and technical rigor in Algarve and Lisbon. Designing the future with
+    truth and precision.
 contacts:
   contact_email: info@algoatelier.pt
   phone: +351 966 666 666
