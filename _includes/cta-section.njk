@@ -6,42 +6,42 @@
 #}
 {% if activeSection == 'projetos' or activeSection == 'projects' %}
 <section class="container cta-architectural-quote" style="padding: var(--spacing-xl) 0; border-top: 1px solid var(--border-color); margin-top: var(--spacing-lg);">
-    <div class="quote-grid" style="display: grid; grid-template-columns: 1fr; gap: 4rem; align-items: center;" class="fade-up active">
-        <div class="quote-content" style="max-width: 650px;">
-            <span class="caps" style="opacity: 0.5; display: block; margin-bottom: 2.5rem; letter-spacing: 0.3em;">Manifesto</span>
+    <div class="quote-grid" style="display: grid; grid-template-columns: 1fr; gap: 4rem; align-items: center;">
+        <div class="quote-content" style="max-width: 700px;" class="fade-up active">
+            <span class="caps" style="opacity: 0.5; display: block; margin-bottom: 3rem; letter-spacing: 0.35em;">Manifesto</span>
             <blockquote style="margin: 0; padding: 0; border: none;">
-                <p style="font-family: var(--font-serif); font-size: clamp(2.2rem, 5vw, 3.2rem); line-height: 1.25; margin-bottom: 2.5rem; color: var(--text-primary); font-weight: 400;">
+                <p style="font-family: var(--font-serif); font-size: clamp(2.4rem, 6vw, 3.8rem); line-height: 1.15; margin-bottom: 3rem; color: var(--text-primary); font-weight: 400; font-style: italic;">
                     {% if lang == 'en' %}
                         "{{ site.identity.manifesto_quote_en }}"
                     {% else %}
                         "{{ site.identity.manifesto_quote_pt }}"
                     {% endif %}
                 </p>
-                <cite style="font-style: normal; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.6; display: flex; align-items: center; gap: 15px;">
-                    <span style="width: 30px; height: 1px; background: currentColor; opacity: 0.3;"></span>
+                <cite style="font-style: normal; font-size: 0.8rem; letter-spacing: 0.25em; text-transform: uppercase; opacity: 0.7; display: flex; align-items: center; gap: 20px;">
+                    <span style="width: 40px; height: 1px; background: currentColor; opacity: 0.4;"></span>
                     {{ site.identity.manifesto_author }}
                 </cite>
             </blockquote>
         </div>
-        <div class="blueprint-reveal" style="width: 100%; height: 500px; overflow: hidden; border: 1px solid rgba(0,0,0,0.05); background: #f9f9f9;">
-            <img src="{{ site.identity.manifesto_image }}" alt="Architectural Blueprint" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.9; filter: grayscale(1) contrast(1.05);">
+        <div class="blueprint-reveal fade-up active" style="width: 100%; height: 550px; overflow: hidden; border: 1px solid rgba(0,0,0,0.08); background: #eee; position: relative;">
+            <img src="{{ site.identity.manifesto_image }}" alt="Architectural Blueprint" style="width: 100%; height: 100%; object-fit: cover; opacity: 1; filter: grayscale(1) contrast(1.1); display: block;">
         </div>
     </div>
 </section>
 {% else %}
 <section class="container cta-next-steps" style="padding: var(--spacing-xl) 0; border-top: 1px solid var(--border-color); margin-top: var(--spacing-lg);">
-    <div style="text-align: center; max-width: 700px; margin: 0 auto;" class="fade-up active">
-        <span class="caps" style="opacity: 0.5; display: block; margin-bottom: 2rem;">
+    <div style="text-align: center; max-width: 750px; margin: 0 auto;" class="fade-up active">
+        <span class="caps" style="opacity: 0.5; display: block; margin-bottom: 2.5rem; letter-spacing: 0.3em;">
             {% if lang == 'en' %}Next Steps{% else %}Próximos Passos{% endif %}
         </span>
-        <h2 class="section-headline" style="font-family: var(--font-serif); font-weight: 400; font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 2.5rem;">
+        <h2 class="section-headline" style="font-family: var(--font-serif); font-weight: 400; font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 3rem; line-height: 1.1;">
             {% if lang == 'en' %}
                 Ready to transform your vision into a landmark?
             {% else %}
                 Pronto para transformar a sua visão num marco arquitetónico?
             {% endif %}
         </h2>
-        <a href="{% if lang == 'en' %}/en/budget/{% else %}/orcamento/{% endif %}" class="btn-budget" style="display: inline-block; padding: 1.2rem 3rem;">
+        <a href="{% if lang == 'en' %}/en/budget/{% else %}/orcamento/{% endif %}" class="btn-budget" style="display: inline-block; padding: 1.4rem 4rem; font-size: 0.85rem;">
             {% if lang == 'en' %}Request a Quote{% else %}Pedir Orçamento{% endif %}
         </a>
     </div>
@@ -50,21 +50,23 @@
 
 <style>
 .cta-next-steps .btn-budget {
-    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 .cta-next-steps .btn-budget:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    background: var(--text-primary);
+    color: #fff !important;
 }
 @media (min-width: 992px) {
     .cta-architectural-quote .quote-grid {
-        grid-template-columns: 1.3fr 1fr;
-        gap: 6rem;
+        grid-template-columns: 1.4fr 1fr;
+        gap: 8rem;
     }
 }
 @media (max-width: 768px) {
     .cta-architectural-quote .blueprint-reveal {
-        height: 300px;
+        height: 350px;
     }
 }
 </style>

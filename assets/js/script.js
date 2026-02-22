@@ -14,7 +14,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-const observerOptions = { threshold: 0.1 };
+const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -35,11 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
         heroVideo.setAttribute('muted', '');
 
         const playVideo = () => {
-            // Force interaction requirement by calling play on first user interaction if blocked
             const p = heroVideo.play();
             if (p !== undefined) {
                 p.catch(() => {
-                    console.log("Autoplay blocked, waiting for interaction.");
                     if (heroBg) heroBg.classList.add('video-ended');
                 });
             }
@@ -60,7 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         heroVideo.addEventListener('ended', handleVideoEnd);
 
-        // Safety for iPhone
         window.addEventListener('touchstart', () => {
             if (heroVideo.paused) heroVideo.play();
         }, { once: true });
@@ -89,6 +86,60 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ── AJAX Form Submission ──────────────────────────────────────
+    const handleFormSubmit = (e) => {
+        const form = e.target;
+        if (!form.hasAttribute('data-netlify')) return;
+
+        e.preventDefault();
+        const formData = new FormData(form);
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.innerText;
+
+        // Find or create message container
+        let msgContainer = form.querySelector('.form-message');
+        if (!msgContainer) {
+            msgContainer = document.createElement('div');
+            msgContainer.className = 'form-message';
+            msgContainer.style.marginTop = '1.5rem';
+            msgContainer.style.fontSize = '0.9rem';
+            msgContainer.style.padding = '1rem';
+            msgContainer.style.borderRadius = '2px';
+            form.appendChild(msgContainer);
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.innerText = 'A enviar...';
+        msgContainer.style.display = 'none';
+
+        fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(formData).toString(),
+        })
+            .then(() => {
+                msgContainer.innerText = 'Mensagem enviada com sucesso! Entraremos em contacto brevemente.';
+                msgContainer.style.background = 'rgba(0, 100, 0, 0.05)';
+                msgContainer.style.color = 'darkgreen';
+                msgContainer.style.display = 'block';
+                form.reset();
+                submitBtn.innerText = originalBtnText;
+                submitBtn.disabled = false;
+            })
+            .catch((error) => {
+                msgContainer.innerText = 'Ocorreu um erro ao enviar. Por favor, tente novamente.';
+                msgContainer.style.background = 'rgba(100, 0, 0, 0.05)';
+                msgContainer.style.color = 'darkred';
+                msgContainer.style.display = 'block';
+                submitBtn.innerText = originalBtnText;
+                submitBtn.disabled = false;
+            });
+    };
+
+    document.querySelectorAll('form[data-netlify]').forEach(form => {
+        form.addEventListener('submit', handleFormSubmit);
+    });
+
     // ── Observer Observation ──────────────────────────────────────
     document.querySelectorAll('.fade-up, .img-reveal, .reveal-image, section:not(.hero), .reveal-left, .reveal-right').forEach(el => {
         observer.observe(el);
@@ -98,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
 /* ── Unified Ripple Transition Logic ───────────────────────────────── */
 (function () {
     const DURATION = 900;
-    const isMobile = window.innerWidth <= 768; // Better check for mobile experience
+    const isMobile = window.innerWidth <= 768;
 
     function getRipple() {
         let ball = document.getElementById('orcamento-transition-ball') || document.getElementById('ripple');
@@ -124,7 +175,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const { ball } = getRipple();
         const r = Math.sqrt(Math.pow(window.innerWidth, 2) + Math.pow(window.innerHeight, 2)) * 1.5;
 
-        // Simpler animation for mobile to avoid WebKit transition freezes
         if (isMobile) {
             document.body.style.transition = 'opacity 0.4s ease';
             document.body.style.opacity = '0';
@@ -164,77 +214,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.addEventListener('load', () => {
-        const isFromBudget = document.referrer.includes('orcamento') || document.referrer.includes('sucesso') || window.location.hash === '#budget_return';
-        if (document.body.classList.contains('orcamento-page')) {
+        const isFromNav = document.referrer.includes(window.location.hostname);
+        if (isFromNav || document.body.classList.contains('orcamento-page')) {
             collapse(window.innerWidth / 2, window.innerHeight / 2);
-        } else if (isFromBudget) {
-            let btn = document.querySelector('a.btn-budget') || document.querySelector('a[href*="orcamento"]');
-            if (btn) {
-                let rect = btn.getBoundingClientRect();
-                collapse(rect.left + rect.width / 2, rect.top + rect.height / 2);
-            } else {
-                collapse(window.innerWidth / 2, window.innerHeight / 2);
-            }
+        } else {
+            document.body.style.opacity = '1';
         }
     });
 
     document.addEventListener('click', (e) => {
         const link = e.target.closest('a[href]');
-        if (!link || link.target === '_blank') return;
+        if (!link || link.target === '_blank' || link.closest('.social-links')) return;
         const href = link.getAttribute('href');
-        if (!href || href.startsWith('http') || href.startsWith('#') || href.startsWith('mailto')) return;
+        if (!href || href.startsWith('http') || href.startsWith('#') || href.startsWith('mailto') || href.startsWith('tel')) return;
 
-        const isToBudget = href.includes('orcamento') || link.classList.contains('btn-budget') || href.includes('sucesso');
-        const isFromBudget = document.body.classList.contains('orcamento-page');
-
-        if (isToBudget || isFromBudget) {
-            e.preventDefault();
-            const rect = link.getBoundingClientRect();
-            const cx = rect.width ? (rect.left + rect.width / 2) : (window.innerWidth / 2);
-            const cy = rect.height ? (rect.top + rect.height / 2) : (window.innerHeight / 2);
-            expand(cx, cy, href);
-        }
+        e.preventDefault();
+        const rect = link.getBoundingClientRect();
+        const cx = rect.width ? (rect.left + rect.width / 2) : (window.innerWidth / 2);
+        const cy = rect.height ? (rect.top + rect.height / 2) : (window.innerHeight / 2);
+        expand(cx, cy, href);
     });
-}());
-
-/* ── Proximity Scroll Snap (Desktop Only) ────────────────────────── */
-(function initScrollSnap() {
-    if (window.innerWidth < 1024) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    const HEADER_HEIGHT = 80;
-    const SNAP_THRESHOLD = 0.30;
-    let scrollTimer = null;
-    let isSnapping = false;
-
-    function getNearestSection() {
-        const sections = document.querySelectorAll('.snap-section');
-        const viewportH = window.innerHeight;
-        let best = null, bestDist = Infinity;
-
-        sections.forEach(section => {
-            const rect = section.getBoundingClientRect();
-            const sectionTop = rect.top - HEADER_HEIGHT;
-            const absDist = Math.abs(sectionTop);
-            if (absDist < viewportH * SNAP_THRESHOLD && absDist < bestDist) {
-                bestDist = absDist;
-                best = section;
-            }
-        });
-        return best;
-    }
-
-    window.addEventListener('scroll', () => {
-        if (isSnapping) return;
-        clearTimeout(scrollTimer);
-        scrollTimer = setTimeout(() => {
-            const target = getNearestSection();
-            if (target) {
-                isSnapping = true;
-                const targetY = window.scrollY + target.getBoundingClientRect().top - HEADER_HEIGHT;
-                window.scrollTo({ top: targetY, behavior: 'smooth' });
-                setTimeout(() => { isSnapping = false; }, 800);
-            }
-        }, 150);
-    }, { passive: true });
 }());

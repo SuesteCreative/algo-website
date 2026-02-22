@@ -767,11 +767,7 @@ nav {
 }
 
 /* Specific section reveals */
-section:not(.hero) {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: var(--transition-smooth);
-}
+section:not(.hero) { opacity: 0; transform: translateY(20px); transition: opacity 1s ease, transform 1s cubic-bezier(0.23, 1, 0.32, 1); }
 
 section.active:not(.hero) {
     opacity: 1;
@@ -1102,12 +1098,7 @@ footer .logo img {
     transform-origin: center;
 }
 
-@keyframes wave-wobble {
-
-    0%,
-    100% {
-        d: path("M0 5 Q 7.5 0, 15 5 T 30 5 T 45 5 T 60 5");
-    }
+@keyframes wave-wobble { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(0.6); } }
 
     50% {
         d: path("M0 5 Q 7.5 10, 15 5 T 30 5 T 45 5 T 60 5");
