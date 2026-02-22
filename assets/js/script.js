@@ -89,14 +89,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // ── AJAX Form Submission ──────────────────────────────────────
     const handleFormSubmit = (e) => {
         const form = e.target;
-        if (!form.hasAttribute('data-netlify')) return;
+        if (!form.hasAttribute('data-netlify') && !form.classList.contains('contact-form')) return;
 
         e.preventDefault();
         const formData = new FormData(form);
         const submitBtn = form.querySelector('button[type="submit"]');
         const originalBtnText = submitBtn.innerText;
 
-        // Find or create message container
         let msgContainer = form.querySelector('.form-message');
         if (!msgContainer) {
             msgContainer = document.createElement('div');
@@ -118,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
             body: new URLSearchParams(formData).toString(),
         })
             .then(() => {
-                msgContainer.innerText = 'Mensagem enviada com sucesso! Entraremos em contacto brevemente.';
+                msgContainer.innerText = 'Mensagem enviada com sucesso!';
                 msgContainer.style.background = 'rgba(0, 100, 0, 0.05)';
                 msgContainer.style.color = 'darkgreen';
                 msgContainer.style.display = 'block';
@@ -126,8 +125,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitBtn.innerText = originalBtnText;
                 submitBtn.disabled = false;
             })
-            .catch((error) => {
-                msgContainer.innerText = 'Ocorreu um erro ao enviar. Por favor, tente novamente.';
+            .catch(() => {
+                msgContainer.innerText = 'Erro ao enviar. Tente novamente.';
                 msgContainer.style.background = 'rgba(100, 0, 0, 0.05)';
                 msgContainer.style.color = 'darkred';
                 msgContainer.style.display = 'block';
@@ -136,8 +135,10 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     };
 
-    document.querySelectorAll('form[data-netlify]').forEach(form => {
-        form.addEventListener('submit', handleFormSubmit);
+    document.querySelectorAll('form').forEach(form => {
+        if (form.hasAttribute('data-netlify')) {
+            form.addEventListener('submit', handleFormSubmit);
+        }
     });
 
     // ── Observer Observation ──────────────────────────────────────
@@ -214,8 +215,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.addEventListener('load', () => {
-        const isFromNav = document.referrer.includes(window.location.hostname);
-        if (isFromNav || document.body.classList.contains('orcamento-page')) {
+        // Only run collapse if we strictly came from or are on the budget page
+        // OR if the body is orcamento-page
+        const isBudgetPage = document.body.classList.contains('orcamento-page');
+        const fromBudgetPage = document.referrer.includes('orcamento');
+
+        if (isBudgetPage || fromBudgetPage) {
             collapse(window.innerWidth / 2, window.innerHeight / 2);
         } else {
             document.body.style.opacity = '1';
@@ -224,14 +229,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('click', (e) => {
         const link = e.target.closest('a[href]');
-        if (!link || link.target === '_blank' || link.closest('.social-links')) return;
+        if (!link || link.target === '_blank') return;
         const href = link.getAttribute('href');
-        if (!href || href.startsWith('http') || href.startsWith('#') || href.startsWith('mailto') || href.startsWith('tel')) return;
+        if (!href || href.startsWith('http') || href.startsWith('#') || href.startsWith('mailto')) return;
 
-        e.preventDefault();
-        const rect = link.getBoundingClientRect();
-        const cx = rect.width ? (rect.left + rect.width / 2) : (window.innerWidth / 2);
-        const cy = rect.height ? (rect.top + rect.height / 2) : (window.innerHeight / 2);
-        expand(cx, cy, href);
+        // ONLY trigger transition if GOING TO or FROM the budget page
+        const isToBudget = href.includes('orcamento');
+        const isFromBudget = document.body.classList.contains('orcamento-page');
+
+        if (isToBudget || isFromBudget) {
+            e.preventDefault();
+            const rect = link.getBoundingClientRect();
+            const cx = rect.width ? (rect.left + rect.width / 2) : (window.innerWidth / 2);
+            const cy = rect.height ? (rect.top + rect.height / 2) : (window.innerHeight / 2);
+            expand(cx, cy, href);
+        }
     });
 }());

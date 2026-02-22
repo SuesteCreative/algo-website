@@ -23,7 +23,10 @@
             </div>
             
             <div class="contact-cta-form fade-up">
-                <form action="#" class="contact-form">
+                <form name="contacto-landing" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
+                    <input type="hidden" name="form-name" value="contacto-landing">
+                    <p style="display:none;"><label>Don't fill this: <input name="bot-field"></label></p>
+                    
                     {% if lang == 'pt' %}
                     <div class="form-group">
                         <label for="cta-name">Nome Completo</label>
@@ -37,6 +40,12 @@
                         <label for="cta-message">Mensagem</label>
                         <textarea id="cta-message" name="message" rows="4" required placeholder="Fale-nos do seu projeto..."></textarea>
                     </div>
+
+                    <div class="privacy-group" style="margin-top: 1rem; display: flex; gap: 0.8rem; align-items: flex-start; font-size: 0.75rem; opacity: 0.7;">
+                        <input type="checkbox" id="privacy-cta" name="privacy" required>
+                        <label for="privacy-cta">Aceito a <a href="/legal/privacidade/" target="_blank" style="color: inherit; text-decoration: underline;">política de privacidade</a> e autorizo o contacto.</label>
+                    </div>
+
                     <button type="submit" class="btn-budget" style="width: 100%; margin: 2rem 0 0;">Enviar Mensagem</button>
                     {% else %}
                     <div class="form-group">
@@ -51,6 +60,12 @@
                         <label for="cta-message">Message</label>
                         <textarea id="cta-message" name="message" rows="4" required placeholder="Tell us about your project..."></textarea>
                     </div>
+
+                    <div class="privacy-group" style="margin-top: 1rem; display: flex; gap: 0.8rem; align-items: flex-start; font-size: 0.75rem; opacity: 0.7;">
+                        <input type="checkbox" id="privacy-cta-en" name="privacy" required>
+                        <label for="privacy-cta-en">I accept the <a href="/en/legal/privacy/" target="_blank" style="color: inherit; text-decoration: underline;">privacy policy</a> and authorize contact.</label>
+                    </div>
+
                     <button type="submit" class="btn-budget" style="width: 100%; margin: 2rem 0 0;">Send Message</button>
                     {% endif %}
                 </form>
@@ -99,6 +114,12 @@
 
 .method-item a:hover {
     color: var(--accent-color);
+}
+
+.contact-form .btn-budget:hover {
+    background: var(--accent-color) !important;
+    border-color: var(--accent-color) !important;
+    color: #fff !important;
 }
 
 @media (max-width: 991px) {

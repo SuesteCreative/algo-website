@@ -6,25 +6,27 @@
 #}
 {% if activeSection == 'projetos' or activeSection == 'projects' %}
 <section class="container cta-architectural-quote" style="padding: var(--spacing-xl) 0; border-top: 1px solid var(--border-color); margin-top: var(--spacing-lg);">
-    <div class="quote-grid" style="display: grid; grid-template-columns: 1fr; gap: 4rem; align-items: center;">
-        <div class="quote-content" style="max-width: 700px;" class="fade-up active">
-            <span class="caps" style="opacity: 0.5; display: block; margin-bottom: 3rem; letter-spacing: 0.35em;">Manifesto</span>
+    <div class="manifesto-wrapper" style="position: relative; width: 100%; height: 650px; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid rgba(0,0,0,0.08); background: #eee;">
+        <!-- Background Image -->
+        <img src="{{ site.identity.manifesto_image }}" alt="Architectural Blueprint" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.6; filter: grayscale(1) contrast(1.1); z-index: 1;">
+        
+        <!-- Overlaid Content -->
+        <div class="quote-content fade-up active" style="position: relative; z-index: 2; text-align: center; max-width: 800px; padding: 2rem; background: rgba(255,255,255,0.7); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 4px;">
+            <span class="caps" style="opacity: 0.5; display: block; margin-bottom: 2rem; letter-spacing: 0.35em; font-size: 0.7rem;">Manifesto</span>
             <blockquote style="margin: 0; padding: 0; border: none;">
-                <p style="font-family: var(--font-serif); font-size: clamp(2.4rem, 6vw, 3.8rem); line-height: 1.15; margin-bottom: 3rem; color: var(--text-primary); font-weight: 400; font-style: italic;">
+                <p style="font-family: var(--font-serif); font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.2; margin-bottom: 2rem; color: var(--text-primary); font-weight: 400; font-style: italic;">
                     {% if lang == 'en' %}
                         "{{ site.identity.manifesto_quote_en }}"
                     {% else %}
                         "{{ site.identity.manifesto_quote_pt }}"
                     {% endif %}
                 </p>
-                <cite style="font-style: normal; font-size: 0.8rem; letter-spacing: 0.25em; text-transform: uppercase; opacity: 0.7; display: flex; align-items: center; gap: 20px;">
-                    <span style="width: 40px; height: 1px; background: currentColor; opacity: 0.4;"></span>
+                <cite style="font-style: normal; font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; opacity: 0.7; display: inline-flex; align-items: center; gap: 15px;">
+                    <span style="width: 30px; height: 1px; background: currentColor; opacity: 0.4;"></span>
                     {{ site.identity.manifesto_author }}
+                    <span style="width: 30px; height: 1px; background: currentColor; opacity: 0.4;"></span>
                 </cite>
             </blockquote>
-        </div>
-        <div class="blueprint-reveal fade-up active" style="width: 100%; height: 550px; overflow: hidden; border: 1px solid rgba(0,0,0,0.08); background: #eee; position: relative;">
-            <img src="{{ site.identity.manifesto_image }}" alt="Architectural Blueprint" style="width: 100%; height: 100%; object-fit: cover; opacity: 1; filter: grayscale(1) contrast(1.1); display: block;">
         </div>
     </div>
 </section>
@@ -34,11 +36,11 @@
         <span class="caps" style="opacity: 0.5; display: block; margin-bottom: 2.5rem; letter-spacing: 0.3em;">
             {% if lang == 'en' %}Next Steps{% else %}Próximos Passos{% endif %}
         </span>
-        <h2 class="section-headline" style="font-family: var(--font-serif); font-weight: 400; font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 3rem; line-height: 1.1;">
+        <h2 class="section-headline" style="font-family: var(--font-serif); font-weight: 400; font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 3rem; line-height: 1.1;">
             {% if lang == 'en' %}
-                Ready to transform your vision into a landmark?
+                Architecture with technical rigor and detail.
             {% else %}
-                Pronto para transformar a sua visão num marco arquitetónico?
+                Arquitetura com rigor técnico e design de detalhe.
             {% endif %}
         </h2>
         <a href="{% if lang == 'en' %}/en/budget/{% else %}/orcamento/{% endif %}" class="btn-budget" style="display: inline-block; padding: 1.4rem 4rem; font-size: 0.85rem;">
@@ -55,18 +57,13 @@
 .cta-next-steps .btn-budget:hover {
     transform: translateY(-8px);
     box-shadow: 0 15px 40px rgba(0,0,0,0.12);
-    background: var(--text-primary);
+    background: var(--accent-color); /* Highlight color */
+    border-color: var(--accent-color);
     color: #fff !important;
 }
-@media (min-width: 992px) {
-    .cta-architectural-quote .quote-grid {
-        grid-template-columns: 1.4fr 1fr;
-        gap: 8rem;
-    }
-}
 @media (max-width: 768px) {
-    .cta-architectural-quote .blueprint-reveal {
-        height: 350px;
+    .manifesto-wrapper {
+        height: 500px !important;
     }
 }
 </style>
