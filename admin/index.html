@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Admin Favicons -->
-    <link rel="icon" href="/admin/favicon-admin.ico" sizes="any">
-    <link rel="icon" type="image/svg+xml" href="/admin/favicon-admin.svg">
-    <link rel="icon" type="image/png" sizes="16x16" href="/admin/favicon-admin-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/admin/favicon-admin-32x32.png">
-    <link rel="apple-touch-icon" href="/admin/apple-touch-icon-admin.png">
+    <link rel="icon" href="/assets/img/favicon/favicon-admin32x32.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="/assets/img/favicon/fav-icon-admin.svg">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon/favicon-admin-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon/favicon-admin-32x32.png">
+    <link rel="apple-touch-icon" href="/assets/img/favicon/apple-touch-icon-admin.png">
 
     <title>Algo Atelier | Gestão de Conteúdo</title>
     <!-- Netlify Identity Widget -->
@@ -67,6 +67,38 @@
         /* Main content area */
         [class*="App"] {
             background: #f5f5f3 !important;
+        }
+
+        /* ── Mobile Fixes ── */
+        @media (max-width: 768px) {
+
+            /* Fix sidebar visibility */
+            [class*="Sidebar"] {
+                width: 200px !important;
+                min-width: 200px !important;
+                display: none !important;
+                /* Hide by default on mobile */
+            }
+
+            /* Show sidebar when in specific views or via menu toggle (if present) */
+            /* Note: Decap CMS doesn't have a built-in mobile toggle, usually it uses a slide-out */
+
+            [class*="CollectionMain"] {
+                padding: 10px !important;
+            }
+
+            [class*="ControlPaneContainer"] {
+                padding: 10px !important;
+            }
+
+            /* Adjust header for small screens */
+            [class*="AppHeaderContent"] {
+                padding: 0 10px !important;
+            }
+
+            [class*="AppHeaderContent"]>a::before {
+                width: 80px;
+            }
         }
     </style>
 </head>
