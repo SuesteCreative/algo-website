@@ -95,9 +95,37 @@ permalink: /orcamento/
             color: #f0ede8;
         }
 
-        /* Ripple Transition Overlay */
-        #orcamento-transition-overlay {
-            position: fixed;
+        /* Night Mode Header (Static & Scrolled) */
+        .orcamento-page header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .orcamento-page header .logo img {
+            filter: invert(1) brightness(2);
+        }
+        
+        .orcamento-page header .nav-links a:not(.btn-budget) {
+            color: #fff !important;
+            opacity: 0.8;
+        }
+
+        .orcamento-page header .nav-links a:not(.btn-budget):hover {
+            opacity: 1;
+        }
+
+        .orcamento-page header .nav-glass-bar {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .orcamento-page header.scrolled {
+            background: rgba(14, 14, 14, 0.98) !important;
+        }
+
+        /* Mobile Toggle forced white */
+        .orcamento-page #menuToggle span {
+            background-color: #fff !important;
+        }
             top: 0; left: 0;
             width: 100%; height: 100%;
             z-index: 999999;
@@ -163,6 +191,10 @@ permalink: /orcamento/
             resize: vertical;
             min-height: 140px;
         }
+
+        .orcamento-page header.scrolled .logo img {
+            filter: invert(1) brightness(2);
+        }
     </style>
 </head>
 
@@ -187,7 +219,7 @@ permalink: /orcamento/
                 name="orcamento"
                 method="POST"
                 data-netlify="true"
-                action="/sucesso/"
+                action="/sucesso/index.html"
                 netlify-honeypot="bot-field"
                 style="display: grid; gap: 1.8rem;"
                 class="fade-up active"
