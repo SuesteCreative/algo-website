@@ -29,15 +29,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroBg = document.getElementById('heroBg');
 
     if (heroVideo) {
-        // Fix for iOS: ensure parameters are set and force load/play
         heroVideo.setAttribute('playsinline', '');
         heroVideo.setAttribute('webkit-playsinline', '');
+        heroVideo.muted = true;
+        heroVideo.setAttribute('muted', '');
 
         const playVideo = () => {
-            heroVideo.play().catch(e => {
-                console.log("Autoplay blocked, showing poster.");
-                if (heroBg) heroBg.classList.add('video-ended');
-            });
+            // Force interaction requirement by calling play on first user interaction if blocked
+            const p = heroVideo.play();
+            if (p !== undefined) {
+                p.catch(() => {
+                    console.log("Autoplay blocked, waiting for interaction.");
+                    if (heroBg) heroBg.classList.add('video-ended');
+                });
+            }
         };
 
         playVideo();
@@ -55,8 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         heroVideo.addEventListener('ended', handleVideoEnd);
 
-        // Safety for iOS low power mode
-        document.addEventListener('touchstart', () => {
+        // Safety for iPhone
+        window.addEventListener('touchstart', () => {
             if (heroVideo.paused) heroVideo.play();
         }, { once: true });
     }
@@ -93,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
 /* ── Unified Ripple Transition Logic ───────────────────────────────── */
 (function () {
     const DURATION = 900;
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    const isMobile = window.innerWidth <= 768; // Better check for mobile experience
 
     function getRipple() {
         let ball = document.getElementById('orcamento-transition-ball') || document.getElementById('ripple');
@@ -119,8 +124,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const { ball } = getRipple();
         const r = Math.sqrt(Math.pow(window.innerWidth, 2) + Math.pow(window.innerHeight, 2)) * 1.5;
 
-        // Fallback for iOS transition lag
-        if (isIOS) {
+        // Simpler animation for mobile to avoid WebKit transition freezes
+        if (isMobile) {
             document.body.style.transition = 'opacity 0.4s ease';
             document.body.style.opacity = '0';
             setTimeout(() => { window.location.href = href; }, 400);
@@ -143,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const { ball } = getRipple();
         const r = Math.sqrt(Math.pow(window.innerWidth, 2) + Math.pow(window.innerHeight, 2)) * 1.5;
 
-        if (isIOS) {
+        if (isMobile) {
             ball.style.display = 'none';
             document.body.style.opacity = '1';
             return;
@@ -162,8 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const isFromBudget = document.referrer.includes('orcamento') || document.referrer.includes('sucesso') || window.location.hash === '#budget_return';
         if (document.body.classList.contains('orcamento-page')) {
             collapse(window.innerWidth / 2, window.innerHeight / 2);
-        }
-        else if (isFromBudget) {
+        } else if (isFromBudget) {
             let btn = document.querySelector('a.btn-budget') || document.querySelector('a[href*="orcamento"]');
             if (btn) {
                 let rect = btn.getBoundingClientRect();
