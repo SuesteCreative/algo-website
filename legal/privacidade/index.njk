@@ -4,7 +4,9 @@ eleventyExcludeFromCollections: true
 ---
 {% set pageTitle = "Política de Privacidade | Algo Atelier" %}
 {% set metaDesc = "Política de Privacidade do Algo Atelier — como tratamos os seus dados pessoais, em conformidade com o RGPD." %}
-{% set canonical = "https://algoatelier.netlify.app/legal/privacidade/" %}
+{% set canonical = site.siteUrl + page.url %}
+{% set hreflangPt = site.siteUrl + ptUrl %}
+{% set hreflangEn = site.siteUrl + enUrl %}
 {% set activeSection = "" %}
 {% set ptUrl = "/legal/privacidade/" %}
 {% set enUrl = "/en/legal/privacy/" %}

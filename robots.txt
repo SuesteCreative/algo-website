@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://algo-website.com/sitemap.xml
+Sitemap: https://algoatelier.pt/sitemap.xml

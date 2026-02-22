@@ -3,12 +3,12 @@ permalink: /en/
 ---
 {% set pageTitle = site.homepage_seo.meta_title_en | default("Algo Atelier | Home") %}
 {% set metaDesc = site.homepage_seo.meta_desc_en | default("Algo Atelier - Contemporary Architecture & Minimalist Design in Algarve.") %}
-{% set canonical = "https://algoatelier.netlify.app/en/" %}
-{% set hreflangPt = "https://algoatelier.netlify.app/" %}
-{% set hreflangEn = "https://algoatelier.netlify.app/en/" %}
-{% set activeSection = "home" %}
+{% set canonical = site.siteUrl + page.url %}
 {% set ptUrl = "/" %}
 {% set enUrl = "/en/" %}
+{% set hreflangPt = site.siteUrl + ptUrl %}
+{% set hreflangEn = site.siteUrl + enUrl %}
+{% set activeSection = "home" %}
 <!DOCTYPE html>
 <html lang="en">
 <head>

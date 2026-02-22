@@ -3,7 +3,9 @@ permalink: /en/about/
 ---
 {% set pageTitle = "About | Algo Atelier" %}
 {% set metaDesc = "Learn more about the journey and architectural vision of Algo Atelier." %}
-{% set canonical = "https://algoatelier.netlify.app/en/about/" %}
+{% set canonical = site.siteUrl + page.url %}
+{% set hreflangPt = site.siteUrl + ptUrl %}
+{% set hreflangEn = site.siteUrl + enUrl %}
 {% set activeSection = "about" %}
 {% set ptUrl = "/sobre/" %}
 {% set enUrl = "/en/about/" %}

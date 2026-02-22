@@ -9,9 +9,9 @@ permalink: "/en/projects/{{ projeto.data.slug_en }}/"
 {% set p = projeto.data %}
 {% set pageTitle = p.title_en + " | Algo Atelier" %}
 {% set metaDesc = p.meta_description_en or (p.title_en + " — Architecture project by Algo Atelier.") %}
-{% set canonical = "https://algoatelier.netlify.app/en/projects/" + p.slug_en + "/" %}
-{% set hreflangPt = "https://algoatelier.netlify.app/projetos/" + p.slug + "/" %}
-{% set hreflangEn = "https://algoatelier.netlify.app/en/projects/" + p.slug_en + "/" %}
+{% set canonical = site.siteUrl + page.url %}
+{% set hreflangPt = site.siteUrl + ptUrl %}
+{% set hreflangEn = site.siteUrl + enUrl %}
 {% set activeSection = "projects" %}
 {% set ptUrl = "/projetos/" + p.slug + "/" %}
 {% set enUrl = "/en/projects/" + p.slug_en + "/" %}

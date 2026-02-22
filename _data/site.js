@@ -46,7 +46,7 @@ module.exports = function () {
         testimonials: testimonials,
         services: services,
         currentYear: new Date().getFullYear(),
-        siteUrl: "https://algoatelier.netlify.app",
+        siteUrl: "https://algoatelier.pt",
         siteName: "Algo Atelier"
     };
 };

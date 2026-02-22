@@ -4,7 +4,9 @@ eleventyExcludeFromCollections: true
 ---
 {% set pageTitle = "Política de Cookies | Algo Atelier" %}
 {% set metaDesc = "Política de Cookies do Algo Atelier — que cookies utilizamos e como pode gerir as suas preferências." %}
-{% set canonical = "https://algoatelier.netlify.app/legal/cookies/" %}
+{% set canonical = site.siteUrl + page.url %}
+{% set hreflangPt = site.siteUrl + ptUrl %}
+{% set hreflangEn = site.siteUrl + enUrl %}
 {% set activeSection = "" %}
 {% set ptUrl = "/legal/cookies/" %}
 {% set enUrl = "/en/legal/cookies/" %}

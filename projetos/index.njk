@@ -4,9 +4,9 @@ eleventyExcludeFromCollections: true
 ---
 {% set pageTitle = "Projetos | Algo Atelier" %}
 {% set metaDesc = "Portfólio de projetos de arquitetura do Algo Atelier — habitação, equipamentos públicos e espaços experimentais." %}
-{% set canonical = "https://algoatelier.netlify.app/projetos/" %}
-{% set hreflangPt = "https://algoatelier.netlify.app/projetos/" %}
-{% set hreflangEn = "https://algoatelier.netlify.app/en/projects/" %}
+{% set canonical = site.siteUrl + page.url %}
+{% set hreflangPt = site.siteUrl + ptUrl %}
+{% set hreflangEn = site.siteUrl + enUrl %}
 {% set activeSection = "projetos" %}
 {% set ptUrl = "/projetos/" %}
 {% set enUrl = "/en/projects/" %}

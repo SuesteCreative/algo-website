@@ -301,3 +301,8 @@ collections:
                 required: false
                 hint: "Ex: AW-XXXXXXXXXX"
                 pattern: ['^(AW-[0-9]+)?$', "Formato inválido (AW-...)"]
+              - label: "Google Merchant ID"
+                name: "google_merchant"
+                widget: string
+                required: false
+                hint: "Opcional. Introduza o ID de verificação do Merchant Center."
