@@ -58,11 +58,30 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initial attempt
         tryPlayVideo(heroVideo);
 
+        // 9-second stop logic
+        const stopAtNine = () => {
+            if (heroVideo.currentTime >= 9) {
+                heroVideo.pause();
+                if (heroBg) heroBg.classList.add('video-ended');
+                heroVideo.removeEventListener('timeupdate', stopAtNine);
+            }
+        };
+        heroVideo.addEventListener('timeupdate', stopAtNine);
+
+        // Handle video ended (if video is shorter than 9s)
+        heroVideo.addEventListener('ended', () => {
+            if (heroBg) heroBg.classList.add('video-ended');
+        });
+
         // Interaction enforcers
         const fullEnforcer = () => {
-            tryPlayVideo(heroVideo);
+            if (!heroVideo.classList.contains('video-ended')) {
+                tryPlayVideo(heroVideo);
+            }
             // Also enforce any other autoplay videos
-            document.querySelectorAll('video[autoplay]').forEach(v => tryPlayVideo(v));
+            document.querySelectorAll('video[autoplay]').forEach(v => {
+                if (v.id !== 'heroVideo') tryPlayVideo(v);
+            });
         };
 
         window.addEventListener('touchstart', fullEnforcer, { once: true });
