@@ -271,6 +271,10 @@ collections:
               - { label: "Placeholder para Projetos", name: "project_placeholder", widget: image, required: false, hint: "Imagem usada quando um projeto não tem imagem de capa configurada." }
               - { label: "Email Destinatário Formulários", name: "contact_recipient", widget: string, hint: "Email onde recebe os pedidos." }
               - { label: "CC Email (Opcional)", name: "contact_cc", widget: string, required: false }
+              - { label: "Manifesto: Citação (PT)", name: "manifesto_quote_pt", widget: text, default: "A arquitetura é o jogo sábio, correto e magnífico dos volumes sob a luz." }
+              - { label: "Manifesto: Citação (EN)", name: "manifesto_quote_en", widget: text, default: "Architecture is the learned game, correct and magnificent, of forms assembled in the light." }
+              - { label: "Manifesto: Autor", name: "manifesto_author", widget: string, default: "Le Corbusier" }
+              - { label: "Manifesto: Imagem Blueprint", name: "manifesto_image", widget: image, default: "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?q=80&w=2000&auto=format&fit=crop" }
 
           - label: "Redes Sociais"
             name: "social"

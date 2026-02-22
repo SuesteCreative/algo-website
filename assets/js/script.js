@@ -29,9 +29,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroBg = document.getElementById('heroBg');
 
     if (heroVideo) {
-        heroVideo.play().catch(e => {
-            if (heroBg) heroBg.classList.add('video-ended');
-        });
+        // Fix for iOS: ensure parameters are set and force load/play
+        heroVideo.setAttribute('playsinline', '');
+        heroVideo.setAttribute('webkit-playsinline', '');
+
+        const playVideo = () => {
+            heroVideo.play().catch(e => {
+                console.log("Autoplay blocked, showing poster.");
+                if (heroBg) heroBg.classList.add('video-ended');
+            });
+        };
+
+        playVideo();
 
         const handleVideoEnd = () => {
             if (heroBg && !heroBg.classList.contains('video-ended')) {
@@ -45,6 +54,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (heroVideo.currentTime >= 9) handleVideoEnd();
         });
         heroVideo.addEventListener('ended', handleVideoEnd);
+
+        // Safety for iOS low power mode
+        document.addEventListener('touchstart', () => {
+            if (heroVideo.paused) heroVideo.play();
+        }, { once: true });
     }
 
     // ── Mobile Drawer Logic ───────────────────────────────────────
@@ -78,7 +92,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ── Unified Ripple Transition Logic ───────────────────────────────── */
 (function () {
-    const DURATION = 900; // Slightly slower for better stability
+    const DURATION = 900;
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
     function getRipple() {
         let ball = document.getElementById('orcamento-transition-ball') || document.getElementById('ripple');
@@ -102,43 +117,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function expand(cx, cy, href) {
         const { ball } = getRipple();
-        const r = Math.sqrt(Math.pow(window.innerWidth, 2) + Math.pow(window.innerHeight, 2)) * 1.5; // Larger radius covers better
+        const r = Math.sqrt(Math.pow(window.innerWidth, 2) + Math.pow(window.innerHeight, 2)) * 1.5;
+
+        // Fallback for iOS transition lag
+        if (isIOS) {
+            document.body.style.transition = 'opacity 0.4s ease';
+            document.body.style.opacity = '0';
+            setTimeout(() => { window.location.href = href; }, 400);
+            return;
+        }
+
         ball.style.transition = 'none'; ball.style.width = '0px'; ball.style.height = '0px';
         ball.style.left = cx + 'px'; ball.style.top = cy + 'px'; ball.style.opacity = '1';
         ball.getBoundingClientRect();
         ball.style.transition = `width ${DURATION}ms cubic-bezier(0.4, 0, 0.2, 1), height ${DURATION}ms cubic-bezier(0.4, 0, 0.2, 1)`;
         ball.style.width = (r * 2) + 'px'; ball.style.height = (r * 2) + 'px';
-        if (href) {
-            // Wait slightly longer than transition to ensure full coverage before redirect
-            setTimeout(() => {
-                document.body.style.opacity = '0'; // Ease out current content
-                window.location.href = href;
-            }, DURATION - 50);
-        }
+
+        setTimeout(() => {
+            document.body.style.opacity = '0';
+            window.location.href = href;
+        }, DURATION - 100);
     }
 
     function collapse(cx, cy) {
         const { ball } = getRipple();
         const r = Math.sqrt(Math.pow(window.innerWidth, 2) + Math.pow(window.innerHeight, 2)) * 1.5;
 
-        // Ensure ball is visible covering the screen before collapsing
+        if (isIOS) {
+            ball.style.display = 'none';
+            document.body.style.opacity = '1';
+            return;
+        }
+
         ball.style.transition = 'none'; ball.style.width = (r * 2) + 'px'; ball.style.height = (r * 2) + 'px';
         ball.style.left = cx + 'px'; ball.style.top = cy + 'px'; ball.style.opacity = '1';
         ball.getBoundingClientRect();
 
-        // Sync with page appearance
-        document.body.style.transition = 'opacity 0.3s ease';
         document.body.style.opacity = '1';
-
         ball.style.transition = `width ${DURATION}ms cubic-bezier(0.4, 0, 0.2, 1), height ${DURATION}ms cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ${DURATION - 200}ms`;
         ball.style.width = '0px'; ball.style.height = '0px'; ball.style.opacity = '0';
     }
 
     window.addEventListener('load', () => {
+        const isFromBudget = document.referrer.includes('orcamento') || document.referrer.includes('sucesso') || window.location.hash === '#budget_return';
         if (document.body.classList.contains('orcamento-page')) {
             collapse(window.innerWidth / 2, window.innerHeight / 2);
         }
-        else if (document.referrer.includes('orcamento') || window.location.hash === '#budget_return') {
+        else if (isFromBudget) {
             let btn = document.querySelector('a.btn-budget') || document.querySelector('a[href*="orcamento"]');
             if (btn) {
                 let rect = btn.getBoundingClientRect();
@@ -155,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const href = link.getAttribute('href');
         if (!href || href.startsWith('http') || href.startsWith('#') || href.startsWith('mailto')) return;
 
-        const isToBudget = href.includes('orcamento') || link.classList.contains('btn-budget');
+        const isToBudget = href.includes('orcamento') || link.classList.contains('btn-budget') || href.includes('sucesso');
         const isFromBudget = document.body.classList.contains('orcamento-page');
 
         if (isToBudget || isFromBudget) {

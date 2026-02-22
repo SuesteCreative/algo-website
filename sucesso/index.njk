@@ -1,0 +1,29 @@
+---
+permalink: /sucesso/
+---
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    {% include "head.njk" %}
+    <meta http-equiv="refresh" content="5;url=/">
+</head>
+<body class="orcamento-page">
+    <div id="orcamento-transition-overlay">
+        <div id="orcamento-transition-ball"></div>
+    </div>
+    
+    {% include "header-pt.njk" %}
+    <main class="container" style="padding: 200px var(--spacing-md); text-align: center; min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <span class="caps fade-up active" style="margin-bottom: 2rem;">Enviado com Sucesso</span>
+        <h1 class="page-title fade-up active" style="font-family: var(--font-serif); font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 2rem;">Obrigado pelo seu contacto.</h1>
+        <p class="fade-up active delay-1" style="font-size: 1.1rem; opacity: 0.7; max-width: 600px; line-height: 1.6;">
+            Recebemos o seu pedido. A nossa equipa irá analisar as informações e entraremos em contacto brevemente.
+        </p>
+        <div class="fade-up active delay-2" style="margin-top: 3rem;">
+            <a href="/" class="btn-budget" style="padding: 1rem 2.5rem;">Voltar ao Início</a>
+        </div>
+    </main>
+    {% include "footer-pt.njk" %}
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>

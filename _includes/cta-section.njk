@@ -6,22 +6,25 @@
 #}
 {% if activeSection == 'projetos' or activeSection == 'projects' %}
 <section class="container cta-architectural-quote" style="padding: var(--spacing-xl) 0; border-top: 1px solid var(--border-color); margin-top: var(--spacing-lg);">
-    <div style="display: grid; grid-template-columns: 1fr; gap: 4rem; align-items: center;" class="fade-up active">
-        <div style="max-width: 600px;">
-            <span class="caps" style="opacity: 0.5; display: block; margin-bottom: 2rem;">Manifesto</span>
-            <blockquote style="margin: 0;">
-                <p style="font-family: var(--font-serif); font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.3; margin-bottom: 2rem; color: var(--text-primary);">
+    <div class="quote-grid" style="display: grid; grid-template-columns: 1fr; gap: 4rem; align-items: center;" class="fade-up active">
+        <div class="quote-content" style="max-width: 650px;">
+            <span class="caps" style="opacity: 0.5; display: block; margin-bottom: 2.5rem; letter-spacing: 0.3em;">Manifesto</span>
+            <blockquote style="margin: 0; padding: 0; border: none;">
+                <p style="font-family: var(--font-serif); font-size: clamp(2.2rem, 5vw, 3.2rem); line-height: 1.25; margin-bottom: 2.5rem; color: var(--text-primary); font-weight: 400;">
                     {% if lang == 'en' %}
-                        "Architecture is the learned game, correct and magnificent, of forms assembled in the light."
+                        "{{ site.identity.manifesto_quote_en }}"
                     {% else %}
-                        "A arquitetura é o jogo sábio, correto e magnífico dos volumes sob a luz."
+                        "{{ site.identity.manifesto_quote_pt }}"
                     {% endif %}
                 </p>
-                <cite style="font-style: normal; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.6;">— Le Corbusier</cite>
+                <cite style="font-style: normal; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.6; display: flex; align-items: center; gap: 15px;">
+                    <span style="width: 30px; height: 1px; background: currentColor; opacity: 0.3;"></span>
+                    {{ site.identity.manifesto_author }}
+                </cite>
             </blockquote>
         </div>
-        <div class="blueprint-reveal" style="width: 100%; height: 400px; overflow: hidden; border: 1px solid rgba(0,0,0,0.08);">
-            <img src="https://images.unsplash.com/photo-1503387762-592dea58ef23?q=80&w=2000&auto=format&fit=crop" alt="Architectural Blueprint" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8; filter: grayscale(1) contrast(1.1);">
+        <div class="blueprint-reveal" style="width: 100%; height: 500px; overflow: hidden; border: 1px solid rgba(0,0,0,0.05); background: #f9f9f9;">
+            <img src="{{ site.identity.manifesto_image }}" alt="Architectural Blueprint" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.9; filter: grayscale(1) contrast(1.05);">
         </div>
     </div>
 </section>
@@ -54,8 +57,14 @@
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 @media (min-width: 992px) {
-    .cta-architectural-quote .fade-up.active {
-        grid-template-columns: 1.2fr 1fr;
+    .cta-architectural-quote .quote-grid {
+        grid-template-columns: 1.3fr 1fr;
+        gap: 6rem;
+    }
+}
+@media (max-width: 768px) {
+    .cta-architectural-quote .blueprint-reveal {
+        height: 300px;
     }
 }
 </style>

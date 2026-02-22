@@ -3,6 +3,10 @@ identity:
   project_placeholder: /assets/img/house-placeholder.webp
   contact_recipient: pedrotovarporto@gmail.com
   contact_cc: ""
+  manifesto_quote_pt: "A arquitetura é o jogo sábio, correto e magnífico dos volumes sob a luz."
+  manifesto_quote_en: "Architecture is the learned game, correct and magnificent, of forms assembled in the light."
+  manifesto_author: "Le Corbusier"
+  manifesto_image: "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?q=80&w=2000&auto=format&fit=crop"
 homepage_seo:
   meta_title_pt: Algo Atelier | Arquitetura
   meta_desc_pt: Arquitetura Contemporânea & Design Minimalista em Portugal.
