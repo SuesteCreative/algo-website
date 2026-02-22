@@ -51,8 +51,8 @@ collections:
             widget: object
             hint: "Selecione apenas uma opção. O ficheiro tem prioridade sobre os outros campos."
             fields:
-              - { label: "Ficheiro de Vídeo (recomendado)", name: "file", widget: file, required: false, media_folder: "/assets/img", public_folder: "/assets/img" }
-              - { label: "Link Externo (URL direto .mp4)", name: "external_url", widget: string, required: false }
+              - { label: "Ficheiro de Vídeo (recomendado)", name: "file", widget: file, required: false, media_folder: "/assets/img", public_folder: "/assets/img", hint: "Formato: .mp4 (H.264). Tamanho ideal: < 5MB para performance." }
+              - { label: "Link Externo (URL direto .mp4)", name: "external_url", widget: string, required: false, hint: "URL direto para um ficheiro .mp4 em servidor externo." }
               - { label: "ID do YouTube", name: "youtube_id", widget: string, required: false, hint: "Apenas o ID, ex: dQw4w9WgXcQ" }
 
       - label: "Testemunhos"
@@ -106,11 +106,11 @@ collections:
           - { label: "Edifício Híbrido",       value: "hybrid" }
           - { label: "Interiores",             value: "interiors" }
       - { label: "Destaque na Homepage", name: "featured", widget: boolean, default: false }
-      - { label: "Imagem de Capa", name: "cover_image", widget: image }
+      - { label: "Imagem de Capa", name: "cover_image", widget: image, hint: "Formato: .webp ou .jpg. Tamanho ideal: 1920x1080px (Proporção 16:9)." }
       - label: "Galeria de Imagens"
         name: "gallery_images"
         widget: list
-        field: { label: "Imagem", name: "image", widget: image }
+        field: { label: "Imagem", name: "image", widget: image, hint: "Formato: .webp ou .jpg. Tamanho ideal: Max 2000px de largura." }
       - label: "Descrição (PT)"
         name: "description_pt"
         widget: markdown
@@ -274,7 +274,7 @@ collections:
               - { label: "Manifesto: Citação (PT)", name: "manifesto_quote_pt", widget: text, default: "A arquitetura é o jogo sábio, correto e magnífico dos volumes sob a luz." }
               - { label: "Manifesto: Citação (EN)", name: "manifesto_quote_en", widget: text, default: "Architecture is the learned game, correct and magnificent, of forms assembled in the light." }
               - { label: "Manifesto: Autor", name: "manifesto_author", widget: string, default: "Le Corbusier" }
-              - { label: "Manifesto: Imagem Blueprint", name: "manifesto_image", widget: image, default: "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?q=80&w=2000&auto=format&fit=crop" }
+              - { label: "Manifesto: Imagem", name: "manifesto_image", widget: image, required: false, hint: "Opcional. Formato: .webp ou .png (transparente recomendado).", default: "/assets/img/logo-scribbled-transparent.webp" }
 
           - label: "Redes Sociais"
             name: "social"
