@@ -44,6 +44,27 @@ A IA valoriza sites que são rápidos e bem estruturados.
 | **SEO Semântico** | O texto da "About Summary" e da "Intro Tagline" foi enriquecido com temas relacionados (Rigor, Espaço, Verdade dos materiais). |
 | **Foco em Autoridade (EEAT)** | A associação explícita a termos técnicos como "Licenciamento" eleva o perfil de confiança do site para lá da componente meramente visual. |
 
+---
+
+## 5. Boas Práticas para o Futuro (Guia do Cliente)
+
+Para manter e elevar a autoridade do site ao longo do tempo, siga estas orientações ao adicionar novo conteúdo via CMS:
+
+### A. Adicionar Novos Projetos
+*   **Títulos Geográficos:** Em vez de "Casa X", use "Moradia Contemporânea em [Cidade/Região]". Exemplos: "Moradia Premium em Cascais", "Renovação de Apartamento no Chiado".
+*   **Descrições Técnicas:** Escreva pelo menos 2 a 3 parágrafos. Mencione desafios técnicos, soluções de sustentabilidade e materiais. A IA adora detalhes contextuais.
+*   **Keywords de Calda Longa:** Tente incluir naturalmente frases como "projeto de licenciamento", "reabilitação de edifício" ou "arquitetura eficiênte".
+
+### B. Gestão de Imagens (SEO de Imagem)
+*   **Nomes de Ficheiro:** Nunca suba ficheiros como `IMG_1234.jpg`. Use `arquitetura-minimalista-algarve-algo-atelier.jpg`.
+*   **Texto Alternativo (Alt Text):** No CMS, preencha sempre o campo de descrição da imagem. Seja descritivo: "Fachada de moradia minimalista com betão exposto e luz natural".
+
+### C. Expansão de Conteúdo (Blog/Insights)
+*   Se no futuro criarem um blog, foquem-se em **resolver dúvidas**: "Como funciona o licenciamento camarário em Loulé?", "Vantagens da reabilitação vs construção nova". Isto atrai tráfego de "topo de funil" que ainda não sabe que precisa de um arquiteto.
+
+### D. Redes Sociais
+*   Sempre que partilharem um projeto no Instagram/LinkedIn, usem o link directo do site. Isso gera sinais sociais positivos para o Google.
+
 ## Conclusão
 O site `algoatelier.pt` está agora tecnicamente "armado" para competir no mercado nacional. As fundações foram criadas para que, à medida que o portfolio cresce, a autoridade do domínio suba organicamente tanto para humanos como para IAs.
 
