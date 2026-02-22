@@ -114,7 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.innerText = 'A enviar...';
         msgContainer.style.display = 'none';
 
-        // Submit to the same URL or "/" as required by Netlify AJAX
         const fetchUrl = form.getAttribute('action') || "/";
 
         fetch(fetchUrl, {
@@ -141,7 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     };
 
-    // Attach to all forms with data-netlify, ensuring we don't double-attach
     document.querySelectorAll('form[data-netlify]').forEach(form => {
         form.removeEventListener('submit', handleFormSubmit);
         form.addEventListener('submit', handleFormSubmit);
@@ -155,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ── Unified Ripple Transition Logic ───────────────────────────────── */
 (function () {
-    const DURATION = 1000; // Increased duration for smoother feel
+    const DURATION = 900; // Original Duration
     const isMobile = window.innerWidth <= 768;
 
     function getRipple() {
@@ -165,10 +163,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!ball) {
             ov = document.createElement('div');
             ov.id = 'orcamento-transition-overlay';
-            ov.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:999999;pointer-events:none;overflow:hidden;background:transparent;transition: background 0.4s ease;';
+            ov.style.cssText = 'position:fixed;top:0;left:0;width:100\%;height:100\%;z-index:999999;pointer-events:none;overflow:hidden;background:transparent;';
             ball = document.createElement('div');
             ball.id = 'orcamento-transition-ball';
-            ball.style.cssText = 'position:absolute;width:0;height:0;border-radius:50%;background:#0e0e0e;transform:translate(-50%,-50%);transition:none;';
+            ball.style.cssText = 'position:absolute;width:0;height:0;border-radius:50%;background:#0e0e0e;transform:translate(-50%,-50%);transition:none;opacity:0;';
             ov.appendChild(ball);
             document.body.appendChild(ov);
         } else {
@@ -191,21 +189,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
         ov.style.display = 'block';
         ov.style.pointerEvents = 'auto';
-        ball.style.transition = 'none'; ball.style.width = '0px'; ball.style.height = '0px';
-        ball.style.left = cx + 'px'; ball.style.top = cy + 'px'; ball.style.opacity = '1';
-        ball.getBoundingClientRect();
-        ball.style.transition = `width ${DURATION}ms cubic-bezier(0.4, 0, 0.2, 1), height ${DURATION}ms cubic-bezier(0.4, 0, 0.2, 1)`;
-        ball.style.width = (r * 2) + 'px'; ball.style.height = (r * 2) + 'px';
+        ov.style.background = 'transparent';
 
+        ball.style.transition = 'none';
+        ball.style.width = '0px';
+        ball.style.height = '0px';
+        ball.style.left = cx + 'px';
+        ball.style.top = cy + 'px';
+        ball.style.opacity = '1';
+
+        ball.getBoundingClientRect(); // trigger reflow
+
+        ball.style.transition = `width ${DURATION}ms cubic-bezier(0.4, 0, 0.2, 1), height ${DURATION}ms cubic-bezier(0.4, 0, 0.2, 1)`;
+        ball.style.width = (r * 2) + 'px';
+        ball.style.height = (r * 2) + 'px';
+
+        // Ensure redirect ONLY after ball has fully grown
         setTimeout(() => {
+            ov.style.background = '#0e0e0e'; // Solid fallback
             document.body.style.opacity = '0';
-            // Final small delay to ensure opaque screen before redirect
-            setTimeout(() => { window.location.href = href; }, 100);
+            setTimeout(() => {
+                window.location.href = href;
+            }, 150); // Small extra safety buffer
         }, DURATION);
     }
 
     function collapse(cx, cy) {
-        const { ball } = getRipple();
+        const { ball, ov } = getRipple();
         const r = Math.sqrt(Math.pow(window.innerWidth, 2) + Math.pow(window.innerHeight, 2)) * 1.5;
 
         if (isMobile) {
@@ -214,26 +224,49 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        ball.style.transition = 'none'; ball.style.width = (r * 2) + 'px'; ball.style.height = (r * 2) + 'px';
-        ball.style.left = cx + 'px'; ball.style.top = cy + 'px'; ball.style.opacity = '1';
-        ball.getBoundingClientRect();
+        ov.style.display = 'block';
+        ov.style.background = '#0e0e0e';
+
+        ball.style.transition = 'none';
+        ball.style.width = (r * 2) + 'px';
+        ball.style.height = (r * 2) + 'px';
+        ball.style.left = cx + 'px';
+        ball.style.top = cy + 'px';
+        ball.style.opacity = '1';
+
+        ball.getBoundingClientRect(); // trigger reflow
+
+        ov.style.transition = 'background 0.3s ease';
+        ov.style.background = 'transparent';
 
         document.body.style.opacity = '1';
         ball.style.transition = `width ${DURATION}ms cubic-bezier(0.4, 0, 0.2, 1), height ${DURATION}ms cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ${DURATION}ms`;
-        ball.style.width = '0px'; ball.style.height = '0px'; ball.style.opacity = '0';
+        ball.style.width = '0px';
+        ball.style.height = '0px';
+        ball.style.opacity = '0';
 
         setTimeout(() => {
-            ball.parentElement.style.display = 'none';
-        }, DURATION + 300);
+            ov.style.display = 'none';
+        }, DURATION + 400);
     }
 
     function getBudgetBtnCoords() {
-        // Try to find the navbar button specifically
-        const btn = document.querySelector('header .btn-budget') || document.querySelector('.btn-budget');
-        if (btn) {
-            const rect = btn.getBoundingClientRect();
+        // Specifically hunt for the header button first
+        const headerBtn = document.querySelector('header .btn-budget');
+        if (headerBtn) {
+            const rect = headerBtn.getBoundingClientRect();
+            if (rect.width > 0) {
+                return { cx: rect.left + rect.width / 2, cy: rect.top + rect.height / 2 };
+            }
+        }
+
+        // Fallback to any budget button
+        const anyBtn = document.querySelector('.btn-budget');
+        if (anyBtn) {
+            const rect = anyBtn.getBoundingClientRect();
             return { cx: rect.left + rect.width / 2, cy: rect.top + rect.height / 2 };
         }
+
         return { cx: window.innerWidth / 2, cy: window.innerHeight / 2 };
     }
 
@@ -242,8 +275,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const fromBudgetPage = document.referrer.includes('orcamento');
 
         if (isBudgetPage || fromBudgetPage) {
-            const coords = getBudgetBtnCoords();
-            collapse(coords.cx, coords.cy);
+            // Slight delay to ensure layout is stable for button detection
+            setTimeout(() => {
+                const coords = getBudgetBtnCoords();
+                collapse(coords.cx, coords.cy);
+            }, 50);
         } else {
             document.body.style.opacity = '1';
             const ripple = document.getElementById('orcamento-transition-overlay');
@@ -263,8 +299,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isToBudget || isFromBudget) {
             e.preventDefault();
             const rect = link.getBoundingClientRect();
-            const cx = rect.width ? (rect.left + rect.width / 2) : (window.innerWidth / 2);
-            const cy = rect.height ? (rect.top + rect.height / 2) : (window.innerHeight / 2);
+            // If the link has a rect, use its center, otherwise look for the button
+            let cx = rect.left + rect.width / 2;
+            let cy = rect.top + rect.height / 2;
+
+            // Special treatment for the header button to ensure exact pinpoint
+            if (link.closest('header')) {
+                const coords = getBudgetBtnCoords();
+                cx = coords.cx;
+                cy = coords.cy;
+            }
+
             expand(cx, cy, href);
         }
     });

@@ -96,6 +96,16 @@ permalink: /orcamento/
             color: #f0ede8;
         }
 
+        /* Prevent flash before ripple */
+        body.orcamento-page {
+            opacity: 0;
+            background: #0e0e0e;
+        }
+
+        #orcamento-transition-overlay {
+            background: #0e0e0e;
+        }
+
         /* Night Mode Header (Static & Scrolled) */
         .orcamento-page header {
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
