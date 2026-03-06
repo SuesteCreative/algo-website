@@ -16,7 +16,7 @@ area_m2: 2800
 year: 2024
 typology: hybrid
 featured: false
-cover_image: /assets/img/projetos/pexels-alex-staudinger-829197-1732414.jpg
+cover_image: /assets/img/projetos/pexels-artbovich-8134849.jpg
 description_pt: >
   A Torre de Luz resulta de um programa complexo e ambicioso: concentrar num
   único elemento vertical habitação, comércio, escritórios e espaço público. A
