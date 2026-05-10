@@ -7,6 +7,7 @@
 
 export async function onRequestGet({ request, env }) {
   const url = new URL(request.url);
+  const origin = url.origin;
   const code = url.searchParams.get('code');
   const state = url.searchParams.get('state');
 
@@ -16,7 +17,7 @@ export async function onRequestGet({ request, env }) {
   const clearStateCookie = 'csrf_state=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0';
 
   if (!code || !state || !expectedState || state !== expectedState) {
-    return htmlResponse(errorPage('Invalid OAuth state. Try logging in again.'), clearStateCookie);
+    return htmlResponse(errorPage('Invalid OAuth state. Try logging in again.', origin), clearStateCookie);
   }
 
   let tokenData;
@@ -36,16 +37,16 @@ export async function onRequestGet({ request, env }) {
     });
     tokenData = await res.json();
   } catch (e) {
-    return htmlResponse(errorPage('Token exchange request failed.'), clearStateCookie);
+    return htmlResponse(errorPage('Token exchange request failed.', origin), clearStateCookie);
   }
 
   if (tokenData.error || !tokenData.access_token) {
     const msg = tokenData.error_description || tokenData.error || 'Token exchange failed.';
-    return htmlResponse(errorPage(msg), clearStateCookie);
+    return htmlResponse(errorPage(msg, origin), clearStateCookie);
   }
 
   const payload = { token: tokenData.access_token, provider: 'github' };
-  return htmlResponse(successPage(payload), clearStateCookie);
+  return htmlResponse(successPage(payload, origin), clearStateCookie);
 }
 
 function parseCookies(header) {
@@ -66,7 +67,7 @@ function htmlResponse(body, setCookie) {
   });
 }
 
-function successPage(payload) {
+function successPage(payload, origin) {
   const successMessage = `authorization:github:success:${JSON.stringify(payload)}`;
   return `<!doctype html>
 <html><head><meta charset="utf-8"><title>Authenticating…</title></head>
@@ -75,19 +76,21 @@ function successPage(payload) {
 <script>
 (function () {
   var successMsg = ${JSON.stringify(successMessage)};
+  var allowedOrigin = ${JSON.stringify(origin)};
   function receiveMessage(e) {
+    if (e.origin !== allowedOrigin) return;
     if (!window.opener) return;
-    window.opener.postMessage(successMsg, e.origin || '*');
+    window.opener.postMessage(successMsg, allowedOrigin);
   }
   window.addEventListener('message', receiveMessage, false);
   // Initial handshake — Decap parent replies, then we send token.
-  if (window.opener) window.opener.postMessage('authorizing:github', '*');
+  if (window.opener) window.opener.postMessage('authorizing:github', allowedOrigin);
 })();
 </script>
 </body></html>`;
 }
 
-function errorPage(message) {
+function errorPage(message, origin) {
   const wire = `authorization:github:error:${JSON.stringify({ message })}`;
   return `<!doctype html>
 <html><head><meta charset="utf-8"><title>Auth error</title></head>
@@ -95,7 +98,7 @@ function errorPage(message) {
 <p>Authentication error: ${escapeHtml(message)}</p>
 <script>
 (function () {
-  if (window.opener) window.opener.postMessage(${JSON.stringify(wire)}, '*');
+  if (window.opener) window.opener.postMessage(${JSON.stringify(wire)}, ${JSON.stringify(origin)});
 })();
 </script>
 </body></html>`;

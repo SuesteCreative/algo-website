@@ -68,6 +68,10 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.ignores.add("_site/**");
     eleventyConfig.ignores.add("Algo-v2-backup/**");
     eleventyConfig.ignores.add("functions/**");
+    eleventyConfig.ignores.add("REPORTE_OTIMIZACAO_SEO_2026.md");
+    eleventyConfig.ignores.add("implementation.md");
+    eleventyConfig.ignores.add("*.log");
+    eleventyConfig.ignores.add("*.ai");
 
     // ── Passthrough: assets & favicons ──────────────────────────
     eleventyConfig.addPassthroughCopy("assets");

@@ -9,8 +9,8 @@ Post-Netlify-migration hardening pass. Findings from code/config audit of Cloudf
 - [x] C2 — Tighten OAuth scope in `functions/api/auth.js` from `repo user` to just `repo`
 
 ### High
-- [ ] H1 — Pin `postMessage` target origin in `functions/api/callback.js` (replace `'*'` with computed origin) to prevent token exfiltration
-- [ ] H2 — Add `REPORTE_OTIMIZACAO_SEO_2026.md`, `*.log`, `*.ai` to Eleventy ignores so internal docs/logs don't leak to `_site/`
+- [x] H1 — Pin `postMessage` target origin in `functions/api/callback.js` (replace `'*'` with computed origin) to prevent token exfiltration
+- [x] H2 — Add `REPORTE_OTIMIZACAO_SEO_2026.md`, `*.log`, `*.ai` to Eleventy ignores so internal docs/logs don't leak to `_site/`
 
 ### Medium
 - [ ] M1 — Cap contact-form `extras` size + sanitize subject newlines/length in `functions/api/contact.js`
