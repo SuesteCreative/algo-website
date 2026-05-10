@@ -67,23 +67,21 @@ function htmlResponse(body, setCookie) {
 }
 
 function successPage(payload) {
-  const message = `authorization:github:success:${JSON.stringify(payload)}`;
+  const successMessage = `authorization:github:success:${JSON.stringify(payload)}`;
   return `<!doctype html>
 <html><head><meta charset="utf-8"><title>Authenticating…</title></head>
 <body>
 <p>Authentication successful. You may close this window.</p>
 <script>
 (function () {
-  var msg = ${JSON.stringify(message)};
-  function send() {
+  var successMsg = ${JSON.stringify(successMessage)};
+  function receiveMessage(e) {
     if (!window.opener) return;
-    window.opener.postMessage(msg, '*');
+    window.opener.postMessage(successMsg, e.origin || '*');
   }
-  window.addEventListener('message', function (e) {
-    if (e.data === 'authorizing:github') send();
-  }, false);
-  // Initial handshake — Decap listens for this and replies.
-  send();
+  window.addEventListener('message', receiveMessage, false);
+  // Initial handshake — Decap parent replies, then we send token.
+  if (window.opener) window.opener.postMessage('authorizing:github', '*');
 })();
 </script>
 </body></html>`;
