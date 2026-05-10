@@ -6,7 +6,7 @@ Post-Netlify-migration hardening pass. Findings from code/config audit of Cloudf
 
 ### Critical
 - [x] C1 — Drop redundant `addPassthroughCopy` for `orcamento`/`legal` dirs in `.eleventy.js`; raw `.njk` templates leak to public `_site/`
-- [ ] C2 — Tighten OAuth scope in `functions/api/auth.js` from `repo user` to just `repo`
+- [x] C2 — Tighten OAuth scope in `functions/api/auth.js` from `repo user` to just `repo`
 
 ### High
 - [ ] H1 — Pin `postMessage` target origin in `functions/api/callback.js` (replace `'*'` with computed origin) to prevent token exfiltration
