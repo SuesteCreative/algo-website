@@ -31,7 +31,7 @@ export async function onRequestGet({ request, env }) {
     status: 302,
     headers: {
       Location: authorize.toString(),
-      'Set-Cookie': `csrf_state=${state}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=600`,
+      'Set-Cookie': `csrf_state=${state}; Path=/api/callback; HttpOnly; Secure; SameSite=Lax; Max-Age=600`,
     },
   });
 }

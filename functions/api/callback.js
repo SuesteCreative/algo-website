@@ -14,7 +14,7 @@ export async function onRequestGet({ request, env }) {
   const cookies = parseCookies(request.headers.get('Cookie') || '');
   const expectedState = cookies['csrf_state'];
 
-  const clearStateCookie = 'csrf_state=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0';
+  const clearStateCookie = 'csrf_state=; Path=/api/callback; HttpOnly; Secure; SameSite=Lax; Max-Age=0';
 
   if (!code || !state || !expectedState || state !== expectedState) {
     return htmlResponse(errorPage('Invalid OAuth state. Try logging in again.', origin), clearStateCookie);

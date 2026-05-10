@@ -46,14 +46,25 @@ export async function onRequestPost({ request, env }) {
   const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
   const country = request.cf?.country || 'unknown';
 
-  // Extra fields (orcamento has phone, project type, etc.) — append all.
+  // Extra fields (orcamento has phone, project type, etc.) — append with caps.
+  const RESERVED = new Set(['name', 'nome', 'email', 'message', 'mensagem', 'privacy', 'website', 'form_source', 'form-name', 'bot-field', 'recipient_email', 'cc_email']);
+  const EXTRA_FIELD_MAX = 500;
+  const EXTRAS_TOTAL_MAX = 2000;
   const extras = {};
+  let extrasTotalLen = 0;
   for (const [k, v] of Object.entries(fields)) {
-    if (['name', 'nome', 'email', 'message', 'mensagem', 'privacy', 'website', 'form_source', 'form-name', 'bot-field', 'recipient_email', 'cc_email'].includes(k)) continue;
-    if (v) extras[k] = v;
+    if (RESERVED.has(k)) continue;
+    if (!v) continue;
+    const str = String(v);
+    if (str.length > EXTRA_FIELD_MAX) continue;
+    if (extrasTotalLen + str.length > EXTRAS_TOTAL_MAX) break;
+    extras[k] = str;
+    extrasTotalLen += str.length;
   }
 
-  const subject = `[${source}] Novo contacto: ${name}`;
+  const safeSource = source.replace(/[\r\n]/g, ' ').slice(0, 60);
+  const safeName = name.replace(/[\r\n]/g, ' ').slice(0, 60);
+  const subject = `[${safeSource}] Novo contacto: ${safeName}`;
   const html = renderHtml({ source, name, email, message, extras, ip, country });
   const text = renderText({ source, name, email, message, extras, ip, country });
 

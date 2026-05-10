@@ -13,10 +13,10 @@ Post-Netlify-migration hardening pass. Findings from code/config audit of Cloudf
 - [x] H2 — Add `REPORTE_OTIMIZACAO_SEO_2026.md`, `*.log`, `*.ai` to Eleventy ignores so internal docs/logs don't leak to `_site/`
 
 ### Medium
-- [ ] M1 — Cap contact-form `extras` size + sanitize subject newlines/length in `functions/api/contact.js`
-- [ ] M2 — Add `Strict-Transport-Security` header to `_headers`
-- [ ] M3 — Pin Decap CMS version in `admin/index.html` (replace `^3.0.0` with `3.12.2`)
-- [ ] M4 — Tighten OAuth state cookie `Path` from `/` to `/api/callback` in `auth.js` and `callback.js`
+- [x] M1 — Cap contact-form `extras` size + sanitize subject newlines/length in `functions/api/contact.js`
+- [x] M2 — Add `Strict-Transport-Security` header to `_headers`
+- [x] M3 — Pin Decap CMS version in `admin/index.html` (replace `^3.0.0` with `3.12.2`)
+- [x] M4 — Tighten OAuth state cookie `Path` from `/` to `/api/callback` in `auth.js` and `callback.js`
 
 ### Low
 - [ ] L1 — Improve callback `User-Agent` to include contact URL per GitHub recommendation
