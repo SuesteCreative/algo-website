@@ -120,9 +120,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ── AJAX Form Submission ──────────────────────────────────────
+    const isEnglish = document.documentElement.lang === 'en';
+    const i18n = isEnglish
+        ? { sending: 'Sending...', success: 'Message sent successfully!', error: 'Something went wrong. Please try again.' }
+        : { sending: 'A enviar...', success: 'Mensagem enviada com sucesso!', error: 'Ocorreu um erro ao enviar. Por favor, tente novamente.' };
+
     const handleFormSubmit = (e) => {
         const form = e.target;
-        if (!form.hasAttribute('data-netlify')) return;
+        if (!form.hasAttribute('data-resend')) return;
 
         e.preventDefault();
         const formData = new FormData(form);
@@ -131,7 +136,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const originalBtnText = submitBtn.innerText;
 
-        // Find or create message container
         let msgContainer = form.querySelector('.form-message');
         if (!msgContainer) {
             msgContainer = document.createElement('div');
@@ -144,36 +148,43 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         submitBtn.disabled = true;
-        submitBtn.innerText = 'A enviar...';
+        submitBtn.innerText = i18n.sending;
         msgContainer.style.display = 'none';
 
-        const fetchUrl = form.getAttribute('action') || "/";
+        const fetchUrl = form.getAttribute('action') || '/api/contact';
+
+        const showError = (msg) => {
+            msgContainer.innerText = msg || i18n.error;
+            msgContainer.style.background = 'rgba(100, 0, 0, 0.05)';
+            msgContainer.style.color = 'darkred';
+            msgContainer.style.display = 'block';
+            submitBtn.innerText = originalBtnText;
+            submitBtn.disabled = false;
+        };
 
         fetch(fetchUrl, {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams(formData).toString(),
+            method: 'POST',
+            body: formData,
         })
-            .then(() => {
-                msgContainer.innerText = 'Mensagem enviada com sucesso!';
-                msgContainer.style.background = 'rgba(0, 100, 0, 0.05)';
-                msgContainer.style.color = 'darkgreen';
-                msgContainer.style.display = 'block';
-                form.reset();
-                submitBtn.innerText = originalBtnText;
-                submitBtn.disabled = false;
+            .then(async (res) => {
+                let data = null;
+                try { data = await res.json(); } catch (_) { /* ignore */ }
+                if (res.ok && data && data.ok) {
+                    msgContainer.innerText = i18n.success;
+                    msgContainer.style.background = 'rgba(0, 100, 0, 0.05)';
+                    msgContainer.style.color = 'darkgreen';
+                    msgContainer.style.display = 'block';
+                    form.reset();
+                    submitBtn.innerText = originalBtnText;
+                    submitBtn.disabled = false;
+                } else {
+                    showError();
+                }
             })
-            .catch(() => {
-                msgContainer.innerText = 'Ocorreu um erro ao enviar. Por favor, tente novamente.';
-                msgContainer.style.background = 'rgba(100, 0, 0, 0.05)';
-                msgContainer.style.color = 'darkred';
-                msgContainer.style.display = 'block';
-                submitBtn.innerText = originalBtnText;
-                submitBtn.disabled = false;
-            });
+            .catch(() => showError());
     };
 
-    document.querySelectorAll('form[data-netlify]').forEach(form => {
+    document.querySelectorAll('form[data-resend]').forEach(form => {
         form.removeEventListener('submit', handleFormSubmit);
         form.addEventListener('submit', handleFormSubmit);
     });

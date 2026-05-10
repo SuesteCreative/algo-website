@@ -4,8 +4,11 @@
 # ─────────────────────────────────────────────────────────────────
 
 backend:
-  name: git-gateway
+  name: github
+  repo: SuesteCreative/algo-website
   branch: main
+  base_url: https://algoatelier.pt
+  auth_endpoint: api/auth
   commit_messages:
     create:  'content(cms): criar projeto "{{slug}}"'
     update:  'content(cms): editar projeto "{{slug}}"'
@@ -13,6 +16,8 @@ backend:
     uploadMedia:  'content(cms): upload de imagem "{{path}}"'
     deleteMedia:  'content(cms): apagar imagem "{{path}}"'
 
+site_url: https://algoatelier.pt
+display_url: https://algoatelier.pt
 media_folder:  "assets/img/projetos"
 public_folder: "/assets/img/projetos"
 locale: 'pt'

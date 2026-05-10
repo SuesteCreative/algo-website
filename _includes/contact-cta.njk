@@ -23,9 +23,9 @@
             </div>
             
             <div class="contact-cta-form fade-up">
-                <form name="contacto-landing" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
-                    <input type="hidden" name="form-name" value="contacto-landing">
-                    <p style="display:none;"><label>Don't fill this: <input name="bot-field"></label></p>
+                <form action="/api/contact" method="POST" data-resend class="contact-form">
+                    <input type="hidden" name="form_source" value="contacto-landing">
+                    <p style="display:none;"><label>Don't fill this: <input name="website" tabindex="-1" autocomplete="off"></label></p>
                     
                     {% if lang == 'pt' %}
                     <div class="form-group">

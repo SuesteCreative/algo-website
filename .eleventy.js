@@ -67,9 +67,11 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.ignores.add("node_modules/**");
     eleventyConfig.ignores.add("_site/**");
     eleventyConfig.ignores.add("Algo-v2-backup/**");
+    eleventyConfig.ignores.add("functions/**");
 
     // ── Passthrough: assets & favicons ──────────────────────────
     eleventyConfig.addPassthroughCopy("assets");
+    eleventyConfig.addPassthroughCopy("_headers");
 
     // Favicons: Public Site (Root)
     eleventyConfig.addPassthroughCopy({

@@ -43,7 +43,10 @@ permalink: /en/contact/
             </div>
 
             <div class="fade-up active contact-form-col">
-                <form action="#" class="contact-form">
+                <form action="/api/contact" method="POST" data-resend class="contact-form">
+                    <input type="hidden" name="form_source" value="contact-en">
+                    <p style="display:none;"><label>Don't fill this: <input name="website" tabindex="-1" autocomplete="off"></label></p>
+
                     <div class="form-group">
                         <label for="name">Full Name</label>
                         <input type="text" id="name" name="name" required placeholder="What is your name?">
@@ -58,7 +61,7 @@ permalink: /en/contact/
                     </div>
                     <div class="privacy-group">
                         <input type="checkbox" id="privacy" name="privacy" required>
-                        <label for="privacy">I have read and accept the <a href="/legal/privacidade/">Privacy Policy</a> and the processing of my data for contact purposes.</label>
+                        <label for="privacy">I have read and accept the <a href="/en/legal/privacy/">Privacy Policy</a> and the processing of my data for contact purposes.</label>
                     </div>
                     <button type="submit" class="btn-budget" style="width: 100%; margin: 0; padding: 1.2rem;">Send Message</button>
                 </form>

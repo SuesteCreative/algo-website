@@ -245,15 +245,14 @@ permalink: /orcamento/
             </p>
 
             <form
-                name="orcamento"
+                action="/api/contact"
                 method="POST"
-                data-netlify="true"
-                netlify-honeypot="bot-field"
+                data-resend
                 style="display: grid; gap: 1.8rem;"
                 class="fade-up"
             >
-                <input type="hidden" name="form-name" value="orcamento">
-                <p style="display:none;"><label>Don't fill this: <input name="bot-field"></label></p>
+                <input type="hidden" name="form_source" value="orcamento">
+                <p style="display:none;"><label>Don't fill this: <input name="website" tabindex="-1" autocomplete="off"></label></p>
 
                 <div class="orcamento-form-grid">
                     <div class="form-field">
@@ -295,8 +294,6 @@ permalink: /orcamento/
                     </label>
                 </div>
 
-                <input type="hidden" name="recipient_email" value="{{ site.identity.contact_recipient }}">
-                <input type="hidden" name="cc_email" value="{{ site.identity.contact_cc }}">
 
                 <div>
                     <button type="submit" class="btn-budget" style="border: none; cursor: pointer; font-family: inherit; transition: all 0.3s ease;">
