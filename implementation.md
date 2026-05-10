@@ -19,8 +19,8 @@ Post-Netlify-migration hardening pass. Findings from code/config audit of Cloudf
 - [x] M4 — Tighten OAuth state cookie `Path` from `/` to `/api/callback` in `auth.js` and `callback.js`
 
 ### Low
-- [ ] L1 — Improve callback `User-Agent` to include contact URL per GitHub recommendation
-- [ ] L2 — Add `dev:functions` script to `package.json` for local function testing via `wrangler pages dev`
+- [x] L1 — Improve callback `User-Agent` to include contact URL per GitHub recommendation
+- [x] L2 — Add `dev:functions` script to `package.json` for local function testing via `wrangler pages dev`
 
 ### Deferred
 - Rate limiting on contact form (needs CF KV/Turnstile — separate work)

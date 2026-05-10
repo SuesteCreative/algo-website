@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "eleventy --serve",
     "build": "eleventy",
-    "preview": "browser-sync start --server _site --files '_site/**/*'"
+    "preview": "browser-sync start --server _site --files '_site/**/*'",
+    "dev:functions": "wrangler pages dev _site --compatibility-date=2025-01-01"
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",

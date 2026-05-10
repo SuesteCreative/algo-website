@@ -27,7 +27,7 @@ export async function onRequestGet({ request, env }) {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
-        'User-Agent': 'algoatelier-cms-auth',
+        'User-Agent': 'algoatelier-cms-auth (+https://algoatelier.pt)',
       },
       body: JSON.stringify({
         client_id: env.GITHUB_CLIENT_ID,
