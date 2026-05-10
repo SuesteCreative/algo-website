@@ -95,11 +95,6 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy("admin");
     eleventyConfig.addPassthroughCopy("404.html");
 
-    // Static HTML pages — passthrough as-is (Only the ones not yet converted to .njk)
-    const staticDirs = ["orcamento", "legal"];
-    staticDirs.forEach(d => eleventyConfig.addPassthroughCopy(d));
-
-
     // ── Config ─────────────────────────────────────────────────────
     return {
         templateFormats: ["njk", "md"],
